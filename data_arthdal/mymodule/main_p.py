@@ -51,6 +51,8 @@ from stop_event18 import _stop_please
 
 from test_ import go_test
 
+from tutorial import tuto_start
+
 
 from server import game_start
 import variable as v_
@@ -3361,8 +3363,7 @@ class game_Playing(QThread):
                                 # 오토 시작
 
                                 if result_schedule_ == "튜토육성":
-                                    # tuto_start(v_.now_cla)
-                                    print("start")
+                                    tuto_start(v_.now_cla)
 
 
 

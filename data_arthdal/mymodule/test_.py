@@ -14,7 +14,9 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+
+    from tutorial import tuto_imgs_scan
 
     cla = "one"
 
@@ -33,14 +35,33 @@ def go_test():
     try:
         print("test", cla)
 
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_ready.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+        imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            game_ready_count = 0
-            print("기다리는중", game_ready_count, "초")
+            drag_pos(480, 510, 800, 515, cla)
+            time.sleep(1)
+
+        # tuto_imgs_scan(cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\choolgoo_move.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(760, 70, 880, 125, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("choolgoo_move", imgs_)
+
+            for i in range(5):
+                pyautogui.keyDown('d')
+                time.sleep(1)
+                pyautogui.keyUp('d')
+                time.sleep(0.3)
+
+
+
+
+
 
     except Exception as e:
         print(e)
