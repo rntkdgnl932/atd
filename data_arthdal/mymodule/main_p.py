@@ -3336,12 +3336,11 @@ class game_Playing(QThread):
                                 character_id = result_schedule[0][1]
                                 result_schedule_ = result_schedule[0][2]
 
+                                # 18 이벤트창부터 끄자
+                                _stop_please(v_.now_cla)
 
                                 # 게임 시작 화면인지 분석부터 하기
                                 game_ready(v_.now_cla, character_id)
-
-
-
 
                                 # 18 이벤트창부터 끄자
                                 _stop_please(v_.now_cla)
