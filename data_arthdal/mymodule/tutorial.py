@@ -319,15 +319,26 @@ def tuto_imgs_scan(cla):
                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
         # 탑승물 장착, 탈 것
+        q_talgut = False
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\talgut.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 550, 600, 650, cla, img, 0.8)
+        imgs_ = imgs_set_(350, 550, 600, 650, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             # 메뉴 오픈 후 탑승물 누르기
             print("talgut")
+            q_talgut = True
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\talgut2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 550, 600, 650, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                # 메뉴 오픈 후 탑승물 누르기
+                print("talgut2")
+                q_talgut = True
 
-
+        if q_talgut == True:
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\topseongmool.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
