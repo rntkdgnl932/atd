@@ -198,7 +198,7 @@ def out_check(cla):
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 960, 275, 1020, cla, img, 0.8)
+        imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("out_keyboard", imgs_)
             is_out_ready = True
@@ -206,7 +206,7 @@ def out_check(cla):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(180, 960, 275, 1020, cla, img, 0.8)
+            imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("out_speed_talk", imgs_)
                 is_out_ready = True
