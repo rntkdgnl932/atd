@@ -156,6 +156,7 @@ def out_check(cla):
     import numpy as np
     import cv2
 
+
     from function_game import imgs_set_, click_pos_reg
     from massenger import line_to_me
 
@@ -177,7 +178,18 @@ def out_check(cla):
                 print("long_time", imgs_)
                 why = "아스달 장시간 입력이 없다..."
                 line_to_me(cla, why)
+                os.execl(sys.executable, sys.executable, *sys.argv)
                 # 490, 590
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\server_failed.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(200, 300, 800, 800, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("server_failed")
+                why = "아스달 서버 검증 실패..."
+                line_to_me(cla, why)
+                os.execl(sys.executable, sys.executable, *sys.argv)
 
         is_out = False
 
