@@ -470,7 +470,8 @@ def tuto_imgs_scan(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(580, 380, 690, 430, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_2(925, 535, cla)
+                            click_pos_2(650, 625, cla)
+                            # click_pos_2(925, 535, cla)
                         else:
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\group_select_res_1.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -478,6 +479,15 @@ def tuto_imgs_scan(cla):
                             imgs_ = imgs_set_(580, 380, 690, 430, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_2(650, 625, cla)
+                        for c in range(10):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\group_select_res_4.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(340, 90, 500, 140, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(925, 535, cla)
+                                break
+                            time.sleep(0.1)
                 time.sleep(0.5)
 
         # 채광하기
