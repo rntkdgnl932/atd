@@ -159,7 +159,8 @@ def tuto_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("esc_1", imgs_)
                     is_esc_count = 0
-                    pyautogui.press('esc')
+                    pyautogui.press('f')
+                    # pyautogui.press('esc')
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\esc_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -168,7 +169,8 @@ def tuto_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("esc_2", imgs_)
                         is_esc_count = 0
-                        pyautogui.press('esc')
+                        pyautogui.press('f')
+                        # pyautogui.press('esc')
                     else:
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\f_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
