@@ -104,7 +104,7 @@ def character_change(cla, character_id):
                         # 65
                         # select 2 (50, 190)
 
-                        y_result = 60 + int(character_id)
+                        y_result = 60 + (int(character_id) * 65)
 
                         click_pos_2(50, y_result, cla)
                         time.sleep(0.5)
