@@ -110,16 +110,21 @@ def character_change(cla, character_id):
                         time.sleep(0.5)
                         click_pos_reg(x_reg, y_reg, cla)
                         time.sleep(0.1)
-                    else:
-                        # 캐릭 선택화면 전 대기화면
-                        game_ready(cla)
 
-                        # 체크 끝나면 캐릭터 선택화면이다.
+                        for i in range(10):
+                            result_out = out_check(cla)
+                            if result_out == True:
+                                break
+                            time.sleep(1)
+                    else:
+                        cleen_screen_start(cla)
+
+
                 time.sleep(1)
     except Exception as e:
         print(e)
 
-def game_ready(cla):
+def game_ready(cla, character_id):
     import numpy as np
     import cv2
 
@@ -169,11 +174,17 @@ def game_ready(cla):
                     imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("game_start")
+                        character_change(cla, character_id)
                         game_ready = False
 
                 time.sleep(1)
-
-
-
+        else:
+            # 캐릭선택화면 일경우 접속하기
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                character_change(cla, character_id)
     except Exception as e:
         print(e)

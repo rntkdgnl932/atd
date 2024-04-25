@@ -157,9 +157,27 @@ def out_check(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg
+    from massenger import line_to_me
 
     try:
         print("out_check", cla)
+
+        # 장시간
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\connect_out.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(430, 440, 535, 485, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("connect_out", imgs_)
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\long_time.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(360, 500, 440, 540, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("long_time", imgs_)
+                why = "아스달 장시간 입력이 없다..."
+                line_to_me(cla, why)
+                # 490, 590
 
         is_out = False
 
