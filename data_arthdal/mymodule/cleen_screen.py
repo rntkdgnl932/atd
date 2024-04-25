@@ -211,6 +211,9 @@ def tuto_udrl_skip(cla):
     try:
         print("tuto_udrl_skip", cla)
 
+        x_one = 35
+        x_two = 23
+
         ing_ = False
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right.PNG"
@@ -220,7 +223,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("right", imgs_)
             # x + 35
-            click_pos_reg(imgs_.x + 35, imgs_.y, cla)
+            click_pos_reg(imgs_.x + x_one, imgs_.y, cla)
             ing_ = True
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_up.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -229,7 +232,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("right_up", imgs_)
             # x + 35, y - 35
-            click_pos_reg(imgs_.x + 35, imgs_.y - 35, cla)
+            click_pos_reg(imgs_.x + x_two, imgs_.y - x_two, cla)
             ing_ = True
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_up2.PNG"
@@ -239,7 +242,7 @@ def tuto_udrl_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("right_up2", imgs_)
                 # x + 35, y - 35
-                click_pos_reg(imgs_.x + 35, imgs_.y - 35, cla)
+                click_pos_reg(imgs_.x + x_two, imgs_.y - x_two, cla)
                 ing_ = True
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_down.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -248,7 +251,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("right_down", imgs_)
             # x + 35, y + 35
-            click_pos_reg(imgs_.x + 35, imgs_.y + 35, cla)
+            click_pos_reg(imgs_.x + x_two, imgs_.y + x_two, cla)
             ing_ = True
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_down2.PNG"
@@ -258,7 +261,7 @@ def tuto_udrl_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("right_down2", imgs_)
                 # x + 35, y + 35
-                click_pos_reg(imgs_.x + 35, imgs_.y + 35, cla)
+                click_pos_reg(imgs_.x + x_two, imgs_.y + x_two, cla)
                 ing_ = True
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left.PNG"
@@ -268,7 +271,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("left", imgs_)
             # x - 35
-            click_pos_reg(imgs_.x - 35, imgs_.y, cla)
+            click_pos_reg(imgs_.x - x_one, imgs_.y, cla)
             ing_ = True
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left2.PNG"
@@ -278,7 +281,7 @@ def tuto_udrl_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("left2", imgs_)
                 # x - 35
-                click_pos_reg(imgs_.x - 35, imgs_.y, cla)
+                click_pos_reg(imgs_.x - x_one, imgs_.y, cla)
                 ing_ = True
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left_up.PNG"
@@ -288,7 +291,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("left_up", imgs_)
             # x - 35, y- 35
-            click_pos_reg(imgs_.x - 35, imgs_.y - 35, cla)
+            click_pos_reg(imgs_.x - x_two, imgs_.y - x_two, cla)
             ing_ = True
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up.PNG"
@@ -298,7 +301,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("up", imgs_)
             # y - 35
-            click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+            click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
             ing_ = True
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up2.PNG"
@@ -308,7 +311,7 @@ def tuto_udrl_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("up2", imgs_)
                 # y - 35
-                click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+                click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
                 ing_ = True
             else:
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up3.PNG"
@@ -318,7 +321,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("up3", imgs_)
                     # y - 35
-                    click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+                    click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
                     ing_ = True
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\down.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -327,7 +330,7 @@ def tuto_udrl_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("down", imgs_)
             # y + 35
-            click_pos_reg(imgs_.x, imgs_.y + 35, cla)
+            click_pos_reg(imgs_.x, imgs_.y + x_one, cla)
             ing_ = True
 
         if ing_ == True:
@@ -339,7 +342,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("right", imgs_)
                     # x + 35
-                    click_pos_reg(imgs_.x + 35, imgs_.y, cla)
+                    click_pos_reg(imgs_.x + x_one, imgs_.y, cla)
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_up.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -347,7 +350,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("right_up", imgs_)
                     # x + 35, y - 35
-                    click_pos_reg(imgs_.x + 35, imgs_.y - 35, cla)
+                    click_pos_reg(imgs_.x + x_two, imgs_.y - x_two, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_up2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -356,7 +359,7 @@ def tuto_udrl_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("right_up2", imgs_)
                         # x + 35, y - 35
-                        click_pos_reg(imgs_.x + 35, imgs_.y - 35, cla)
+                        click_pos_reg(imgs_.x + x_two, imgs_.y - x_two, cla)
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_down.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -364,7 +367,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("right_down", imgs_)
                     # x + 35, y + 35
-                    click_pos_reg(imgs_.x + 35, imgs_.y + 35, cla)
+                    click_pos_reg(imgs_.x + x_two, imgs_.y + x_two, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right_down2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -373,7 +376,7 @@ def tuto_udrl_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("right_down2", imgs_)
                         # x + 35, y + 35
-                        click_pos_reg(imgs_.x + 35, imgs_.y + 35, cla)
+                        click_pos_reg(imgs_.x + x_two, imgs_.y + x_two, cla)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -382,7 +385,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("left", imgs_)
                     # x - 35
-                    click_pos_reg(imgs_.x - 35, imgs_.y, cla)
+                    click_pos_reg(imgs_.x - x_one, imgs_.y, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -391,7 +394,7 @@ def tuto_udrl_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("left2", imgs_)
                         # x - 35
-                        click_pos_reg(imgs_.x - 35, imgs_.y, cla)
+                        click_pos_reg(imgs_.x - x_one, imgs_.y, cla)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\left_up.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -400,7 +403,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("left_up", imgs_)
                     # x - 35, y- 35
-                    click_pos_reg(imgs_.x - 35, imgs_.y - 35, cla)
+                    click_pos_reg(imgs_.x - x_two, imgs_.y - x_two, cla)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -409,7 +412,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("up", imgs_)
                     # y - 35
-                    click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+                    click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -418,7 +421,7 @@ def tuto_udrl_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("up2", imgs_)
                         # y - 35
-                        click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+                        click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
                     else:
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\up3.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -427,7 +430,7 @@ def tuto_udrl_skip(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("up3", imgs_)
                             # y - 35
-                            click_pos_reg(imgs_.x, imgs_.y - 35, cla)
+                            click_pos_reg(imgs_.x, imgs_.y - x_one, cla)
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\down.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -435,7 +438,7 @@ def tuto_udrl_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("down", imgs_)
                     # y + 35
-                    click_pos_reg(imgs_.x, imgs_.y + 35, cla)
+                    click_pos_reg(imgs_.x, imgs_.y + x_one, cla)
             time.sleep(0.2)
 
 
