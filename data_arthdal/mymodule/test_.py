@@ -17,8 +17,9 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
 
     from tutorial import tuto_imgs_scan
+    from action_arthdal import out_check
 
-    cla = "one"
+    cla = "five"
 
     if cla == "one":
         plus = 0
@@ -35,29 +36,8 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            drag_pos(480, 510, 800, 515, cla)
-            time.sleep(1)
-
-        # tuto_imgs_scan(cla)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\choolgoo_move.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(760, 70, 880, 125, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("choolgoo_move", imgs_)
-
-            for i in range(5):
-                pyautogui.keyDown('d')
-                time.sleep(1)
-                pyautogui.keyUp('d')
-                time.sleep(0.3)
-
+        result = out_check(cla)
+        print("out", result)
 
 
 
