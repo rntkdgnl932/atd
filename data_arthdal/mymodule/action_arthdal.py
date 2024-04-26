@@ -61,14 +61,15 @@ def juljun_check(cla):
         print(e)
         return 0
 
-def juljun_skip(cla):
+def juljun_off(cla):
     import numpy as np
     import cv2
 
     from function_game import imgs_set_, drag_pos
+    from cleen_screen import cleen_screen_start
 
     try:
-        print("juljun_skip", cla)
+        print("juljun_off", cla)
 
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
@@ -82,12 +83,42 @@ def juljun_skip(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     break
+                else:
+                    cleen_screen_start(cla)
                 time.sleep(0.5)
 
     except Exception as e:
         print(e)
         return 0
+def juljun_on(cla):
+    import numpy as np
+    import cv2
 
+    from function_game import imgs_set_, drag_pos, click_pos_2
+    from cleen_screen import cleen_screen_start
+
+    try:
+        print("juljun_on", cla)
+
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                break
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(35, 350, cla)
+                    time.sleep(0.5)
+                else:
+                    cleen_screen_start(cla)
+            time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
 
 
 def tuto_jangchak(cla):
@@ -164,6 +195,10 @@ def out_check(cla):
         print("out_check", cla)
 
         # 장시간
+
+        server_alrim = False
+        why = "none"
+
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\connect_out.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -177,8 +212,7 @@ def out_check(cla):
             if imgs_ is not None and imgs_ != False:
                 print("long_time", imgs_)
                 why = "아스달 장시간 입력이 없다..."
-                line_to_me(cla, why)
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                server_alrim = True
                 # 490, 590
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\server_failed.PNG"
@@ -188,43 +222,71 @@ def out_check(cla):
             if imgs_ is not None and imgs_ != False:
                 print("server_failed")
                 why = "아스달 서버 검증 실패..."
-                line_to_me(cla, why)
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                server_alrim = True
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\server_fix.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 500, 500, 600, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("server_fix")
+                    why = "아스달 서버 점검..."
+                    server_alrim = True
+
+        if server_alrim == True:
+            line_to_me(cla, why)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\alrim_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 400, 700, 700, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+            os.execl(sys.executable, sys.executable, *sys.argv)
 
         is_out = False
 
-        is_out_ready = False
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("out_keyboard", imgs_)
-            is_out_ready = True
+            print("out_check...close_btn", imgs_)
         else:
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
+            is_out_ready = False
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("out_speed_talk", imgs_)
+                print("out_keyboard", imgs_)
                 is_out_ready = True
-
-        if is_out_ready == True:
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\shift.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(750, 920, 805, 970, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                is_out = True
             else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_speed_talk", imgs_)
+                    is_out_ready = True
+
+            if is_out_ready == True:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\shift.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(750, 920, 805, 970, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     is_out = True
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_out = True
+
 
         return is_out
     except Exception as e:
@@ -285,6 +347,107 @@ def move_check(cla):
             time.sleep(1)
 
 
+    except Exception as e:
+        print(e)
+        return 0
+
+def go_maul(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from cleen_screen import cleen_screen_start
+
+    try:
+        print("go_maul", cla)
+
+
+
+        is_maul = False
+
+        for i in range(2):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                is_maul = True
+                break
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\jabhwa_sangin.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 130, 80, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    is_maul = True
+                    break
+                else:
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        click_pos_2(35, 160, cla)
+            time.sleep(1)
+        # 위에는 마을인지 파악하기
+
+        is_maul_count = 0
+        while is_maul is False:
+            is_maul_count += 1
+            if is_maul_count > 5:
+                is_maul = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                is_maul = True
+            else:
+                result_out = out_check(cla)
+                if result_out != True:
+                    cleen_screen_start(cla)
+
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\now_group.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(230, 500, 580, 560, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                click_pos_2(35, 285, cla)
+                    time.sleep(0.5)
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                    time.sleep(1)
+            time.sleep(1)
+
+        # move_check
     except Exception as e:
         print(e)
         return 0

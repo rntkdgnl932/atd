@@ -11,19 +11,32 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 
-def tuto_start(cla):
+def tuto_start(cla, sche):
 
-    from action_arthdal import tuto_jangchak, juljun_check, juljun_skip, move_check
+    from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check
     from cleen_screen import skip_check
-
+    from dead import dead_check, dead_recovery
+    from schedule import myQuest_play_add
+    from potion import buy_potion
+    from cleen_screen import cleen_screen_start
 
 
     try:
         result_juljun_checked = juljun_check(cla)
         if result_juljun_checked == True:
-            juljun_skip(cla)
+            juljun_off(cla)
 
         # 퀘스트 클릭
+        result_dead = dead_check(cla, sche)
+        if result_dead == True:
+
+            dead_recovery(cla, sche)
+
+            cleen_screen_start(cla)
+
+            buy_potion(cla)
+
+            myQuest_play_add(cla, sche)
 
         move_check(cla)
         tuto_jangchak(cla)

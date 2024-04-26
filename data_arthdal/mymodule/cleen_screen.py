@@ -16,13 +16,13 @@ def cleen_screen_start(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
 
-    from action_arthdal import out_check, juljun_skip
+    from action_arthdal import out_check, juljun_off
     from stop_event18 import _stop_please
 
     try:
         print("cleen_screen_start", cla)
 
-        juljun_skip(cla)
+        juljun_off(cla)
 
         for i in range(10):
 
@@ -54,7 +54,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(900, 30, 960, 80, cla, img, 0.8)
+                imgs_ = imgs_set_(5, 30, 960, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("bag_close_btn")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -103,7 +103,7 @@ def skip_check(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
 
-    from action_arthdal import out_check, juljun_skip
+    from action_arthdal import out_check
     try:
         print("skip_check", cla)
 

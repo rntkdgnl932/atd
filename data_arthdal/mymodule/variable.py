@@ -5,6 +5,7 @@ now_cla = 'none'
 now_arduino = "none"
 
 # 해당 게임 관련
+available_potion = 1
 
 
 # 게임 및 폴더 관련

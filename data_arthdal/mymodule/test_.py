@@ -18,8 +18,9 @@ def go_test():
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check
+    from potion import buy_potion, potion_check
 
-    cla = "five"
+    cla = "one"
 
     if cla == "one":
         plus = 0
@@ -36,29 +37,50 @@ def go_test():
     try:
         print("test", cla)
 
-        result = out_check(cla)
-        print("out", result)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_maul.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+        imgs_ = imgs_set_(380, 110, 570, 200, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("out_keyboard", imgs_)
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("out_speed_talk", imgs_)
+            print("dead_maul")
+
+        # like_spot = []
+        #
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 420, 80, 300), confidence=0.8):
+        #     last_x = i.left
+        #     last_y = i.top
+        #     print("last_x", last_x)
+        #     print("last_y", last_y)
+        #     like_spot.append({last_x, last_y})
+        # if len(like_spot) > 0:
+        #     print("얏호", like_spot)
+        #     print("우헤헤", like_spot[0])
+        #     data = list(like_spot[0])
+        #     print("우헤헤fgsfdgsfdg", data)
 
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\shift.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(750, 920, 805, 970, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("shift", imgs_)
+
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(5, 30, 960, 1030, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("bag_close_btn", imgs_)
+
+        # for i in range(2):
+        #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("jabhwa", imgs_)
+        #         break
+        #     else:
+        #         click_pos_2(35, 160, cla)
+        #     time.sleep(1)
 
 
 
