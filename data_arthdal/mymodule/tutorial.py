@@ -13,7 +13,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 def tuto_start(cla, sche):
 
-    from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check
+    from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check, moniter_check
     from cleen_screen import skip_check
     from dead import dead_check, dead_recovery
     from schedule import myQuest_play_add
@@ -25,6 +25,8 @@ def tuto_start(cla, sche):
         result_juljun_checked = juljun_check(cla)
         if result_juljun_checked == True:
             juljun_off(cla)
+
+        moniter_check(cla)
 
         # 퀘스트 클릭
         result_dead = dead_check(cla, sche)
