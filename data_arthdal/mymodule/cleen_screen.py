@@ -159,6 +159,7 @@ def tuto_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("esc_1", imgs_)
                     is_esc_count = 0
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
                     pyautogui.press('f')
                     # pyautogui.press('esc')
                 else:
@@ -169,6 +170,7 @@ def tuto_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("esc_2", imgs_)
                         is_esc_count = 0
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                         pyautogui.press('f')
                         # pyautogui.press('esc')
                     else:
@@ -179,6 +181,7 @@ def tuto_skip(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("f_1", imgs_)
                             is_esc_count = 0
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
                             pyautogui.press('f')
                         else:
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\f_2.PNG"
@@ -188,6 +191,7 @@ def tuto_skip(cla):
                             if imgs_ is not None and imgs_ != False:
                                 print("f_2", imgs_)
                                 is_esc_count = 0
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                 pyautogui.press('f')
                             else:
                                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\f_3.PNG"
@@ -197,6 +201,7 @@ def tuto_skip(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("f_3", imgs_)
                                     is_esc_count = 0
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                                     pyautogui.press('f')
                 time.sleep(0.5)
     except Exception as e:
