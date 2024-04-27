@@ -131,6 +131,7 @@ def game_ready(cla, character_id):
     from function_game import imgs_set_
     from action_arthdal import loading, out_check
     from stop_event18 import _stop_please
+    from massenger import line_to_me
 
     try:
 
@@ -176,6 +177,8 @@ def game_ready(cla, character_id):
                         print("game_start")
                         character_change(cla, character_id)
                         game_ready = False
+                        why = "접속 대기 끝"
+                        line_to_me(cla, why)
 
                 time.sleep(1)
         else:
