@@ -40,13 +40,21 @@ def tuto_start(cla, sche):
 
             myQuest_play_add(cla, sche)
         else:
-            move_check(cla)
-            tuto_jangchak(cla)
-            quest_check_on(cla)
-            tuto_imgs_scan(cla)
-            tuto_jangchak(cla)
-            skip_check(cla)
-            tuto_jangchak(cla)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\topseongmool.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                myQuest_play_add(cla, sche)
+            else:
+                move_check(cla)
+                tuto_jangchak(cla)
+                quest_check_on(cla)
+                tuto_imgs_scan(cla)
+                tuto_jangchak(cla)
+                skip_check(cla)
+                tuto_jangchak(cla)
 
 
 
