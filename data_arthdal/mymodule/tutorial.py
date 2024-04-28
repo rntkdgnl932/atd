@@ -41,7 +41,7 @@ def tuto_start(cla, sche):
             myQuest_play_add(cla, sche)
         else:
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\topseongmool.PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\history_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
