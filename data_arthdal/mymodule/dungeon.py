@@ -204,7 +204,7 @@ def dungeon_in(cla, sche):
 
             if in_check == True:
                 pyautogui.keyDown('w')
-                QTest.qWait(20000)
+                QTest.qWait(17000)
                 pyautogui.keyUp('w')
                 time.sleep(0.3)
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
