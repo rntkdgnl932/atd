@@ -337,19 +337,26 @@ def out_check(cla):
                     is_out_ready = True
 
             if is_out_ready == True:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\shift.PNG"
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(750, 920, 805, 970, cla, img, 0.8)
+                imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     is_out = True
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                    imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_out = True
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_out = True
 
 
         return is_out
@@ -485,14 +492,21 @@ def go_maul(cla):
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\now_group.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\confirm.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(230, 500, 580, 560, cla, img, 0.8)
+                            imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
                             else:
-                                click_pos_2(35, 285, cla)
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\now_group.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(230, 500, 580, 560, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(35, 285, cla)
                     time.sleep(0.5)
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
@@ -502,12 +516,19 @@ def go_maul(cla):
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\confirm.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                        imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            break
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
                     time.sleep(1)
             time.sleep(1)
 

@@ -12,6 +12,10 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def tuto_start(cla, sche):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_
 
     from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check, moniter_check
     from cleen_screen import skip_check

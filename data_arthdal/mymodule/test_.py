@@ -22,6 +22,8 @@ def go_test():
     from dead import dead_check, dead_recovery
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
+    from get_item import get_event, get_specialpackage, get_post, get_upjuk
+    from auction_arthdal import auction_start, auction_sell_ready
 
     cla = "one"
 
@@ -40,44 +42,70 @@ def go_test():
     try:
         print("test", cla)
 
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                # click_pos_reg(imgs_.x, imgs_.y, cla)
-                click_pos_2(170, 55, cla)
-                break
-            else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\arthdal_gwangjang.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(100, 200, 700, 800, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x - 109, imgs_.y + 53, cla)
-                    print("arthdal_gwangjang", imgs_)
-            time.sleep(1)
-
-        is_bookmark = False
-
-        for i in range(5):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(870, 420, 950, 700, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                is_bookmark = True
-                break
-            else:
-                click_pos_2(930, 975, cla)
-            time.sleep(1)
-
-        if is_bookmark == False:
-            print("북마크가 없다.")
+        get_upjuk(cla)
 
 
 
+
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\totalsalesamount.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(460, 400, 550, 450, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("totalsalesamount 1", imgs_)
+        #
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\totalsalesamount.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(460, 470, 550, 510, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("totalsalesamount 2", imgs_)
+
+
+        # can_auction_item = True
+        #
+        # for a in range(10):
+        #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\cannot_auction_item.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(420, 110, 560, 140, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("cannot_auction_item")
+        #         can_auction_item = False
+        #         break
+        #     else:
+        #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\totalsalesamount.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(460, 400, 550, 450, cla, img, 0.85)
+        #         if imgs_ is not None and imgs_ != False:
+        #             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\cancle_dia.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(700, 410, 750, 450, cla, img, 0.95)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 print("cancle_dia 1")
+        #                 can_auction_item = False
+        #                 break
+        #             else:
+        #                 break
+        #         else:
+        #             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\totalsalesamount.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(460, 470, 550, 510, cla, img, 0.85)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\cancle_dia.PNG"
+        #                 img_array = np.fromfile(full_path, np.uint8)
+        #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #                 imgs_ = imgs_set_(700, 470, 750, 510, cla, img, 0.95)
+        #                 if imgs_ is not None and imgs_ != False:
+        #                     print("cancle_dia 2")
+        #                     can_auction_item = False
+        #                     break
+        #                 else:
+        #                     break
+        # print("result", can_auction_item)
         # like_spot = []
         #
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"

@@ -48,6 +48,8 @@ def cleen_screen_start(cla):
 
                 _stop_please(cla)
 
+                print("btn close start")
+
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -59,7 +61,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
@@ -74,7 +76,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
@@ -89,7 +91,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
@@ -395,7 +397,10 @@ def tuto_udrl_skip(cla):
             click_pos_reg(imgs_.x, imgs_.y + x_one, cla)
             ing_ = True
 
+        print("tuto_udrl_skip 체크완료")
+
         if ing_ == True:
+            print("tuto_udrl_skip : True")
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\right.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -537,6 +542,9 @@ def upjuk_skip(cla):
         print("upjuk_skip", cla)
 
         # 업적 스킵
+
+        upjuk_clicked = False
+
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\upjuk_skip.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -544,6 +552,7 @@ def upjuk_skip(cla):
         if imgs_ is not None and imgs_ != False:
             print("upjuk_skip", imgs_)
             click_pos_2(490, 535, cla)
+            upjuk_clicked = True
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\upjuk_skip_res_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -552,6 +561,7 @@ def upjuk_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("upjuk_skip_res_1", imgs_)
                 click_pos_2(240, 430, cla)
+                upjuk_clicked = True
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\upjuk_skip_res_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -559,6 +569,7 @@ def upjuk_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("upjuk_skip_res_2", imgs_)
                 click_pos_2(240, 675, cla)
+                upjuk_clicked = True
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\upjuk_skip_res_3.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -566,6 +577,7 @@ def upjuk_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("upjuk_skip_res_3", imgs_)
                 click_pos_2(730, 430, cla)
+                upjuk_clicked = True
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\upjuk_skip_res_4.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -573,6 +585,8 @@ def upjuk_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("upjuk_skip_res_4", imgs_)
                 click_pos_2(730, 675, cla)
+                upjuk_clicked = True
+        return upjuk_clicked
     except Exception as e:
         print(e)
         return 0

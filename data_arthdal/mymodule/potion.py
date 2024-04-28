@@ -50,6 +50,7 @@ def potion_check(cla):
                         break
             else:
                 print("바깥이 아니라서 파악하기 힘듬")
+                need_potion = False
 
         # need_potion => True 면 포션 사러 가야함
         return need_potion
