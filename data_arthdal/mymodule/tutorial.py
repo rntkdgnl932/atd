@@ -39,14 +39,14 @@ def tuto_start(cla, sche):
             buy_potion(cla)
 
             myQuest_play_add(cla, sche)
-
-        move_check(cla)
-        tuto_jangchak(cla)
-        quest_check_on(cla)
-        tuto_imgs_scan(cla)
-        tuto_jangchak(cla)
-        skip_check(cla)
-        tuto_jangchak(cla)
+        else:
+            move_check(cla)
+            tuto_jangchak(cla)
+            quest_check_on(cla)
+            tuto_imgs_scan(cla)
+            tuto_jangchak(cla)
+            skip_check(cla)
+            tuto_jangchak(cla)
 
 
 

@@ -157,6 +157,20 @@ def jadong_spot_in(cla):
     from cleen_screen import cleen_screen_start
 
     from massenger import line_to_me
+
+    if cla == 'one':
+        plus = 0
+    elif cla == 'two':
+        plus = 960
+    elif cla == 'three':
+        plus = 960 * 2
+    elif cla == 'four':
+        plus = 960 * 3
+    elif cla == 'five':
+        plus = 960 * 4
+    elif cla == 'six':
+        plus = 960 * 5
+
     try:
         print("jadong_spot_in")
 
@@ -186,20 +200,35 @@ def jadong_spot_in(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("worldmap_ready_2", imgs_)
                     map_ready = True
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("bookmark", imgs_)
+                        map_ready = True
 
             if map_ready == True:
 
 
                 for i in range(10):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\world_region_list.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(750, 830, 840, 870, cla, img, 0.8)
+                    imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_2(930, 975, cla)
                         break
                     else:
-                        click_pos_2(110, 180, cla)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\world_region_list.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(750, 830, 840, 870, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(930, 975, cla)
+                            break
+                        else:
+                            click_pos_2(110, 180, cla)
                     time.sleep(1)
 
                 for i in range(10):
@@ -213,18 +242,7 @@ def jadong_spot_in(cla):
                         click_pos_2(930, 975, cla)
                     time.sleep(1)
 
-                if cla == 'one':
-                    plus = 0
-                elif cla == 'two':
-                    plus = 960
-                elif cla == 'three':
-                    plus = 960 * 2
-                elif cla == 'four':
-                    plus = 960 * 3
-                elif cla == 'five':
-                    plus = 960 * 4
-                elif cla == 'six':
-                    plus = 960 * 5
+
 
                 like_spot = []
 
@@ -270,6 +288,7 @@ def jadong_spot_in(cla):
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.5)
+                                break
                             else:
                                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
@@ -278,7 +297,11 @@ def jadong_spot_in(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
+                                    break
+                        time.sleep(0.4)
 
+                    clicked = False
+                    for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -286,42 +309,74 @@ def jadong_spot_in(cla):
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
+                            clicked = True
                             break
                         time.sleep(0.4)
 
-                    for i in range(10):
-                        move_check(cla)
-                        time.sleep(0.5)
 
-                    print("도착한듯")
+                    if clicked == True:
+                        for i in range(10):
+                            move_check(cla)
+                            time.sleep(0.5)
+
+                        print("도착한듯")
 
 
 
-                    for i in range(10):
-                        result_juljun = juljun_check(cla)
-                        if result_juljun == True:
-                            world_map = True
-                            break
-                        else:
-                            result_out = out_check(cla)
-                            if result_out == True:
-                                # 공격버튼 누르고 절전모드
-                                click_pos_2(770, 815, cla)
-                                time.sleep(0.5)
-                                juljun_on(cla)
-                                time.sleep(0.3)
-                        time.sleep(0.3)
+                        for i in range(10):
+                            result_juljun = juljun_check(cla)
+                            if result_juljun == True:
+                                world_map = True
+                                break
+                            else:
+                                result_out = out_check(cla)
+                                if result_out == True:
+                                    # 공격버튼 누르고 절전모드
+                                    click_pos_2(770, 815, cla)
+                                    time.sleep(0.5)
+                                    juljun_on(cla)
+                                    time.sleep(0.3)
+                            time.sleep(0.3)
 
 
                 else:
-                    why = "아스달 자동 사냥터(즐겨찾기) 정하지 않았다."
-                    line_to_me(cla, why)
-                    world_map = True
-                ######## 자동 사냥 이동............
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            # click_pos_reg(imgs_.x, imgs_.y, cla)
+                            click_pos_2(170, 55, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\arthdal_gwangjang.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(100, 200, 700, 800, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x - 109, imgs_.y + 53, cla)
+                                print("arthdal_gwangjang", imgs_)
+                        time.sleep(1)
 
+                    is_bookmark = False
 
+                    for i in range(5):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(870, 420, 950, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_bookmark = True
+                            break
+                        else:
+                            click_pos_2(930, 975, cla)
+                        time.sleep(1)
 
-
+                    if is_bookmark == False:
+                        why = "아스달 자동 사냥터(즐겨찾기) 정하지 않았다."
+                        line_to_me(cla, why)
+                        world_map = True
             else:
                 cleen_screen_start(cla)
                 time.sleep(0.2)

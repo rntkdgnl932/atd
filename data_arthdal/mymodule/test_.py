@@ -17,8 +17,11 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check
+    from action_arthdal import out_check, juljun_off
     from potion import buy_potion, potion_check
+    from dead import dead_check, dead_recovery
+    from cleen_screen import cleen_screen_start
+    from jadong import jadong_spot_in
 
     cla = "one"
 
@@ -37,12 +40,43 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_maul.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(380, 110, 570, 200, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dead_maul")
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                # click_pos_reg(imgs_.x, imgs_.y, cla)
+                click_pos_2(170, 55, cla)
+                break
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\arthdal_gwangjang.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(100, 200, 700, 800, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x - 109, imgs_.y + 53, cla)
+                    print("arthdal_gwangjang", imgs_)
+            time.sleep(1)
+
+        is_bookmark = False
+
+        for i in range(5):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(870, 420, 950, 700, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                is_bookmark = True
+                break
+            else:
+                click_pos_2(930, 975, cla)
+            time.sleep(1)
+
+        if is_bookmark == False:
+            print("북마크가 없다.")
+
+
 
         # like_spot = []
         #
@@ -82,8 +116,11 @@ def go_test():
         #         click_pos_2(35, 160, cla)
         #     time.sleep(1)
 
-
-
+        # for i in range(3):
+        #     drag_pos(200, 200, 700, 800, cla)
+        #     time.sleep(0.1)
+        #     pyautogui.scroll(-500)
+        #     time.sleep(0.1)
 
 
     except Exception as e:
