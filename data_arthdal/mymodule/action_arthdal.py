@@ -232,6 +232,15 @@ def moniter_check(cla):
                     print("server_fix")
                     why = "아스달 서버 점검..."
                     server_alrim = True
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\network_time_over.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 400, 700, 750, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("network_time_over")
+                        why = "아스달 네트워크 연결 시간 초과"
+                        server_alrim = True
 
         if server_alrim == True:
             line_to_me(cla, why)
