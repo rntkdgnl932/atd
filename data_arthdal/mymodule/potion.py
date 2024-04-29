@@ -63,7 +63,7 @@ def buy_potion(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_arthdal import go_maul, move_check
+    from action_arthdal import go_maul, move_check, out_check
     from cleen_screen import cleen_screen_start
     from boonhae import boonhae_start
 
