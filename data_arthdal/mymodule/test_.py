@@ -18,7 +18,7 @@ def go_test():
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check, juljun_off
-    from potion import buy_potion, potion_check
+    from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
@@ -44,12 +44,18 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("game_start", imgs_)
+            print("out_check...close_btn", imgs_)
+
+        file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
+        with open(file_path, "w", encoding='utf-8-sig') as file:
+            file.write(str(2))
+
+        potion_available(cla)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

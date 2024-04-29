@@ -328,45 +328,52 @@ def out_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("out_check...close_btn", imgs_)
         else:
-            is_out_ready = False
-
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+            imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("out_keyboard", imgs_)
-                is_out_ready = True
+                print("mini_close_btn2", imgs_)
             else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
+                is_out_ready = False
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("out_speed_talk", imgs_)
+                    print("out_keyboard", imgs_)
                     is_out_ready = True
-
-            if is_out_ready == True:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    is_out = True
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
+                    imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_speed_talk", imgs_)
+                        is_out_ready = True
+
+                if is_out_ready == True:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_out = True
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                        imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             is_out = True
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                is_out = True
 
         if is_out == True:
             out_dead_recovery(cla)

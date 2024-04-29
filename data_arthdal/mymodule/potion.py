@@ -108,6 +108,10 @@ def buy_potion(cla):
 
                     y_reg = 110 - 57 + (v_.available_potion * 57)
 
+                    file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
+                    with open(file_path, "w", encoding='utf-8-sig') as file:
+                        file.write(str(v_.available_potion))
+
 
                     anymore_buy = False
                     for i in range(10):
@@ -179,6 +183,8 @@ def buy_potion(cla):
                             move_check(cla)
 
                     time.sleep(1)
+        # 마무리
+        potion_available(cla)
     except Exception as e:
         print(e)
 
@@ -234,6 +240,10 @@ def buy_potion_buf(cla):
                         v_.available_potion = 4
 
                     y_reg = 110 - 57 + (v_.available_potion * 57)
+
+                    file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
+                    with open(file_path, "w", encoding='utf-8-sig') as file:
+                        file.write(str(v_.available_potion))
 
 
                     anymore_buy = False
@@ -351,5 +361,80 @@ def buy_potion_buf(cla):
                             move_check(cla)
 
                     time.sleep(1)
+
+        # 마무리
+        potion_available(cla)
+
+    except Exception as e:
+        print(e)
+
+def potion_available(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+
+    from action_arthdal import go_maul, move_check, out_check
+    from cleen_screen import cleen_screen_start
+
+    file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
+    with open(file_path, "r", encoding='utf-8-sig') as file:
+        read_data = file.read()
+    try:
+
+        # 일딴 바깥으로 빠져나오기
+        for i in range(10):
+            result_out = out_check(cla)
+            if result_out == True:
+                print("물약 설정")
+                break
+            else:
+                cleen_screen_start(cla)
+            time.sleep(1)
+
+        # 물약 셋팅하기
+        is_potion_setting = False
+        is_potion_setting_count = 0
+
+        while is_potion_setting is False:
+            is_potion_setting_count += 1
+            if is_potion_setting_count > 20:
+                is_potion_setting = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\potion_setting.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(370, 810, 480, 850, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\potion_setting_des.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(755, 370, 830, 415, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    img_x_reg = 734 + (int(read_data) * 40)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\setting_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(img_x_reg - 20, 410, img_x_reg + 20, 480, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("setting_checked", imgs_)
+                        # 774, 442
+                        # 814, 442
+                        drag_pos(400, 860, 400, 945, cla)
+                        time.sleep(0.5)
+                        cleen_screen_start(cla)
+                        is_potion_setting = True
+                    else:
+                        x_reg = 750 + (int(read_data) * 40)
+                        click_pos_2(x_reg, 455, cla)
+                else:
+                    click_pos_2(405, 875, cla)
+            else:
+                click_pos_2(675, 995, cla)
+
+            time.sleep(1)
+
+
     except Exception as e:
         print(e)

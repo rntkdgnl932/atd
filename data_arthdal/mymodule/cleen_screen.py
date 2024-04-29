@@ -61,7 +61,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
@@ -76,7 +76,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
@@ -91,7 +91,7 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.85):
+                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
                     click_pos_reg(e.left, e.top, cla)
                     time.sleep(0.1)
 
