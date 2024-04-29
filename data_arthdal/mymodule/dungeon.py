@@ -80,6 +80,8 @@ def dungeon_in(cla, sche):
     from action_arthdal import go_maul, menu_open, out_check, juljun_on, juljun_off
     from cleen_screen import cleen_screen_start
 
+    from schedule import myQuest_play_add
+
     from massenger import line_to_me
     try:
         # 시간던전_뱀비늘협곡_1
@@ -91,17 +93,20 @@ def dungeon_in(cla, sche):
             dungeon_ready = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\snake_canyon_btn.PNG"
             dungeon_out = "dun_out_snake"
             dungeon_check = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\snake_canyon.PNG"
+            x_reg = 130
             y_reg = 54 + (int(data[2]) * 48)
             juljun_map = "dun_snake"
         elif data[1] == "태양의신전":
             dungeon_ready = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\sun_temple_btn.PNG"
             dungeon_out = "dun_out_sun"
             dungeon_check = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\sun_temple.PNG"
+            x_reg = 360
             y_reg = 54 + (int(data[2]) * 48)
             if int(data[2]) > 6:
                 y_reg = 54 + (6 * 48)
             juljun_map = "dun_sun"
 
+        complete = False
 
         for i in range(10):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\time_dungeon.PNG"
@@ -109,22 +114,31 @@ def dungeon_in(cla, sche):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                full_path = dungeon_ready
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
+                imgs_ = imgs_set_(x_reg, 940, x_reg + 80, 980, cla, img, 0.95)
                 if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                    for c in range(5):
-                        full_path = dungeon_check
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        time.sleep(0.5)
+                    complete = True
                     break
+                else:
+                    full_path = dungeon_ready
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        for c in range(5):
+                            full_path = dungeon_check
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.5)
+                        break
             else:
                 menu_open(cla)
                 click_pos_2(850, 125, cla)
@@ -138,85 +152,100 @@ def dungeon_in(cla, sche):
                     time.sleep(0.2)
             time.sleep(0.5)
 
-        already_in = False
+        if complete == False:
 
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\dun_confirm.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                break
-            else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\already_in.PNG"
+            already_in = False
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\dun_confirm.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(420, 90, 540, 150, cla, img, 0.8)
+                imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    already_in = True
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
                     break
                 else:
-                    full_path = dungeon_check
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\complete.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
+                    imgs_ = imgs_set_(420, 90, 600, 150, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_2(140, y_reg, cla)
-                        time.sleep(0.5)
-                        click_pos_2(850, 1000, cla)
-                    else:
-                        full_path = dungeon_ready
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                        else:
-                            click_pos_2(40, 55, cla)
-            time.sleep(1)
-
-        if already_in == False:
-
-            in_check = False
-            for i in range(20):
-                result_out = out_check(cla)
-
-                if result_out == True:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\0.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(60, 100, 150, 140, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        in_check = True
+                        already_in = False
+                        complete = True
                         break
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\1.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\already_in.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(420, 90, 600, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            already_in = True
+                            break
+                        else:
+                            full_path = dungeon_check
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(140, y_reg, cla)
+                                time.sleep(0.5)
+                                click_pos_2(850, 1000, cla)
+                            else:
+                                full_path = dungeon_ready
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(40, 55, cla)
+                time.sleep(1)
+
+            if already_in == False:
+
+                in_check = False
+                for i in range(20):
+                    result_out = out_check(cla)
+
+                    if result_out == True:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\0.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(60, 100, 150, 140, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             in_check = True
                             break
-                time.sleep(1)
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(60, 100, 150, 140, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                in_check = True
+                                break
+                    time.sleep(1)
 
 
 
-            if in_check == True:
-                pyautogui.keyDown('w')
-                QTest.qWait(17000)
-                pyautogui.keyUp('w')
-                time.sleep(0.3)
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_2(770, 815, cla)
-                    juljun_on(cla)
+                if in_check == True:
+                    pyautogui.keyDown('w')
+                    QTest.qWait(17000)
+                    pyautogui.keyUp('w')
+                    time.sleep(0.3)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(770, 815, cla)
+                        juljun_on(cla)
+            else:
+                if complete == True:
+                    myQuest_play_add(cla, sche)
+                else:
+                    cleen_screen_start(cla)
+                    buy_potion(cla)
         else:
-            cleen_screen_start(cla)
-            buy_potion(cla)
+            myQuest_play_add(cla, sche)
 
     except Exception as e:
         print(e)

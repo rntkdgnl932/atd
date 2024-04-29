@@ -42,7 +42,19 @@ def go_test():
     try:
         print("test", cla)
 
-        get_upjuk(cla)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(130, 940, 200, 980, cla, img, 0.95)
+        if imgs_ is not None and imgs_ != False:
+            print("time_zero 1", imgs_)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(360, 940, 440, 980, cla, img, 0.95)
+        if imgs_ is not None and imgs_ != False:
+            print("time_zero 2", imgs_)
 
 
 
