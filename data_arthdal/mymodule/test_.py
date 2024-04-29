@@ -25,7 +25,7 @@ def go_test():
     from get_item import get_event, get_specialpackage, get_post, get_upjuk
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
-    from property_arthdal import my_property_upload
+    from property_atdl import my_property_upload
 
     cla = "five"
 
