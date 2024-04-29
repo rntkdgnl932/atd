@@ -27,7 +27,7 @@ def go_test():
     from boonhae import boonhae_start
     from property_arthdal import my_property_upload
 
-    cla = "one"
+    cla = "five"
 
     if cla == "one":
         plus = 0
@@ -44,7 +44,8 @@ def go_test():
     try:
         print("test", cla)
 
-        out_dead_recovery(cla)
+        result = potion_check(cla)
+        print("result", result)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
