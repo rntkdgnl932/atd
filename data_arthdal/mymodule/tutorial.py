@@ -75,10 +75,16 @@ def quest_check_on(cla):
     try:
 
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\quest_ing.PNG"
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\quest_ing.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(400, 880, 550, 950, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("quest_ing", imgs_)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 880, 550, 950, cla, img, 0.8)
+        imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("quest_ing", imgs_)
 
