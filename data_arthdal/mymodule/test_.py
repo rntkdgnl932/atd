@@ -24,6 +24,7 @@ def go_test():
     from jadong import jadong_spot_in
     from get_item import get_event, get_specialpackage, get_post, get_upjuk
     from auction_arthdal import auction_start, auction_sell_ready
+    from boonhae import boonhae_start
 
     cla = "one"
 
@@ -42,19 +43,7 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(130, 940, 200, 980, cla, img, 0.95)
-        if imgs_ is not None and imgs_ != False:
-            print("time_zero 1", imgs_)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(360, 940, 440, 980, cla, img, 0.95)
-        if imgs_ is not None and imgs_ != False:
-            print("time_zero 2", imgs_)
+        boonhae_start(cla)
 
 
 

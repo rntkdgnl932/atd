@@ -65,12 +65,15 @@ def buy_potion(cla):
 
     from action_arthdal import go_maul, move_check
     from cleen_screen import cleen_screen_start
+    from boonhae import boonhae_start
 
     from massenger import line_to_me
     try:
         print("buy_potion")
 
         go_maul(cla)
+
+        boonhae_start(cla)
 
         buying_ = False
         buying_count = 0
