@@ -191,6 +191,34 @@ def sub_ing(cla):
                 click_pos_2(835, 1005, cla)
                 time.sleep(0.5)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                # 건설참여
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\gunsul_chamyo.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(700, 900, 960, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("gunsul_chamyo")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 550, 800, 650, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("82_move", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 400, 800, 900, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("82_move_title_confirm", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                        time.sleep(0.2)
 
     except Exception as e:
         print(e)

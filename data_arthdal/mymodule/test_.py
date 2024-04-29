@@ -27,7 +27,7 @@ def go_test():
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
 
-    cla = "five"
+    cla = "one"
 
     if cla == "one":
         plus = 0
@@ -44,8 +44,12 @@ def go_test():
     try:
         print("test", cla)
 
-        result = potion_check(cla)
-        print("result", result)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("game_start", imgs_)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
