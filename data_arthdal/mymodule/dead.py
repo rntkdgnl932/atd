@@ -132,7 +132,7 @@ def out_dead_recovery(cla):
                             print("recovery", i, imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                time.sleep(0.1)
+                time.sleep(0.5)
 
     except Exception as e:
         print(e)
