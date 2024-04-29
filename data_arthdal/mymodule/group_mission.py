@@ -52,6 +52,7 @@ def groupmission_get(cla, sche):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_arthdal import move_check, menu_open
     from schedule import myQuest_play_add
+    from cleen_screen import cleen_screen_start
 
     try:
 
@@ -125,6 +126,25 @@ def groupmission_get(cla, sche):
                     print("세력 임무 진행하면 된다.")
                 else:
                     print("세력 임무 모두 끝")
+                    # 완료가 있다면 모두완료 클릭
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("bottom_esc")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\complete.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("complete", imgs_)
+                                click_pos_2(875, 1000, cla)
+                        time.sleep(0.5)
                     is_group_mission = False
 
                 break
@@ -213,7 +233,27 @@ def groupmission_get(cla, sche):
             # 이거 하면서 get item...
             # complete => bottom...
         else:
+            # 완료가 있다면 모두완료 클릭
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("bottom_esc")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    break
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\complete.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("complete", imgs_)
+                        click_pos_2(875, 1000, cla)
+                time.sleep(0.5)
             myQuest_play_add(cla, sche)
+            cleen_screen_start(cla)
 
 
     except Exception as e:

@@ -43,12 +43,10 @@ def auction_ready(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_2
+    from action_arthdal import menu_open
+    from property_atdl import my_property_upload
 
-    from action_arthdal import go_maul, menu_open
-    from cleen_screen import cleen_screen_start
-
-    from massenger import line_to_me
     try:
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_status.PNG"
@@ -57,6 +55,7 @@ def auction_ready(cla):
         imgs_ = imgs_set_(590, 100, 680, 140, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("거래소 화면")
+            my_property_upload(cla)
         else:
             for i in range(5):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\auction.PNG"
@@ -85,6 +84,7 @@ def auction_ready(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(590, 100, 680, 140, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+                    my_property_upload(cla)
                     break
                 else:
                     click_pos_2(205, 85, cla)
@@ -350,3 +350,52 @@ def auction_sell_start(cla):
 
     except Exception as e:
         print(e)
+
+
+def mine_check(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, text_check_get_reg, in_number_check, int_put_, change_number
+
+    from action_arthdal import go_maul, menu_open
+    from cleen_screen import cleen_screen_start
+
+    from massenger import line_to_me
+    try:
+
+        result_dia = 0
+        result_silver = 0
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("dia_reg", imgs_)
+
+            result_text = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 45, imgs_.y + 8)
+            result_text = change_number(result_text)
+            result_dia = int_put_(result_text)
+            result_dia_num = in_number_check(result_dia)
+            print("result_text", result_dia_num, result_dia)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\silver_reg.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("silver_reg", imgs_)
+            result_text2 = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 70, imgs_.y + 8)
+            result_text2 = change_number(result_text2)
+            result_silver = int_put_(result_text2)
+            result_silver_num = in_number_check(result_silver)
+            print("result_text2", result_silver_num, result_silver)
+
+        if result_dia_num == True:
+
+            return result_silver, result_dia
+
+    except Exception as e:
+        print(e)
+

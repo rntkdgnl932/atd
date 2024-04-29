@@ -115,30 +115,22 @@ def dungeon_in(cla, sche):
             imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
 
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
+                full_path = dungeon_ready
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(x_reg, 940, x_reg + 80, 980, cla, img, 0.95)
+                imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    complete = True
-                    break
-                else:
-                    full_path = dungeon_ready
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(70, 90, 800, 140, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                        for c in range(5):
-                            full_path = dungeon_check
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            time.sleep(0.5)
-                        break
+                    for c in range(5):
+                        full_path = dungeon_check
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(125, 30, 240, 80, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.5)
+                    break
             else:
                 menu_open(cla)
                 click_pos_2(850, 125, cla)

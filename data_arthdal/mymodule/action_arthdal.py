@@ -263,6 +263,7 @@ def out_check(cla):
 
     from function_game import imgs_set_, click_pos_reg
     from massenger import line_to_me
+    from dead import out_dead_recovery
 
     try:
         print("out_check", cla)
@@ -367,6 +368,8 @@ def out_check(cla):
                         if imgs_ is not None and imgs_ != False:
                             is_out = True
 
+        if is_out == True:
+            out_dead_recovery(cla)
 
         return is_out
     except Exception as e:

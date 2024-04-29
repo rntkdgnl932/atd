@@ -14,19 +14,20 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check, juljun_off
     from potion import buy_potion, potion_check
-    from dead import dead_check, dead_recovery
+    from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
     from get_item import get_event, get_specialpackage, get_post, get_upjuk
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
+    from property_arthdal import my_property_upload
 
-    cla = "five"
+    cla = "one"
 
     if cla == "one":
         plus = 0
@@ -43,23 +44,31 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(130, 940, 130 + 80, 980, cla, img, 1)
-        if imgs_ is not None and imgs_ != False:
-            print("스네이크 시간 없다")
-        else:
-            print("스네이크 시간 잇다")
+        out_dead_recovery(cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\time_zero.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(360, 940, 360 + 80, 980, cla, img, 1)
-        if imgs_ is not None and imgs_ != False:
-            print("태양신전 시간 없다")
-        else:
-            print("태양신전 시간 잇다")
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("dia_reg", imgs_)
+        #
+        #     result_text = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 45, imgs_.y + 8)
+        #     result_text = change_number(result_text)
+        #     result_text = int_put_(result_text)
+        #     result_num = in_number_check(result_text)
+        #     print("result_text", result_num, result_text)
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\silver_reg.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("silver_reg", imgs_)
+        #     result_text2 = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 70, imgs_.y + 8)
+        #     result_text2 = change_number(result_text2)
+        #     result_text2 = int_put_(result_text2)
+        #     result_num = in_number_check(result_text2)
+        #     print("result_text2", result_num, result_text2)
 
 
 

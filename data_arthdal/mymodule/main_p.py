@@ -59,6 +59,7 @@ from get_item import get_item_start
 from subquest import subquest_start
 from group_mission import groupmission_start
 from dungeon import dungeon_start
+from potion import buy_potion_buf
 
 from server import game_start
 import variable as v_
@@ -3367,6 +3368,7 @@ class game_Playing(QThread):
 
                                 # 오토 시작
 
+
                                 if result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "자동사냥":
@@ -3383,6 +3385,9 @@ class game_Playing(QThread):
                                     groupmission_start(v_.now_cla, result_schedule_)
                                 elif '시간던전' in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
+                                elif result_schedule_ == "버프와물약사기":
+                                    buy_potion_buf(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
 
 
 
