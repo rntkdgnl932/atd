@@ -26,7 +26,7 @@ def go_test():
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
 
-    cla = "one"
+    cla = "five"
 
     if cla == "one":
         plus = 0
