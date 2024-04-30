@@ -14,7 +14,7 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check, juljun_off
@@ -45,7 +45,7 @@ def go_test():
         print("test", cla)
 
         for i in range(3):
-            click_pos_2(490, 425, 'five')
+            click_pos_pyautogui(490, 425, 'five')
             time.sleep(2)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"

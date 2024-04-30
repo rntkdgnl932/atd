@@ -286,6 +286,27 @@ def click_pos(pos):
         print(e)
 
 
+def click_pos_pyautogui(pos_1, pos_2, cla):
+    coordinate = 0
+    if cla == 'one':
+        coordinate = 0
+    if cla == 'two':
+        coordinate = 960
+    if cla == 'three':
+        coordinate = 960 * 2
+    if cla == 'four':
+        coordinate = 960 * 3
+    if cla == 'five':
+        coordinate = 960 * 4
+    if cla == 'six':
+        coordinate = 960 * 5
+    try:
+        import pyautogui
+        pyautogui.click(pos_1 + coordinate, pos_2)
+    except Exception as e:
+        print(e)
+
+
 
 def mouse_move(x, y):
     import pydirectinput
@@ -371,7 +392,7 @@ def click_pos_2(pos_1, pos_2, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-        # pyautogui.moveTo(pos_1 + coordinate, pos_2)
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
             arduino_port = v_.COM_
