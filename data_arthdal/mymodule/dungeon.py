@@ -77,7 +77,7 @@ def dungeon_in(cla, sche):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from potion import buy_potion
 
-    from action_arthdal import go_maul, menu_open, out_check, juljun_on, juljun_off
+    from action_arthdal import go_maul, menu_open, out_check, juljun_on, juljun_off, move_check
     from cleen_screen import cleen_screen_start
 
     from schedule import myQuest_play_add
@@ -219,11 +219,14 @@ def dungeon_in(cla, sche):
 
 
                 if in_check == True:
-                    click_pos_2(490, 425, cla)
-                    pyautogui.keyDown('w')
-                    QTest.qWait(17000)
-                    pyautogui.keyUp('w')
-                    time.sleep(0.3)
+                    for i in range(5):
+                        click_pos_2(490, 425, cla)
+                        QTest.qWait(1000)
+                        move_check(cla)
+                    # pyautogui.keyDown('w')
+                    # QTest.qWait(17000)
+                    # pyautogui.keyUp('w')
+                    # time.sleep(0.3)
                     QTest.qWait(1000)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
