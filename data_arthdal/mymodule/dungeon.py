@@ -161,7 +161,7 @@ def dungeon_in(cla, sche):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(420, 90, 600, 150, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        already_in = False
+                        already_in = True
                         complete = True
                         break
                     else:
