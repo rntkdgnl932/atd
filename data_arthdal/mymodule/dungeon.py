@@ -224,6 +224,7 @@ def dungeon_in(cla, sche):
                     QTest.qWait(17000)
                     pyautogui.keyUp('w')
                     time.sleep(0.3)
+                    QTest.qWait(1000)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
