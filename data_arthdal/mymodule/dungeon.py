@@ -219,6 +219,7 @@ def dungeon_in(cla, sche):
 
 
                 if in_check == True:
+                    click_pos_2(490, 425, cla)
                     pyautogui.keyDown('w')
                     QTest.qWait(17000)
                     pyautogui.keyUp('w')
