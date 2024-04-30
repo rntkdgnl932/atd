@@ -154,12 +154,16 @@ def jadong_spot_in(cla):
     import cv2
     import pyautogui
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
 
     from action_arthdal import loading, out_check, menu_open, move_check, juljun_check, juljun_on
     from cleen_screen import cleen_screen_start
 
     from massenger import line_to_me
+
+    from PIL import ImageGrab
+    from functools import partial
+    ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
     if cla == 'one':
         plus = 0
@@ -257,21 +261,32 @@ def jadong_spot_in(cla):
 
                 like_spot = []
 
+
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 420, 80, 300), confidence=0.8):
+                    print('i', i)
                     last_x = i.left + int(i.width / 2)
                     last_y = i.top + int(i.height / 2)
                     like_spot.append({last_x, last_y})
-                if len(like_spot) > 0:
-                    print("얏호", len(like_spot), like_spot)
 
-                    random_number = random.randint(1, len(like_spot))
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(870, 420, 950, 720, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("bookmark_star", imgs_)
+
+                if len(imgs_) > 0:
+                    print("얏호", len(imgs_))
+
+                    random_number = random.randint(1, len(imgs_))
 
                     # 첫번째 850, 445
-                    data = list(like_spot[random_number - 1])
-                    print("우헤헤", data[0], data[1])
+                    x_reg = imgs_[random_number - 1][0]
+                    y_reg = imgs_[random_number - 1][1]
+                    print("우헤헤", x_reg, y_reg)
 
 
                     for i in range(10):
@@ -283,7 +298,7 @@ def jadong_spot_in(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             break
                         else:
-                            click_pos_2(845, data[1], cla)
+                            click_pos_2(845, y_reg, cla)
                         time.sleep(0.5)
 
                     for i in range(10):

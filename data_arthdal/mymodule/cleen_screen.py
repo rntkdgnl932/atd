@@ -14,7 +14,7 @@ def cleen_screen_start(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, imgs_set_for
 
     from action_arthdal import out_check, juljun_off
     from stop_event18 import _stop_please
@@ -61,53 +61,35 @@ def cleen_screen_start(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
-                    x_reg = e.left + int(e.width / 2)
-                    y_reg = e.top + int(e.height / 2)
-                    click_pos_reg(x_reg, y_reg, cla)
-                    time.sleep(0.1)
-
-                # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
-                # img_array = np.fromfile(full_path, np.uint8)
-                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                # imgs_ = imgs_set_(10, 30, 960, 960, cla, img, 0.8)
-                # if imgs_ is not None and imgs_ != False:
-                #     print("mini_close_btn")
-                #     click_pos_reg(imgs_.x, imgs_.y, cla)
+                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("mini_close_btn", imgs_)
+                    if len(imgs_) > 0:
+                        for s in range(len(imgs_)):
+                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                            time.sleep(0.1)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
-                    x_reg = e.left + int(e.width / 2)
-                    y_reg = e.top + int(e.height / 2)
-                    click_pos_reg(x_reg, y_reg, cla)
-                    time.sleep(0.1)
-
-                # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
-                # img_array = np.fromfile(full_path, np.uint8)
-                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                # imgs_ = imgs_set_(5, 30, 960, 1030, cla, img, 0.8)
-                # if imgs_ is not None and imgs_ != False:
-                #     print("bag_close_btn")
-                #     click_pos_reg(imgs_.x, imgs_.y, cla)
+                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("bag_close_btn", imgs_)
+                    if len(imgs_) > 0:
+                        for s in range(len(imgs_)):
+                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                            time.sleep(0.1)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
-                    x_reg = e.left + int(e.width / 2)
-                    y_reg = e.top + int(e.height / 2)
-                    click_pos_reg(x_reg, y_reg, cla)
-                    time.sleep(0.1)
-
-                # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
-                # img_array = np.fromfile(full_path, np.uint8)
-                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                # imgs_ = imgs_set_(850, 30, 960, 120, cla, img, 0.8)
-                # if imgs_ is not None and imgs_ != False:
-                #     print("quest_close_btn")
-                #     click_pos_reg(imgs_.x, imgs_.y, cla)
+                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("quest_close_btn", imgs_)
+                    if len(imgs_) > 0:
+                        for s in range(len(imgs_)):
+                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                            time.sleep(0.1)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\title_out_btn_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)

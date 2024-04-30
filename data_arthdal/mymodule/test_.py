@@ -26,8 +26,13 @@ def go_test():
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
+    from function_game import imgs_set_for
 
-    cla = "one"
+    from PIL import ImageGrab
+    from functools import partial
+    ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
+
+    cla = "three"
 
     if cla == "one":
         plus = 0
@@ -44,7 +49,40 @@ def go_test():
     try:
         print("test", cla)
 
-        buy_potion("five")
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("mini_close_btn", imgs_)
+            if len(imgs_) > 0:
+                for s in range(len(imgs_)):
+                    click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                    time.sleep(0.1)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("bag_close_btn", imgs_)
+            if len(imgs_) > 0:
+                for s in range(len(imgs_)):
+                    click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                    time.sleep(0.1)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("quest_close_btn", imgs_)
+            if len(imgs_) > 0:
+                for s in range(len(imgs_)):
+                    click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                    time.sleep(0.1)
+
+
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
