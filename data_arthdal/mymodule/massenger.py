@@ -194,6 +194,7 @@ def line_monitor(game, cla):
     import time
     from datetime import datetime, timedelta, date
     from server import server_get
+    from action_arthdal import moniter_check
     try:
         isLoop = False
 
@@ -201,6 +202,8 @@ def line_monitor(game, cla):
         while isLoop is False:
 
             # x같은 팝업창
+
+            moniter_check(cla)
 
             result_my_server_read = server_get()
             print("my_server_read", result_my_server_read)
