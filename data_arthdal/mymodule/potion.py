@@ -247,6 +247,11 @@ def buy_potion_buf(cla):
 
                     y_reg = 110 - 57 + (v_.available_potion * 57)
 
+                    dir_path = "C:\\my_games\\arthdal\\mysettings\\my_potion"
+
+                    if os.path.isdir(dir_path) == False:
+                        os.makedirs(dir_path)
+
                     file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
                     with open(file_path, "w", encoding='utf-8-sig') as file:
                         file.write(str(v_.available_potion))
