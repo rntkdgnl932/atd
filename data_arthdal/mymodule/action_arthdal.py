@@ -245,7 +245,7 @@ def moniter_check(cla):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\out_screen.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(300, 400, 700, 750, cla, img, 0.8)
+                        imgs_ = imgs_set_(20, 900, 200, 980, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("out_screen")
                             why = "아스달 바깥 화면으로 튕겼다"
