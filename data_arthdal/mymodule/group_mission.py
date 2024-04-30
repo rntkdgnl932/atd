@@ -104,7 +104,7 @@ def groupmission_get(cla, sche):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\complete.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+                imgs_ = imgs_set_(800, 110, 900, 900, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("complete", imgs_)
                     click_pos_2(875, 1000, cla)
