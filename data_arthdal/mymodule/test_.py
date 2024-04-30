@@ -44,15 +44,7 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        for e in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 900), confidence=0.8):
-            # click_pos_reg(e.left, e.top, cla)
-            x_reg = e.left + int(e.width / 2)
-            y_reg = e.top + int(e.height / 2)
-            print("e", e, x_reg, y_reg)
-            time.sleep(0.1)
+        buy_potion("five")
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

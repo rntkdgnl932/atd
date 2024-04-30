@@ -79,7 +79,7 @@ def buy_potion(cla):
         buying_count = 0
         while buying_ is False:
             buying_count += 1
-            if buying_count > 5:
+            if buying_count > 25:
                 buying_ = True
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\jabhwa_sangin.PNG"
@@ -210,7 +210,7 @@ def buy_potion_buf(cla):
         buying_count = 0
         while buying_ is False:
             buying_count += 1
-            if buying_count > 5:
+            if buying_count > 25:
                 buying_ = True
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\jabhwa_sangin.PNG"
