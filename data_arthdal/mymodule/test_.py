@@ -44,20 +44,9 @@ def go_test():
     try:
         print("test", cla)
 
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(425, 995, 435, 1020, "five", img, 0.9)
-            if imgs_ is not None and imgs_ != False:
-                print("i", i, imgs_)
-                need_potion = False
-                break
-
-        if need_potion == False:
-            print("goodddddddd")
-        else:
-            print("badddddddddd")
+        for i in range(3):
+            click_pos_2(490, 425, 'five')
+            time.sleep(2)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

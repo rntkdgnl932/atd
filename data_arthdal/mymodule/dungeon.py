@@ -221,12 +221,10 @@ def dungeon_in(cla, sche):
                 if in_check == True:
                     for i in range(5):
                         click_pos_2(490, 425, cla)
-                        QTest.qWait(1000)
-                        move_check(cla)
-                    # pyautogui.keyDown('w')
-                    # QTest.qWait(17000)
-                    # pyautogui.keyUp('w')
-                    # time.sleep(0.3)
+                        pyautogui.keyDown('w')
+                        QTest.qWait(4000)
+                        pyautogui.keyUp('w')
+                        time.sleep(0.3)
                     QTest.qWait(1000)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
