@@ -374,6 +374,20 @@ def out_check(cla):
                             imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 is_out = True
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_out = True
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_on.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_out = True
 
         if is_out == True:
             out_dead_recovery(cla)

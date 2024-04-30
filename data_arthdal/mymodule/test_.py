@@ -44,18 +44,64 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
+        is_out = False
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("out_check...close_btn", imgs_)
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("mini_close_btn2", imgs_)
+            else:
+                is_out_ready = False
 
-        file_path = "C:\\my_games\\arthdal\\mysettings\\my_potion\\my_potion.txt"
-        with open(file_path, "w", encoding='utf-8-sig') as file:
-            file.write(str(2))
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_keyboard", imgs_)
+                    is_out_ready = True
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_speed_talk", imgs_)
+                        is_out_ready = True
 
-        potion_available(cla)
+                if is_out_ready == True:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tab", imgs_)
+                        is_out = True
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("ctrl", imgs_)
+                            is_out = True
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("attack_btn", imgs_)
+                                is_out = True
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
