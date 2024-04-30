@@ -192,7 +192,18 @@ def groupmission_get(cla, sche):
                                     else:
                                         click_pos_2(235, 1000, cla)
                                     time.sleep(1)
-
+                else:
+                    for r in range(5):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            click_pos_2(235, 1000, cla)
+                        time.sleep(1)
 
             time.sleep(0.5)
 
