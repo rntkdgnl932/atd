@@ -69,6 +69,7 @@ def jadong_attack_check(cla):
 
     from function_game import imgs_set_
     from action_arthdal import out_check, juljun_check, juljun_on
+    from cleen_screen import cleen_screen_start
 
     try:
         is_attack = "none"
@@ -110,6 +111,8 @@ def jadong_attack_check(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     juljun_on(cla)
+                else:
+                    cleen_screen_start(cla)
             time.sleep(0.3)
         return is_attack
     except Exception as e:
@@ -258,8 +261,8 @@ def jadong_spot_in(cla):
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 420, 80, 300), confidence=0.8):
-                    last_x = i.left
-                    last_y = i.top
+                    last_x = i.left + int(i.width / 2)
+                    last_y = i.top + int(i.height / 2)
                     like_spot.append({last_x, last_y})
                 if len(like_spot) > 0:
                     print("얏호", len(like_spot), like_spot)
