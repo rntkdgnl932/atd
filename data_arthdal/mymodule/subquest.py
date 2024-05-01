@@ -156,9 +156,26 @@ def subquest_start(cla, sche):
                                         time.sleep(60)
                     else:
                         result_juljun_checked = juljun_check(cla)
+
                         if result_juljun_checked == True:
-                            myQuest_play_add(cla, sche)
-                            juljun_off(cla)
+                            last_sub = True
+
+
+                            for i in range(9):
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\exist_q\\" + str(
+                                    i) + ".PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(750, 105, 800, 250, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("i", i, imgs_)
+                                    last_sub = False
+                                    juljun_off(cla)
+                                    break
+
+                            if last_sub == True:
+                                myQuest_play_add(cla, sche)
+                                juljun_off(cla)
 
                 else:
                     cleen_screen_start(cla)
