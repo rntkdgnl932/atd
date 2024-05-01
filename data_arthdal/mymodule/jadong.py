@@ -32,33 +32,37 @@ def jadong_start(cla, sche):
             jadong_spot_in(cla)
 
         else:
-            result_attack = jadong_attack_check(cla)
-            if result_attack == "attack":
-                print("정상 자동 사냥 중...")
-                result_potion = potion_check(cla)
-                if result_potion == True:
-                    buy_potion(cla)
-            elif result_attack == "taljin" or result_attack == "dead":
-                print("탈진 또는 사망")
-                # 탈진 or 사망
-                juljun_off(cla)
-                time.sleep(1)
-
-                dead_check(cla, sche)
-                dead_recovery(cla, sche)
-
-                cleen_screen_start(cla)
-
+            result_potion = potion_check(cla)
+            if result_potion == True:
                 buy_potion(cla)
-
                 jadong_spot_in(cla)
-            elif result_attack == "ready":
-                print("대기중")
-                # 사냥터가 아닐 경우
-                jadong_attack_on(cla)
+            else:
+
                 result_attack = jadong_attack_check(cla)
-                if result_attack == "ready":
+                if result_attack == "attack":
+                    print("정상 자동 사냥 중...")
+
+                elif result_attack == "taljin" or result_attack == "dead":
+                    print("탈진 또는 사망")
+                    # 탈진 or 사망
+                    juljun_off(cla)
+                    time.sleep(1)
+
+                    dead_check(cla, sche)
+                    dead_recovery(cla, sche)
+
+                    cleen_screen_start(cla)
+
+                    buy_potion(cla)
+
                     jadong_spot_in(cla)
+                elif result_attack == "ready":
+                    print("대기중")
+                    # 사냥터가 아닐 경우 or attack이 아닐 경우
+                    jadong_attack_on(cla)
+                    result_attack = jadong_attack_check(cla)
+                    if result_attack == "ready":
+                        jadong_spot_in(cla)
     except Exception as e:
         print(e)
 

@@ -12,7 +12,7 @@ def subquest_start(cla, sche):
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg, drag_pos
 
-    from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check, moniter_check, out_check
+    from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check, moniter_check, out_check, juljun_on
     from cleen_screen import skip_check
     from dead import dead_check, dead_recovery
     from schedule import myQuest_play_add
@@ -20,24 +20,26 @@ def subquest_start(cla, sche):
     from cleen_screen import cleen_screen_start
     try:
 
+        is_sub = False
+
         result_juljun_checked = juljun_check(cla)
         if result_juljun_checked == True:
-            juljun_off(cla)
 
-        moniter_check(cla)
+            for i in range(9):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\exist_q\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(750, 105, 800, 250, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("i", i, imgs_)
+                    is_sub = True
+                    juljun_off(cla)
+                    break
 
-        # 퀘스트 클릭
-        result_dead = dead_check(cla, sche)
-        if result_dead == True:
 
-            dead_recovery(cla, sche)
 
-            cleen_screen_start(cla)
+        if is_sub == True:
 
-            buy_potion(cla)
-
-            myQuest_play_add(cla, sche)
-        else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -55,65 +57,70 @@ def subquest_start(cla, sche):
 
                 result_out = out_check(cla)
                 if result_out == True:
-                    drag_pos(860, 100, 860, 200, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, 140, cla)
-
-                    for i in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
+                    is_sub = False
+                    juljun_on(cla)
+                    for i in range(9):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\exist_q\\" + str(
+                            i) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(200, 550, 800, 650, cla, img, 0.8)
+                        imgs_ = imgs_set_(750, 105, 800, 250, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("82_move", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("i", i, imgs_)
+                            is_sub = True
+                            juljun_off(cla)
                             break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
+                    if is_sub == True:
+                        drag_pos(860, 100, 860, 200, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, 140, cla)
+
+                        for i in range(10):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(200, 400, 800, 900, cla, img, 0.8)
+                            imgs_ = imgs_set_(200, 550, 800, 650, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("82_move_title_confirm", imgs_)
+                                print("82_move", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 break
-                        time.sleep(0.2)
-
-                    for i in range(10):
-                        move_check(cla)
-                        time.sleep(0.5)
-
-                    skip_check(cla)
-                    sub_ing(cla)
-
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("퀘스트 진행중")
-                    else:
-                        talk = False
-                        for i in range(10):
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(520, 480, 570, 530, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("f", cla)
-                                click_pos_reg(imgs_.x + 50, imgs_.y, cla)
-                                talk = True
                             else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f2.PNG"
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(200, 400, 800, 900, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("82_move_title_confirm", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                            time.sleep(0.2)
+
+                        for i in range(10):
+                            move_check(cla)
+                            time.sleep(0.5)
+
+                        skip_check(cla)
+                        sub_ing(cla)
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("퀘스트 진행중")
+                        else:
+                            talk = False
+                            for i in range(10):
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(520, 480, 570, 530, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("f2", cla)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    print("f", cla)
+                                    click_pos_reg(imgs_.x + 50, imgs_.y, cla)
                                     talk = True
                                 else:
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f3.PNG"
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f2.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(520, 480, 570, 530, cla, img, 0.8)
@@ -121,27 +128,54 @@ def subquest_start(cla, sche):
                                         print("f2", cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                         talk = True
-                            time.sleep(0.2)
-                        if talk == False:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("서브퀘스트 진행중")
-
-                            else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
+                                    else:
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\f3.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(520, 480, 570, 530, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("f2", cla)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            talk = True
+                                time.sleep(0.2)
+                            if talk == False:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(770, 815, cla)
-                                    time.sleep(60)
+                                    print("서브퀘스트 진행중")
+
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(770, 815, cla)
+                                        time.sleep(60)
+                    else:
+                        result_juljun_checked = juljun_check(cla)
+                        if result_juljun_checked == True:
+                            myQuest_play_add(cla, sche)
+                            juljun_off(cla)
 
                 else:
                     cleen_screen_start(cla)
 
+        # dead
+
+        moniter_check(cla)
+
+        result_dead = dead_check(cla, sche)
+        if result_dead == True:
+            dead_recovery(cla, sche)
+
+            cleen_screen_start(cla)
+
+            buy_potion(cla)
+
+            myQuest_play_add(cla, sche)
 
 
     except Exception as e:

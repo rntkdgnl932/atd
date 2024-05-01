@@ -9,8 +9,9 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def potion_check(cla):
     import numpy as np
     import cv2
+    import pyautogui
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, get_region
 
     from action_arthdal import loading, out_check, menu_open, juljun_check
     from cleen_screen import cleen_screen_start
@@ -25,11 +26,14 @@ def potion_check(cla):
 
         if result_juljun == True:
             # 절전모드
+
+            pyautogui.screenshot('asd.png', region=(get_region(418, 995, 430, 1020, cla)))
+
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(425, 995, 435, 1020, cla, img, 0.9)
+                imgs_ = imgs_set_(418, 995, 430, 1020, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("i", i, imgs_)
                     need_potion = False
@@ -39,11 +43,14 @@ def potion_check(cla):
             result_out = out_check(cla)
 
             if result_out == True:
+                # 3 자리
+                pyautogui.screenshot('asd.png', region=(get_region(665, 995, 677, 1020, cla)))
+
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(666, 995, 678, 1020, cla, img, 0.9)
+                    imgs_ = imgs_set_(665, 995, 677, 1020, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
                         print("i", i, imgs_)
                         need_potion = False
