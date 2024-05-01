@@ -26,9 +26,6 @@ def potion_check(cla):
 
         if result_juljun == True:
             # 절전모드
-
-            pyautogui.screenshot('asd.png', region=(get_region(418, 995, 430, 1020, cla)))
-
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -44,8 +41,6 @@ def potion_check(cla):
 
             if result_out == True:
                 # 3 자리
-                pyautogui.screenshot('asd.png', region=(get_region(665, 995, 677, 1020, cla)))
-
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -55,6 +50,18 @@ def potion_check(cla):
                         print("i", i, imgs_)
                         need_potion = False
                         break
+
+                if need_potion == True:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(665, 995, 677, 1020, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("i", i, imgs_)
+                            need_potion = False
+                            break
+
             else:
                 print("바깥이 아니라서 파악하기 힘듬")
                 need_potion = False

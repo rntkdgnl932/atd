@@ -127,7 +127,7 @@ def groupmission_get(cla, sche):
                 else:
                     print("세력 임무 모두 끝")
                     # 완료가 있다면 모두완료 클릭
-                    for i in range(10):
+                    for b in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

@@ -14,7 +14,7 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check, juljun_off
@@ -27,6 +27,7 @@ def go_test():
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
     from function_game import imgs_set_for
+    from union_mission import unionmission_get
 
     from PIL import ImageGrab
     from functools import partial
@@ -49,8 +50,9 @@ def go_test():
     try:
         print("test", cla)
 
-        potion_check(cla)
+        # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
 
+        unionmission_get(cla, "연맹임무_3")
 
 
         # for i in range(9):

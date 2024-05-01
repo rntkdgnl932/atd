@@ -326,7 +326,7 @@ def get_region(start_x, start_y, end_x, end_y, cla):
     if cla == 'six':
         coordinate = 960 * 5
 
-    value = (start_x+ coordinate, start_y, end_x - start_x, end_y - start_y)
+    value = (start_x + coordinate, start_y, end_x - start_x, end_y - start_y)
     return value
 
 def click_pos(pos):

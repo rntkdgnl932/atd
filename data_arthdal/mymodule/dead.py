@@ -59,7 +59,7 @@ def out_dead_recovery(cla):
 
         deaded = False
 
-        for i in range(20):
+        for i in range(15):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\recovery.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -114,7 +114,23 @@ def out_dead_recovery(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(400, 660, 460, 700, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_2(560, 680, cla)
+
+                            is_money = False
+                            for e in range(10):
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\recovery_title2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 435, 550, 490, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_money = True
+                                    break
+                                else:
+                                    click_pos_2(560, 680, cla)
+                                time.sleep(1)
+                            if is_money == False:
+                                why ="돈 없어서 복구 불가능"
+                                line_to_me(cla, why)
+
                         else:
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\free_recovery_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)

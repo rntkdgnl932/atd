@@ -60,6 +60,7 @@ from subquest import subquest_start
 from group_mission import groupmission_start
 from dungeon import dungeon_start
 from potion import buy_potion_buf
+from union_mission import unionmission_get
 
 from server import game_start
 import variable as v_
@@ -968,10 +969,10 @@ class FirstTab(QWidget):
 
 
         # 던전 종류
-        self.dun_group_1 = QGroupBox('세력임무')
+        self.dun_group_1 = QGroupBox('임무')
         dun_g1_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        dun_g1_list = ['세력임무']
+        dun_g1_list = ['임무선택', '세력임무', '연맹임무받기']
         dun_g1_name.addItems(dun_g1_list)
 
         dun_g1_stair = QComboBox()
@@ -1517,12 +1518,12 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_1(self, text):
         global onDunjeon_1
-        if text != 0 and text != '균열의 땅 선택':
+        if text != 0 and text != '임무선택':
             onDunjeon_1 = text
-            print('onDunjeon_1', onDunjeon_1)
+            print('임무선택', onDunjeon_1)
         else:
             onDunjeon_1 = 'none'
-            print("던전을 선택해 주세요.")
+            print("임무를 선택해 주세요.")
 
     def onActivated_dunjeon_1_level(self, text):
         global onDunjeon_1_level
@@ -1531,7 +1532,7 @@ class FirstTab(QWidget):
             print('onDunjeon_1_level', onDunjeon_1_level)
         else:
             onDunjeon_1_level = 0
-            print("던전 층수를 선택해 주세요.")
+            print("임무 지역을 선택해 주세요.")
 
 
 
@@ -1656,11 +1657,13 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_1_add(self):
         char_ = onCharacter
-        dun_ = "세력임무_" + str(onDunjeon_1_level)
+        dun_ = onDunjeon_1 + "_" + str(onDunjeon_1_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
             pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
+        elif onDunjeon_1 == "none" or onDunjeon_1 == "임무선택":
+            pyautogui.alert(button='넵', text='지역을 선택해 주시지예', title='아 진짜 뭐합니꺼')
         elif onDunjeon_1_level == 0 or onDunjeon_1_level == "지역":
             pyautogui.alert(button='넵', text='지역을 선택해 주시지예', title='아 진짜 뭐합니꺼')
         elif onCharacter != 0:
@@ -3383,6 +3386,8 @@ class game_Playing(QThread):
                                     subquest_start(v_.now_cla, result_schedule_)
                                 elif '세력임무' in result_schedule_:
                                     groupmission_start(v_.now_cla, result_schedule_)
+                                elif '연맹임무받기' in result_schedule_:
+                                    unionmission_get(v_.now_cla, result_schedule_)
                                 elif '시간던전' in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "버프와물약사기":

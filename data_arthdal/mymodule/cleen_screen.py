@@ -133,6 +133,8 @@ def skip_check(cla):
 
         tuto_skip(cla)
 
+        sub_skip(cla)
+
         tuto_udrl_skip(cla)
 
 
@@ -142,6 +144,50 @@ def skip_check(cla):
 
 
 
+    except Exception as e:
+        print(e)
+        return 0
+
+def sub_skip(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+
+    from function_game import imgs_set_, click_pos_reg
+    from action_arthdal import tuto_jangchak
+
+    try:
+        print("sub_skip", cla)
+
+        is_complete = False
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\complete_title_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(370, 60, 600, 250, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("complete_title_1", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            is_complete = True
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\complete_title_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(370, 60, 600, 250, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("complete_title_2", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_complete = True
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\complete_title_3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(370, 60, 600, 250, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("complete_title_3", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_complete = True
+        return is_complete
     except Exception as e:
         print(e)
         return 0
@@ -231,7 +277,6 @@ def tuto_skip(cla):
     except Exception as e:
         print(e)
         return 0
-
 def tuto_udrl_skip(cla):
     import numpy as np
     import cv2
