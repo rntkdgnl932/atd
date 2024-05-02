@@ -134,6 +134,7 @@ def game_ready(cla, character_id):
     from action_arthdal import loading, out_check
     from stop_event18 import _stop_please
     from massenger import line_to_me
+    from stop_event18 import _stop_please
 
     try:
 
@@ -170,18 +171,23 @@ def game_ready(cla, character_id):
                 else:
                     # 로딩중 확인
                     print("기다림이 끝났다.")
-                    game_ready = False
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("game_start")
+                    why = "기다림이 끝났다. 접속 대기 끝"
+                    line_to_me(cla, why)
+                    
+                    for i in range(10):
                         game_ready = False
-                        why = "접속 대기 끝"
-                        line_to_me(cla, why)
-
-                        character_change(cla, character_id)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("game_start")
+                            game_ready = False
+                            character_change(cla, character_id)
+                            break
+                        else:
+                            _stop_please(cla)
+                        time.sleep(1)
 
 
                 time.sleep(1)
