@@ -205,6 +205,7 @@ def buy_potion(cla):
                     time.sleep(1)
         # 마무리
         potion_available(cla)
+        v_.dungeon_ready_count = 0
     except Exception as e:
         print(e)
 

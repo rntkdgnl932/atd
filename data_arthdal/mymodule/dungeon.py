@@ -39,11 +39,13 @@ def dungeon_start(cla, sche):
             if imgs_ is not None and imgs_ != False:
                 result_attack = dungeon_attack_check(cla)
                 if result_attack == "attack":
+                    v_.dungeon_ready_count = 0
                     print("정상 자동 사냥 중...")
                     result_potion = potion_check(cla)
                     if result_potion == True:
                         buy_potion(cla)
                 elif result_attack == "taljin" or result_attack == "dead":
+                    v_.dungeon_ready_count = 0
                     print("탈진 또는 사망")
                     # 탈진 or 사망
                     juljun_off(cla)
