@@ -7,6 +7,8 @@ now_arduino = "none"
 # 해당 게임 관련
 available_potion = 1
 
+dungeon_ready_count = 0
+
 
 # 게임 및 폴더 관련
 this_game = "아스달"

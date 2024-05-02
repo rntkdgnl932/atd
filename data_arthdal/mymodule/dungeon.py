@@ -11,9 +11,9 @@ def dungeon_start(cla, sche):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_
 
-    from action_arthdal import loading, out_check, menu_open, juljun_on, juljun_off, juljun_check
+    from action_arthdal import juljun_on, juljun_off, juljun_check, go_maul
     from cleen_screen import cleen_screen_start
     from potion import potion_check, buy_potion
     from dead import dead_check, dead_recovery
@@ -59,7 +59,15 @@ def dungeon_start(cla, sche):
                     dungeon_in(cla, sche)
                 elif result_attack == "ready":
                     print("대기중")
-                    jadong_attack_on(cla)
+                    v_.dungeon_ready_count += 1
+                    if v_.dungeon_ready_count > 3:
+                        why = "던전 진입 제대로 못해서 마을로 간다. 참고해라"
+                        line_to_me(cla, why)
+                        go_maul(cla)
+                        dungeon_in(cla, sche)
+                    else:
+                        jadong_attack_on(cla)
+                    # 중복 확인하고 마을 보내고 다시 오자
             else:
                 juljun_off(cla)
                 dungeon_in(cla, sche)
