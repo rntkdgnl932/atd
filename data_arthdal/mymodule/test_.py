@@ -22,7 +22,7 @@ def go_test():
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
-    from get_item import get_event, get_specialpackage, get_post, get_upjuk
+    from get_item import get_event, get_specialpackage, get_post, get_upjuk, get_event_point_click
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
@@ -52,7 +52,64 @@ def go_test():
 
         # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
 
-        unionmission_get(cla, "연맹임무_3")
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\event\\title_event.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 330, 550, 380, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("이벤트 & 보상", imgs_)
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    break
+            time.sleep(0.5)
+
+        # 이벤트 위치...
+        # ////////
+        # 835, 438
+        # 835, 480
+        # 835, 522
+        # 835, 564
+        # ...
+        # ////////
+        # 835, 645
+        # 835, 687
+        # ////////
+        # 종류 : seven_six, level, six, fourteen
+
+        file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_item.txt"
+        with open(file_path, "r", encoding='utf-8-sig') as file:
+            read_data = file.read().splitlines()
+            print("read_data", read_data)
+
+        for c in range(len(read_data)):
+            # 파일 읽어서 값들 추출출
+            read_order = read_data[c].split(":")
+            # read_order[0] => 번호
+            # read_order[1] => y값
+            # read_order[2] => 이벤트종류
+            y_reg = int(read_order[1])
+
+            if read_order[2] == "drag":
+                drag_pos(770, 660, 770, 400, cla)
+                time.sleep(0.5)
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, y_reg - 15, 860, y_reg + 15, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                    time.sleep(0.1)
+                    click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                    time.sleep(0.1)
+                    get_event_point_click(cla, read_order[2])
+            time.sleep(0.5)
+
+        cleen_screen_start(cla)
 
 
         # for i in range(9):

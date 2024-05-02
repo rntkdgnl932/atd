@@ -1,6 +1,10 @@
-1:seven_six
-2:level
-3:six
-4:six
-5:six
-6:fourteen
+1:438:seven_six
+2:480:level
+3:522:six
+4:564:six
+5:606:six
+6:648:six
+7:7:drag
+8:8:drag
+9:630:six
+10:672:fourteen

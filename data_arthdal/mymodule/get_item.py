@@ -32,6 +32,116 @@ def get_event(cla):
     import cv2
     import pyautogui
 
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+
+    from action_arthdal import go_maul, out_check
+    from cleen_screen import cleen_screen_start
+
+    from massenger import line_to_me
+
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
+    file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_item.txt"
+    with open(file_path, "r", encoding='utf-8-sig') as file:
+        read_data = file.read().splitlines()
+        print("read_data", read_data)
+
+    try:
+        for i in range(5):
+            result_out = out_check(cla)
+            if result_out == True:
+                break
+            else:
+                cleen_screen_start(cla)
+            time.sleep(0.5)
+
+        is_event = False
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(720, 30, 750, 55, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("이벤트 & 보상", imgs_)
+            click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
+            is_event = True
+
+        if is_event == True:
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\event\\title_event.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 330, 550, 380, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("이벤트 & 보상", imgs_)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                time.sleep(0.5)
+
+            # 이벤트 위치...
+            # ////////
+            # 835, 438
+            # 835, 480
+            # 835, 522
+            # 835, 564
+            # ...
+            # ////////
+            # 835, 645
+            # 835, 687
+            # ////////
+            # 종류 : seven_six, level, six, fourteen
+
+            for i in range(len(read_data)):
+                # 파일 읽어서 값들 추출출
+                read_order = read_data[i].split(":")
+                # read_order[0] => 번호
+                # read_order[1] => y값
+                # read_order[2] => 이벤트종류
+                y_reg = int(read_order[1])
+
+                if read_order[2] == "drag":
+                    drag_pos(770, 660, 770, 400, cla)
+                    time.sleep(0.5)
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, y_reg - 15, 860, y_reg + 15, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                        time.sleep(0.1)
+                        click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                        time.sleep(0.1)
+                        get_event_point_click(cla, read_order[2])
+                time.sleep(0.5)
+
+
+            cleen_screen_start(cla)
+
+
+    except Exception as e:
+        print(e)
+
+def get_event_ex(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
     from action_arthdal import go_maul, out_check
@@ -93,13 +203,18 @@ def get_event(cla):
                         break
                 time.sleep(0.5)
 
+            # 이벤트 위치...
+            # ////////
             # 835, 438
             # 835, 480
             # 835, 522
             # 835, 564
-
+            # ...
+            # ////////
             # 835, 645
             # 835, 687
+            # ////////
+            # 종류 : seven_six, level, six, fourteen
             for i in range(3):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -116,17 +231,22 @@ def get_event(cla):
                         click_pos_reg(last_x - 60, last_y + 10, cla)
                         click_pos_reg(last_x - 60, last_y + 10, cla)
 
+                        # 처음 위치 y 값
                         standard = 438
+                        # 총 이벤트 합
                         all_lens = 6
+                        # 가운데 점프
                         middle_plus = 81
+                        # 첫번째 이벤트가 끝나는 위치
+                        second_event = 6
 
                         order = 0
 
-                        for i in range(all_lens):
+                        for c in range(all_lens):
                             front_num = standard - 22
                             back_num = standard + 22
-
-                            if i + 1 == 4:
+                            # 두번째 이벤트 위치
+                            if i + 1 == second_event:
                                 standard += middle_plus
                             else:
                                 standard += 42
@@ -137,7 +257,7 @@ def get_event(cla):
                                 print("order : ", order)
                                 break
                         if order != 0:
-                            for i in range(len(read_data)):
+                            for c in range(len(read_data)):
                                 read_order = read_data[i].split(":")
                                 if str(read_order[0]) == str(order):
                                     break
