@@ -78,6 +78,25 @@ def cleen_screen_start(cla):
 
                     _stop_please(cla)
 
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        x_reg = imgs_.x
+                        y_reg = imgs_.y
+
+                        # select 1 (50, 125)
+                        # 65
+                        # select 2 (50, 190)
+
+                        y_result = 60 + (int(character_id) * 65)
+
+                        click_pos_2(50, y_result, cla)
+                        time.sleep(0.5)
+                        click_pos_reg(x_reg, y_reg, cla)
+                        time.sleep(0.1)
+
                     print("btn close start")
 
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
