@@ -15,6 +15,8 @@ def cleen_screen_start(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, imgs_set_for
+    from dead import dead_check
+    from schedule import myQuest_play_check
 
     from action_arthdal import out_check, juljun_off
     from stop_event18 import _stop_please
@@ -33,11 +35,19 @@ def cleen_screen_start(cla):
         plus = 960 * 5
 
     try:
+        # 스케쥴 읽어오기
+        result_schedule = myQuest_play_check(v_.now_cla, "check")
+        result_schedule_ = result_schedule[0][2]
+
+
         print("cleen_screen_start", cla)
 
         juljun_off(cla)
 
         for i in range(10):
+
+            dead_check(cla, result_schedule_)
+
 
             result_out = out_check(cla)
 
