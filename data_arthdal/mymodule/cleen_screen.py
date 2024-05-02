@@ -37,94 +37,114 @@ def cleen_screen_start(cla):
     try:
         # 스케쥴 읽어오기
         result_schedule = myQuest_play_check(v_.now_cla, "check")
+        character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
 
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            x_reg = imgs_.x
+            y_reg = imgs_.y
 
-        print("cleen_screen_start", cla)
+            # select 1 (50, 125)
+            # 65
+            # select 2 (50, 190)
 
-        juljun_off(cla)
+            y_result = 60 + (int(character_id) * 65)
 
-        for i in range(10):
+            click_pos_2(50, y_result, cla)
+            time.sleep(0.5)
+            click_pos_reg(x_reg, y_reg, cla)
+            time.sleep(0.1)
 
-            dead_check(cla, result_schedule_)
+        else:
+            print("cleen_screen_start", cla)
+
+            juljun_off(cla)
+
+            for i in range(10):
+
+                dead_check(cla, result_schedule_)
 
 
-            result_out = out_check(cla)
+                result_out = out_check(cla)
 
-            if result_out == True:
-                break
-            else:
-                skip_check(cla)
-
-                _stop_please(cla)
-
-                print("btn close start")
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 350, 960, 700, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("menu_opened")
-                    click_pos_2(935, 55, cla)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("mini_close_btn", imgs_)
-                    if len(imgs_) > 0:
-                        for s in range(len(imgs_)):
-                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
-                            time.sleep(0.1)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("bag_close_btn", imgs_)
-                    if len(imgs_) > 0:
-                        for s in range(len(imgs_)):
-                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
-                            time.sleep(0.1)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("quest_close_btn", imgs_)
-                    if len(imgs_) > 0:
-                        for s in range(len(imgs_)):
-                            click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
-                            time.sleep(0.1)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\title_out_btn_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(900, 30, 960, 80, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("title_out_btn_1")
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                if result_out == True:
+                    break
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\title_out_btn_2.PNG"
+                    skip_check(cla)
+
+                    _stop_please(cla)
+
+                    print("btn close start")
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(650, 350, 960, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("menu_opened")
+                        click_pos_2(935, 55, cla)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("mini_close_btn", imgs_)
+                        if len(imgs_) > 0:
+                            for s in range(len(imgs_)):
+                                click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                                time.sleep(0.1)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("bag_close_btn", imgs_)
+                        if len(imgs_) > 0:
+                            for s in range(len(imgs_)):
+                                click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                                time.sleep(0.1)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\quest_close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("quest_close_btn", imgs_)
+                        if len(imgs_) > 0:
+                            for s in range(len(imgs_)):
+                                click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                                time.sleep(0.1)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\title_out_btn_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(900, 30, 960, 80, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("title_out_btn_2")
+                        print("title_out_btn_1")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                # bottom esc
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("bottom_esc")
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-            time.sleep(0.2)
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\title_out_btn_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(900, 30, 960, 80, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("title_out_btn_2")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    # bottom esc
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("bottom_esc")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.2)
 
     except Exception as e:
         print(e)

@@ -114,6 +114,8 @@ def character_change(cla, character_id):
                         for i in range(10):
                             result_out = out_check(cla)
                             if result_out == True:
+                                joined = True
+                                cha_select = True
                                 break
                             time.sleep(1)
                     else:
@@ -175,10 +177,12 @@ def game_ready(cla, character_id):
                     imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("game_start")
-                        character_change(cla, character_id)
                         game_ready = False
                         why = "접속 대기 끝"
                         line_to_me(cla, why)
+
+                        character_change(cla, character_id)
+
 
                 time.sleep(1)
         else:
