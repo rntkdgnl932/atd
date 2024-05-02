@@ -212,21 +212,29 @@ def jadong_spot_in(cla):
                     print("worldmap_ready_2", imgs_)
                     map_ready = True
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\rain.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\worldmap_ready_3.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(150, 100, 200, 200, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("rain", imgs_)
+                        print("worldmap_ready_3", imgs_)
                         map_ready = True
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\rain.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                        imgs_ = imgs_set_(150, 100, 200, 200, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("bookmark", imgs_)
+                            print("rain", imgs_)
                             map_ready = True
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("bookmark", imgs_)
+                                map_ready = True
 
             if map_ready == True:
 
