@@ -62,7 +62,7 @@ def dungeon_start(cla, sche):
                 elif result_attack == "ready":
                     print("대기중")
                     v_.dungeon_ready_count += 1
-                    if v_.dungeon_ready_count > 3:
+                    if v_.dungeon_ready_count > 1:
                         why = "던전 진입 제대로 못해서 마을로 간다. 참고해라"
                         line_to_me(cla, why)
                         go_maul(cla)
