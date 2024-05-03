@@ -40,6 +40,7 @@ def subquest_start(cla, sche):
             sub_ing(cla)
 
             result_out = out_check(cla)
+            print("result_out", result_out)
             if result_out == True:
                 is_sub = False
                 juljun_on(cla)
