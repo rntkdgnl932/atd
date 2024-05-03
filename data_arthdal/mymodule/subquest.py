@@ -126,6 +126,8 @@ def subquest_start(cla, sche):
                                         print("f2", cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                         talk = True
+                            if talk == True:
+                                break
                             time.sleep(0.2)
                         if talk == False:
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\bottom_quest_ing.PNG"
@@ -148,6 +150,7 @@ def subquest_start(cla, sche):
                                             print("정상 자동 사냥 중...")
                                             time.sleep(60)
                                             juljun_off(cla)
+                                            break
 
                                         elif result_attack == "taljin" or result_attack == "dead":
                                             print("탈진 또는 사망")
@@ -162,9 +165,11 @@ def subquest_start(cla, sche):
 
                                             buy_potion(cla)
                                             myQuest_play_add(cla, sche)
+                                            break
                                         elif result_attack == "ready":
                                             print("대기중")
                                             juljun_off(cla)
+                                            break
                                         time.sleep(1)
 
                                     else:
@@ -175,6 +180,7 @@ def subquest_start(cla, sche):
                                         if imgs_ is not None and imgs_ != False:
                                             click_pos_2(770, 815, cla)
                                     time.sleep(1)
+
                 else:
                     result_juljun_checked = juljun_check(cla)
 
