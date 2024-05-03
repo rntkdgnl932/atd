@@ -247,7 +247,7 @@ def sub_ing(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("jaelyo_nabpoom")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                else:
+
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -298,7 +298,6 @@ def sub_ing(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("gunsul_chamyo")
                             click_pos_reg(imgs_.x, imgs_.y, cla)
-                        else:
 
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
