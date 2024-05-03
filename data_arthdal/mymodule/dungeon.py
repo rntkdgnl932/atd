@@ -261,6 +261,7 @@ def dungeon_attack_check(cla):
 
     from function_game import imgs_set_
     from action_arthdal import out_check, juljun_check, juljun_on
+    from cleen_screen import cleen_screen_start
 
     try:
         is_attack = "none"
@@ -302,6 +303,8 @@ def dungeon_attack_check(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     juljun_on(cla)
+                else:
+                    cleen_screen_start(cla)
             time.sleep(0.3)
         return is_attack
     except Exception as e:

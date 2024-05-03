@@ -419,6 +419,7 @@ def jadong_spot_in(cla):
                 cleen_screen_start(cla)
                 time.sleep(0.2)
                 click_pos_2(35, 120, cla)
+                time.sleep(0.5)
 
 
 
