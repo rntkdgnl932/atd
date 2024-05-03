@@ -72,20 +72,18 @@ def juljun_off(cla):
         print("juljun_off", cla)
 
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            drag_pos(480, 510, 800, 515, cla)
 
-            for i in range(10):
-                result_out = out_check(cla)
-                if result_out == True:
-                    break
-                else:
-                    cleen_screen_start(cla)
-                time.sleep(0.5)
+
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                drag_pos(480, 510, 800, 515, cla)
+            else:
+                break
+            time.sleep(0.5)
 
     except Exception as e:
         print(e)
