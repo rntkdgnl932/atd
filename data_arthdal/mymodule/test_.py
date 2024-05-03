@@ -17,7 +17,7 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check, juljun_off
+    from action_arthdal import out_check, juljun_off, juljun_check
     from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
@@ -49,6 +49,9 @@ def go_test():
         plus = 960 * 5
     try:
         print("test", cla)
+
+        result = juljun_check('five')
+        print("jullllllllllljummnnnnnnn", result)
 
         # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
 

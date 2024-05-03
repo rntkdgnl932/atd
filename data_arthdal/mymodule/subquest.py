@@ -28,12 +28,14 @@ def subquest_start(cla, sche):
         imgs_ = imgs_set_(400, 870, 530, 920, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("퀘스트 진행중")
-            result_potion = potion_check(cla)
-            if result_potion == True:
+
+            result_out = out_check(cla)
+            if result_out == True:
                 result_potion = potion_check(cla)
                 if result_potion == True:
                     buy_potion(cla)
-            time.sleep(5)
+
+                    time.sleep(5)
         else:
             sub_ing(cla)
 
@@ -86,7 +88,7 @@ def subquest_start(cla, sche):
 
                     for i in range(10):
                         move_check(cla)
-                        time.sleep(0.5)
+                        time.sleep(0.3)
 
                     skip_check(cla)
                     sub_ing(cla)
