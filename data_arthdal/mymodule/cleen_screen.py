@@ -118,6 +118,17 @@ def cleen_screen_start(cla):
                                 click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
                                 time.sleep(0.1)
 
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\item_close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_for(0, 30, 960, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("item_close_btn", imgs_)
+                        if len(imgs_) > 0:
+                            for s in range(len(imgs_)):
+                                click_pos_reg(imgs_[s][0], imgs_[s][1], cla)
+                                time.sleep(0.1)
+
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
