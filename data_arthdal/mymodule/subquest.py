@@ -205,6 +205,7 @@ def subquest_start(cla, sche):
                             juljun_off(cla)
 
             else:
+                sub_ing(cla)
                 cleen_screen_start(cla)
 
         # dead
