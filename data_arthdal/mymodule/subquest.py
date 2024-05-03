@@ -263,8 +263,6 @@ def sub_ing(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("82_move_title_confirm", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
-                        else:
-                            break
                 time.sleep(0.5)
         else:
             # 납품하기
@@ -283,8 +281,6 @@ def sub_ing(cla):
                         click_pos_2(835, 1005, cla)
                         time.sleep(0.5)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
-                        break
                     time.sleep(0.5)
             else:
                 # 건설참여
@@ -319,8 +315,6 @@ def sub_ing(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("82_move_title_confirm", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                else:
-                                    break
                         time.sleep(0.5)
 
     except Exception as e:
