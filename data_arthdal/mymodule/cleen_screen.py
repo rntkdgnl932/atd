@@ -62,12 +62,12 @@ def cleen_screen_start(cla):
         else:
             print("cleen_screen_start", cla)
 
-            juljun_off(cla)
 
             for i in range(10):
 
                 dead_check(cla, result_schedule_)
 
+                juljun_off(cla)
 
                 result_out = out_check(cla)
 
