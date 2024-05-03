@@ -50,8 +50,13 @@ def go_test():
     try:
         print("test", cla)
 
-        result = juljun_check('five')
-        print("jullllllllllljummnnnnnnn", result)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(200, 400, 800, 900, "five", img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("82_move_title_confirm", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
 
         # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
 
