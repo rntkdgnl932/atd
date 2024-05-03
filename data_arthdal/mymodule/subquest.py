@@ -55,8 +55,9 @@ def subquest_start(cla, sche):
                         is_sub = True
                         juljun_off(cla)
                         break
-                time.sleep(1)
+                    time.sleep(1)
                 if is_sub == True:
+                    print("is_subis_subis_subis_subis_subis_subis_sub", is_sub)
                     drag_pos(860, 100, 860, 200, cla)
                     time.sleep(0.5)
                     click_pos_2(925, 130, cla)
