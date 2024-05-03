@@ -57,7 +57,7 @@ def subquest_start(cla, sche):
                 if is_sub == True:
                     drag_pos(860, 100, 860, 200, cla)
                     time.sleep(0.5)
-                    click_pos_2(840, 140, cla)
+                    click_pos_2(840, 135, cla)
 
                     for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\82_move.PNG"
@@ -82,7 +82,7 @@ def subquest_start(cla, sche):
                                 if result_sub_complete == True:
                                     drag_pos(860, 100, 860, 200, cla)
                                     time.sleep(0.5)
-                                    click_pos_2(840, 140, cla)
+                                    click_pos_2(840, 135, cla)
 
                         time.sleep(0.2)
 
