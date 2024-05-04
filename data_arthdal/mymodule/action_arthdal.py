@@ -447,7 +447,7 @@ def go_maul(cla):
                     is_maul = True
                     break
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
