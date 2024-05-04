@@ -6,9 +6,12 @@ as_tulgajoog
 as_tulgajoog2
 choo_binl
 choo_ggori
+clothes_commonclass
 clothes_highclass
+dlggae
 ganghwasuk_bangugoo
 skill_commonclass
 skill_highclass
+syltarae
 time_snake
 yunmasuk
