@@ -4,6 +4,7 @@ as_gogi
 as_tooth
 as_tulgajoog
 as_tulgajoog2
+bone_1
 choo_binl
 choo_ggori
 clothes_commonclass
