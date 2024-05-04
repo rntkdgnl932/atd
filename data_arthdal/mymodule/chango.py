@@ -6,7 +6,7 @@ import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
-def boonhae_start(cla):
+def chango_start(cla):
     import numpy as np
     import cv2
 
@@ -28,111 +28,226 @@ def chango_ready(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_arthdal import menu_open
+    from action_arthdal import menu_open, go_maul, move_check
     from cleen_screen import cleen_screen_start
+    from massenger import line_to_me
+
     try:
-        # 분해로 ㄱ
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\daejangan.PNG"
+        go_maul(cla)
+
+        chango_in = False
+        chango_in_count = 0
+        while chango_in is False:
+            chango_in_count += 1
+            if chango_in_count > 25:
+                chango_in = True
+
+            print("chango_in_count", chango_in_count)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+            imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                break
-            else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("boonhae_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    for c in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\daejangan.PNG"
+                print("chango_out_btn...")
+                chango_in = True
+
+
+
+                # 계정창고
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 630, 600, 680, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("chango_confirm")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item_82.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+                        imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+                            print("anymore_item_82")
                             break
-                        time.sleep(0.5)
+                        else:
+                            click_pos_2(50, 150, cla)
+                            time.sleep(0.5)
+                            click_pos_2(905, 1005, cla)
+                    time.sleep(0.5)
 
-                else:
-                    menu_open(cla)
-                    click_pos_2(895, 55, cla)
-                    for c in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
+                # 전부 창고에 넣기
+                for g in range(3):
+                    x_reg = 850 + (g * 40)
+                    click_pos_2(x_reg, 90, cla)
+                    time.sleep(0.5)
+
+                    x_get = 765
+
+                    for c in range(30):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+                        imgs_ = imgs_set_(770, 520, 920, 570, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("item_term_completion")
+                                # x 값 늘리기
+                                x_get += 40
+                                why = "기간 지난 아이템 있다. 없애주자"
+                                line_to_me(cla, why)
+
+                                for r in range(10):
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("x_get += 40 적용중...")
+                                    else:
+                                        break
+                                    time.sleep(1)
+
+                            else:
+                                click_pos_2(x_get, 155, cla)
                         time.sleep(0.5)
-            time.sleep(0.5)
+                    time.sleep(1)
 
-        # 분해 시작
+                # 캐릭터창고
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 630, 600, 680, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("chango_confirm")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item_82.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_item_82")
+                            break
+                        else:
+                            click_pos_2(50, 105, cla)
+                            time.sleep(0.5)
+                            click_pos_2(905, 1005, cla)
+                    time.sleep(0.5)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\check_box_on.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(710, 950, 760, 1000, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("check_box_on", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
+                # 전부 창고에 넣기
+                for g in range(3):
+                    x_reg = 850 + (g * 40)
+                    click_pos_2(x_reg, 90, cla)
+                    time.sleep(0.5)
 
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\no_item.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(380, 100, 550, 150, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("no_item", imgs_)
-                break
+                    x_get = 765
+
+                    for c in range(30):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(770, 520, 920, 570, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("item_term_completion")
+                                # x 값 늘리기
+                                x_get += 40
+                                why = "기간 지난 아이템 있다. 없애주자"
+                                line_to_me(cla, why)
+
+                                for r in range(10):
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("x_get += 40 적용중...")
+                                    else:
+                                        break
+                                    time.sleep(1)
+                            else:
+                                click_pos_2(x_get, 155, cla)
+                        time.sleep(0.5)
+                    time.sleep(1)
+                # 나가기
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(925, 55, cla)
+                    else:
+                        break
+                    time.sleep(0.5)
+
             else:
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(60, 120, 160, 180, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                click_pos_2(785, 1005, cla)
-            time.sleep(0.5)
+                            for m in range(5):
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        break
+                                time.sleep(0.5)
 
-        for i in range(10):
+                            for m in range(5):
+                                result_move = move_check(cla)
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_confirm.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                break
-            else:
+                                if result_move == False:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
 
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\no_item2.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(380, 100, 550, 150, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("no_item", imgs_)
-                    break
-                else:
+                                time.sleep(0.5)
 
-                    click_pos_2(405, 1005, cla)
 
-            time.sleep(0.5)
-
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\daejangan.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_confirm.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                cleen_screen_start(cla)
-            else:
-                break
-            time.sleep(0.5)
+                    time.sleep(1)
 
     except Exception as e:
         print(e)

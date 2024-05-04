@@ -80,10 +80,13 @@ def buy_potion(cla):
     from action_arthdal import go_maul, move_check, out_check
     from cleen_screen import cleen_screen_start
     from boonhae import boonhae_start
+    from chango import chango_start
 
     from massenger import line_to_me
     try:
         print("buy_potion")
+
+        chango_start(cla)
 
         go_maul(cla)
 
@@ -218,10 +221,13 @@ def buy_potion_buf(cla):
     from action_arthdal import go_maul, move_check, out_check
     from cleen_screen import cleen_screen_start
     from boonhae import boonhae_start
+    from chango import chango_start
 
     from massenger import line_to_me
     try:
         print("buy_potion_buf")
+
+        chango_start(cla)
 
         go_maul(cla)
 

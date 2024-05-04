@@ -28,6 +28,7 @@ def go_test():
     from property_atdl import my_property_upload
     from function_game import imgs_set_for
     from union_mission import unionmission_get
+    from chango import chango_start
 
     from PIL import ImageGrab
     from functools import partial
@@ -50,30 +51,32 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(200, 400, 800, 900, "five", img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("82_move_title_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
+        auction_start(cla)
 
-        # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(380, 40, 600, 100, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dead_1")
-            is_dead = True
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_maul.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(380, 110, 570, 200, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dead_maul")
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(10, 60, 85, 150, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("character_chango_clicked", imgs_)
+            # click_pos_reg(imgs_.x, imgs_.y, cla)
+        #
+        # # pyautogui.screenshot('asd.png', region=(get_region(200, 110, 210, 130, cla)))
+        #
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(380, 40, 600, 100, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("dead_1")
+        #     is_dead = True
+        #
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_maul.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(380, 110, 570, 200, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("dead_maul")
 
 
         # for i in range(9):

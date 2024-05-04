@@ -15,19 +15,23 @@ def auction_start(cla):
 
     from action_arthdal import loading, out_check, menu_open, go_maul
     from cleen_screen import cleen_screen_start
+    from chango import chango_start
 
 
     try:
+
+        chango_start(cla)
+
         auction_ready(cla)
 
         # 가방 => bag
         # 캐릭터 창고 => character_chango
         # 계정 창고 => account_chango
 
-        auction_sell_ready(cla, "bag")
-        auction_sell_start(cla)
-        auction_sell_ready(cla, "character_chango")
-        auction_sell_start(cla)
+        # auction_sell_ready(cla, "bag")
+        # auction_sell_start(cla)
+        # auction_sell_ready(cla, "character_chango")
+        # auction_sell_start(cla)
         auction_sell_ready(cla, "account_chango")
         auction_sell_start(cla)
         print("끝!")
@@ -43,7 +47,7 @@ def auction_ready(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_2
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
     from action_arthdal import menu_open
     from property_atdl import my_property_upload
 
@@ -68,7 +72,7 @@ def auction_ready(cla):
                 else:
                     menu_open(cla)
                     click_pos_2(810, 335, cla)
-                    for l in range(5):
+                    for c in range(5):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -78,17 +82,59 @@ def auction_ready(cla):
                         time.sleep(0.5)
                 time.sleep(0.5)
 
+
+
+
             for i in range(5):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_status.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(590, 100, 680, 140, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    my_property_upload(cla)
+
                     break
                 else:
                     click_pos_2(205, 85, cla)
 
+            for i in range(10):
+                # 일괄정산
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_complete_ready.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(580, 135, 700, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_complete.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(580, 980, 700, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                else:
+                    my_property_upload(cla)
+                    break
+                time.sleep(1)
+
+            for i in range(10):
+                # 일괄회수
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\retrieve_ready.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(580, 135, 700, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(210, 1000, cla)
+                    time.sleep(0.5)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\retrieve_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(490, 660, 620, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        break
+                else:
+                    break
+                time.sleep(1)
 
 
     except Exception as e:
@@ -173,15 +219,15 @@ def auction_sell_start(cla):
         read_data = file.read().splitlines()
         print("read_data", read_data)
     try:
-
-        # 일괄정산
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_complete.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(580, 980, 700, 1020, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            time.sleep(0.5)
+        #
+        # # 일괄정산
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_complete.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(580, 980, 700, 1020, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     click_pos_reg(imgs_.x, imgs_.y, cla)
+        #     time.sleep(0.5)
 
         # 판매시작
         for i in range(len(read_data)):
