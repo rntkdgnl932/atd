@@ -65,11 +65,11 @@ def juljun_off(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, drag_pos
+    from function_game import imgs_set_, drag_pos, click_pos_2
     from cleen_screen import cleen_screen_start
 
     try:
-        print("juljun_off", cla)
+        print("juljun_off 10번 시직", cla)
 
 
 
@@ -80,6 +80,8 @@ def juljun_off(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                click_pos_2(480, 510, cla)
+                time.sleep(0.1)
                 drag_pos(480, 510, 800, 515, cla)
             else:
                 break
