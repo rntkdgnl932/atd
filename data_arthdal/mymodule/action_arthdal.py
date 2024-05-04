@@ -477,17 +477,51 @@ def go_maul(cla):
             if is_maul_count > 5:
                 is_maul = True
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                is_maul = True
-            else:
-                result_out = out_check(cla)
-                if result_out != True:
-                    cleen_screen_start(cla)
 
+
+            # 마을인지 파악하기
+
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\important_point.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_maul = True
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            drag_pos(120, 150, 120, 240, cla)
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(70, 130, 150, 180, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            click_pos_2(35, 160, cla)
+                        else:
+                            cleen_screen_start(cla)
+                time.sleep(1)
+            # 위에는 마을인지 파악하기
+
+
+            if is_maul == False:
 
                 for i in range(10):
                     # result_out = out_check(cla)
@@ -500,35 +534,28 @@ def go_maul(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\important_point.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
+                        imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            drag_pos(120, 150, 120, 240, cla)
+                            break
                         else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\confirm.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\confirm.PNG"
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\now_group.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                                imgs_ = imgs_set_(230, 500, 580, 560, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    break
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                                 else:
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\now_group.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(230, 500, 580, 560, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    else:
-                                        click_pos_2(35, 285, cla)
+                                    click_pos_2(35, 285, cla)
                     time.sleep(0.5)
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\82_confirm.PNG"
@@ -550,6 +577,7 @@ def go_maul(cla):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
+                                is_maul = True
                                 break
                     time.sleep(1)
             time.sleep(1)
