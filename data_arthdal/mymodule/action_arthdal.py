@@ -477,10 +477,10 @@ def go_maul(cla):
             if is_maul_count > 5:
                 is_maul = True
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+            imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 is_maul = True
             else:
