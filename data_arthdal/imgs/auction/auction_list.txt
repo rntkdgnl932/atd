@@ -17,4 +17,5 @@ skill_commonclass
 skill_highclass
 syltarae
 time_snake
+time_sun
 yunmasuk
