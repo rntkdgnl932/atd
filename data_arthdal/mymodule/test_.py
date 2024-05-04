@@ -17,7 +17,7 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check, juljun_off, juljun_check
+    from action_arthdal import out_check, juljun_off, juljun_check, go_maul
     from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
@@ -34,7 +34,7 @@ def go_test():
     from functools import partial
     ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
-    cla = "one"
+    cla = "five"
 
     if cla == "one":
         plus = 0
@@ -51,7 +51,7 @@ def go_test():
     try:
         print("test", cla)
 
-        auction_start(cla)
+        go_maul(cla)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
