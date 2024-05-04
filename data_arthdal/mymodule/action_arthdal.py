@@ -447,7 +447,14 @@ def go_maul(cla):
                     is_maul = True
                     break
                 else:
-                    drag_pos(120, 150, 120, 240, cla)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        drag_pos(120, 150, 120, 240, cla)
             else:
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
