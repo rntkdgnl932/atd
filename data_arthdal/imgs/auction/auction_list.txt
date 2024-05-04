@@ -10,6 +10,7 @@ clothes_commonclass
 clothes_highclass
 dlggae
 ganghwasuk_bangugoo
+segongsuk
 skill_commonclass
 skill_highclass
 syltarae
