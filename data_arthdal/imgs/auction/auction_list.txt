@@ -9,6 +9,7 @@ choo_ggori
 clothes_commonclass
 clothes_highclass
 dlggae
+flower_sunattack
 ganghwasuk_bangugoo
 segongsuk
 skill_commonclass
