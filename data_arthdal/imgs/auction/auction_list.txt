@@ -13,6 +13,7 @@ dlggae
 flower_songari
 flower_sunattack
 ganghwasuk_bangugoo
+gogi_highclass
 jelyunsuk
 segongsuk
 skill_commonclass
