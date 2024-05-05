@@ -10,6 +10,7 @@ choo_ggori
 clothes_commonclass
 clothes_highclass
 dlggae
+flower_songari
 flower_sunattack
 ganghwasuk_bangugoo
 segongsuk
