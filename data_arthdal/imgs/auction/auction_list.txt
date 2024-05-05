@@ -15,9 +15,11 @@ flower_sunattack
 ganghwasuk_bangugoo
 gogi_highclass
 jelyunsuk
+jogag_highclass
 segongsuk
 skill_commonclass
 skill_highclass
+stone_bamnyange
 syltarae
 time_snake
 time_sun
