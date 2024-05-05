@@ -245,6 +245,7 @@ def subquest_start(cla, sche):
 def sub_ing(cla):
     import numpy as np
     import cv2
+    from massenger import line_to_me
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     try:
@@ -254,6 +255,8 @@ def sub_ing(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(810, 980, 940, 1020, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
+            why = "재료납품 중..제대로 하는지 확인하기"
+            line_to_me(cla, why)
             print("jaelyo_nabpoom")
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\jaelyo_nabpoom.PNG"
@@ -287,6 +290,8 @@ def sub_ing(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(135, 985, 240, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                why = "재료납품 중..제대로 하는지 확인하기"
+                line_to_me(cla, why)
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\tutorial\\chajib_res_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -305,6 +310,8 @@ def sub_ing(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(700, 900, 960, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+                    why = "건설참여 중..제대로 하는지 확인하기"
+                    line_to_me(cla, why)
                     print("gunsul_chamyo")
                     for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\adventure\\gunsul_chamyo.PNG"
