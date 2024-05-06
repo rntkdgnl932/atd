@@ -300,6 +300,24 @@ def jadong_spot_in(cla):
                     y_reg = imgs_[random_number - 1][1]
                     print("우헤헤", x_reg, y_reg)
 
+                    # 전쟁지역인지 여부...현재는 잿빛 폐허만...
+                    war_area = "none"
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\war_area\\jetbit_pehu_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(10, 35, 100, 80, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("잿빛 폐허")
+                            war_area = "jetbit_pehu"
+                            break
+                        else:
+                            click_pos_2(845, y_reg, cla)
+                        time.sleep(0.1)
+
+                    # 상세 장소 설정
+                    if war_area == "jetbit_pehu":
+                        y_click = 110
 
                     for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
@@ -307,7 +325,25 @@ def jadong_spot_in(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            x_82 = imgs_.x
+                            y_82 = imgs_.y
+
+
+                            if war_area != "none":
+                                click_pos_2(120, y_click, cla)
+                                for b in range(10):
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\war_area\\jetbit_pehu_bosangjungbo.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(265, 70, 345, 115, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
+                                    else:
+                                        click_pos_2(120, y_click, cla)
+                                    time.sleep(0.5)
+
+
+                            click_pos_reg(x_82, y_82, cla)
                             break
                         else:
                             click_pos_2(845, y_reg, cla)
