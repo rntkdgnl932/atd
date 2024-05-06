@@ -35,6 +35,7 @@ def groupmission_start(cla, sche):
                 dead_recovery(cla, sche)
 
 
+
             result_potion = potion_check(cla)
             if result_potion == True:
                 time.sleep(1)

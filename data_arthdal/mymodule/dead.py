@@ -14,6 +14,8 @@ def dead_check(cla, sche):
 
     from action_arthdal import loading, out_check, menu_open, go_maul
     from cleen_screen import cleen_screen_start
+    from schedule import myQuest_play_add
+    from potion import buy_potion
 
     from massenger import line_to_me
     try:
@@ -31,7 +33,7 @@ def dead_check(cla, sche):
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\dead_maul.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(380, 110, 570, 200, cla, img, 0.8)
+        imgs_ = imgs_set_(200, 110, 700, 200, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("dead_maul")
             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -39,6 +41,11 @@ def dead_check(cla, sche):
 
         if is_dead == True:
             go_maul(cla)
+
+            buy_potion(cla)
+
+            if sche == "튜토육성" or sche == "서브퀘스트":
+                myQuest_play_add(cla, sche)
 
         return is_dead
 

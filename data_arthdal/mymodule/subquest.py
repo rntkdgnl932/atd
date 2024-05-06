@@ -181,8 +181,6 @@ def subquest_start(cla, sche):
 
                                                 cleen_screen_start(cla)
 
-                                                buy_potion(cla)
-                                                myQuest_play_add(cla, sche)
                                                 break
                                             elif result_attack == "ready":
                                                 print("대기중")
@@ -233,10 +231,6 @@ def subquest_start(cla, sche):
             dead_recovery(cla, sche)
 
             cleen_screen_start(cla)
-
-            buy_potion(cla)
-
-            myQuest_play_add(cla, sche)
 
 
     except Exception as e:

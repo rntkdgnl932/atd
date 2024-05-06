@@ -40,9 +40,6 @@ def tuto_start(cla, sche):
 
             cleen_screen_start(cla)
 
-            buy_potion(cla)
-
-            myQuest_play_add(cla, sche)
         else:
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\history_title.PNG"
