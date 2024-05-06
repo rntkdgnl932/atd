@@ -36,22 +36,25 @@ def potion_check(cla):
                     need_potion = False
                     break
         else:
+
             # 바깥화면
             result_out = out_check(cla)
+            kind_potion = v_.available_potion + 1
+            view_potion = False
+            for i in range(2):
+                # 현재는 2종류
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\kind_potion\\" + str(kind_potion) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(418, 995, 430, 1020, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("포션종류", i + 1, imgs_)
+                    view_potion = True
+
 
             if result_out == True:
-                # 3 자리
-                for i in range(10):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(665, 995, 677, 1020, cla, img, 0.9)
-                    if imgs_ is not None and imgs_ != False:
-                        print("i", i, imgs_)
-                        need_potion = False
-                        break
-
-                if need_potion == True:
+                if view_potion == True:
+                    # 3 자리
                     for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -62,6 +65,19 @@ def potion_check(cla):
                             need_potion = False
                             break
 
+                    if need_potion == True:
+                        for i in range(10):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(665, 995, 677, 1020, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("i", i, imgs_)
+                                need_potion = False
+                                break
+                else:
+                    print("바깥 화면인데 포션 먹고 있는 듯...")
+                    need_potion = False
             else:
                 print("바깥이 아니라서 파악하기 힘듬")
                 need_potion = False
