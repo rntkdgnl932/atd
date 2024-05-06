@@ -112,104 +112,115 @@ def groupmission_get(cla, sche):
 
         is_group_mission = True
         for i in range(30):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\6_6.PNG"
+            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\6_6.PNG"
+            # img_array = np.fromfile(full_path, np.uint8)
+            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            # imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+            # if imgs_ is not None and imgs_ != False:
+            #     print("6_6", imgs_)
+            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\move_btn.PNG"
+            # img_array = np.fromfile(full_path, np.uint8)
+            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            # imgs_ = imgs_set_(900, 100, 950, 900, cla, img, 0.85)
+            # if imgs_ is not None and imgs_ != False:
+            #     print("세력 임무 진행하면 된다.")
+            #     break
+            # else:
+
+            # # 완료가 있다면 모두완료 클릭
+            # for b in range(10):
+            #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+            #     if imgs_ is not None and imgs_ != False:
+            #         print("bottom_esc")
+            #         click_pos_reg(imgs_.x, imgs_.y, cla)
+            #         break
+            #     else:
+            #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\complete.PNG"
+            #         img_array = np.fromfile(full_path, np.uint8)
+            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #         imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+            #         if imgs_ is not None and imgs_ != False:
+            #             print("complete", imgs_)
+            #             click_pos_2(875, 1000, cla)
+            #     time.sleep(0.5)
+
+            # 아래는 수락 있는지 파악하기
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\yunmasuk.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+            imgs_ = imgs_set_(700, 100, 770, 800, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("6_6", imgs_)
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\move_btn.PNG"
+                print("yunmasuk", imgs_)
+                x_reg = imgs_.x
+                y_reg = imgs_.y
+                # 737, 363
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\soolock.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(900, 100, 950, 900, cla, img, 0.85)
+                imgs_ = imgs_set_(800, y_reg - 30, 900, y_reg + 30, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("세력 임무 진행하면 된다.")
-                else:
-                    print("세력 임무 모두 끝")
-                    # 완료가 있다면 모두완료 클릭
-                    for b in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                    print("soolock", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    end = False
+                    for e in range(10):
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\anymore_mission.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                        imgs_ = imgs_set_(380, 100, 570, 150, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("bottom_esc")
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            # 수락 끝
+                            end = True
                             break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\complete.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                print("complete", imgs_)
-                                click_pos_2(875, 1000, cla)
-                        time.sleep(0.5)
-                    is_group_mission = False
-
-                break
-            else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\yunmasuk.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(700, 100, 770, 800, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("yunmasuk", imgs_)
-                    x_reg = imgs_.x
-                    y_reg = imgs_.y
-                    # 737, 363
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\soolock.PNG"
+                        time.sleep(0.1)
+                    if end == True:
+                        # 2번에 이동이 없으면 끝
+                        break
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\giveup.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(800, y_reg - 30, 900, y_reg + 30, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("soolock", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\giveup.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(800, y_reg - 30, 900, y_reg + 30, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("giveup", imgs_)
-                            # 6/6 아니라면 새로고침
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\6_6.PNG"
+                        print("giveup", imgs_)
+                        # 포기하기 버튼이면 새로 고침하기
+                        for r in range(5):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(100, 70, 120, 100, cla, img, 0.9)
+                            imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
-                                print("6_6", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                 break
                             else:
-                                for r in range(5):
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        break
-                                    else:
-                                        click_pos_2(235, 1000, cla)
-                                    time.sleep(1)
-                else:
-                    for r in range(5):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            break
-                        else:
-                            click_pos_2(235, 1000, cla)
-                        time.sleep(1)
+                                click_pos_2(235, 1000, cla)
+                            time.sleep(1)
+            else:
+                for r in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+                    else:
+                        click_pos_2(235, 1000, cla)
+                    time.sleep(1)
 
             time.sleep(0.5)
 
         # 2
         # 모두 선택되었다면 공격하러 ㄱㄱ
-        if is_group_mission == True:
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\move_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(900, 100, 950, 900, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\move_confirm.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
