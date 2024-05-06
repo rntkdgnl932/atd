@@ -312,7 +312,9 @@ def jadong_spot_in(cla):
                             war_area = "jetbit_pehu"
                             break
                         else:
-                            click_pos_2(845, y_reg, cla)
+                            if i < 4:
+                                click_pos_2(845, y_reg, cla)
+                                time.sleep(0.1)
                         time.sleep(0.1)
 
                     # 상세 장소 설정
