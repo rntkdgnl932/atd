@@ -39,16 +39,16 @@ def potion_check(cla):
 
             # 바깥화면
             result_out = out_check(cla)
-            kind_potion = v_.available_potion + 1
             view_potion = False
             for i in range(2):
+                kind_potion = i + 1
                 # 현재는 2종류
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\kind_potion\\" + str(kind_potion) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(630, 970, 700, 1020, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
-                    print("포션종류", i + 1, imgs_)
+                    print("포션종류", kind_potion, imgs_)
                     view_potion = True
 
 
