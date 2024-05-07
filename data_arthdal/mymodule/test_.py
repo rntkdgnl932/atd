@@ -34,7 +34,7 @@ def go_test():
     from functools import partial
     ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
-    cla = "three"
+    cla = "one"
 
     if cla == "one":
         plus = 0
@@ -51,31 +51,7 @@ def go_test():
     try:
         print("test", cla)
 
-        view_potion = False
-        for i in range(2):
-            kind_potion = i + 1
-            # 현재는 2종류
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\kind_potion\\" + str(kind_potion) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(630, 970, 700, 1020, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("포션종류", i + 1, imgs_)
-                view_potion = True
-
-        if view_potion == True:
-
-            for i in range(10):
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\out_num\\" + str(i) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(665, 995, 677, 1020, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    print("i", i, imgs_)
-                    need_potion = False
-                    break
-        else:
-            print("포션 파악 불가")
+        unionmission_get(cla, "연맹임무_3")
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

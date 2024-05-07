@@ -109,100 +109,123 @@ def unionmission_get(cla, sche):
         is_union_mission = True
         for i in range(30):
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\6.PNG"
+            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\6.PNG"
+            # img_array = np.fromfile(full_path, np.uint8)
+            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            # imgs_ = imgs_set_(200, 110, 210, 130, cla, img, 0.9)
+            # if imgs_ is not None and imgs_ != False:
+            #     print("미션 다 받음", imgs_)
+            #     break
+            # else:
+            print("미션을 받자", i)
+            # 그만 보기
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(200, 110, 210, 130, cla, img, 0.9)
+            imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("미션 다 받음", imgs_)
-                break
-            else:
-                print("미션을 받자")
-                # 그만 보기
+                click_pos_2(525, 545, cla)
+                time.sleep(0.5)
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    click_pos_2(525, 545, cla)
-                    time.sleep(0.5)
+                    print("mission_confirm", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\yunmasuk.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(120, 140, 170, 600, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("yunmasuk", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+                click_pos_2(860, 1005, cla)
+
+                for e in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 110, 580, 140, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("anymore_mission_end............", imgs_)
+                        is_union_mission = False
+                        break
+                    time.sleep(0.1)
+
+            else:
+                if lv_y > 127:
+                    lv_y -= 35
+                    click_pos_2(60, lv_y, cla)
+                elif lv_y == 126:
+                    print("전부 다 받아버리기")
+                    all_get = True
+                    break
+            time.sleep(0.5)
+
+
+        if all_get == True and is_union_mission == True:
+            for i in range(30):
+                # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\6.PNG"
+                # img_array = np.fromfile(full_path, np.uint8)
+                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                # imgs_ = imgs_set_(200, 110, 210, 130, cla, img, 0.9)
+                # if imgs_ is not None and imgs_ != False:
+                #     print("미션 다 받음", imgs_)
+                #     break
+                # else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(430, 510, 620, 560, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("anymore_mission", imgs_)
+                    lv_y += 35
+                    if standard_y >= lv_y:
+                        click_pos_2(60, lv_y, cla)
+                    else:
+                        break
+                else:
+                    # 그만 보기
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("mission_confirm", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\yunmasuk.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(120, 140, 170, 600, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("yunmasuk", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                    click_pos_2(860, 1005, cla)
-
-                else:
-                    if lv_y > 127:
-                        lv_y -= 35
-                        click_pos_2(60, lv_y, cla)
-                    elif lv_y == 126:
-                        print("전부 다 받아버리기")
-                        all_get = True
-                        break
-            time.sleep(0.5)
-
-
-        if all_get == True:
-            for i in range(30):
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\6.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(200, 110, 210, 130, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    print("미션 다 받음", imgs_)
-                    break
-                else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(430, 510, 620, 560, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("anymore_mission", imgs_)
-                        lv_y += 35
-                        if standard_y >= lv_y:
-                            click_pos_2(60, lv_y, cla)
-                        else:
-                            break
-                    else:
-                        # 그만 보기
+                        click_pos_2(525, 545, cla)
+                        time.sleep(0.5)
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_2(525, 545, cla)
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
+                            print("mission_confirm", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\kill.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(120, 135, 400, 600, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("kill", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        click_pos_2(860, 1005, cla)
+
+                        for e in range(5):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                            imgs_ = imgs_set_(400, 110, 580, 140, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("mission_confirm", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\kill.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(120, 135, 400, 600, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("kill", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
-                            click_pos_2(860, 1005, cla)
-
+                                print("anymore_mission_end............", imgs_)
+                                is_union_mission = False
+                                break
+                            time.sleep(0.1)
+                if is_union_mission == False:
+                    break
         # 나가기
 
         myQuest_play_add(cla, sche)

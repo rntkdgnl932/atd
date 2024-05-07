@@ -14,6 +14,9 @@ flower_songari
 flower_sunattack
 ganghwasuk_bangugoo
 gogi_highclass
+ha_baltob_1
+ha_bbool_1
+ha_gitul_1
 jelyunsuk
 jogag_highclass
 segongsuk
