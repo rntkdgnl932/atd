@@ -111,7 +111,7 @@ def groupmission_get(cla, sche):
                     click_pos_2(875, 1000, cla)
             time.sleep(0.5)
 
-        is_group_mission = True
+        end = False
         for i in range(30):
 
             # 아래는 수락 있는지 파악하기
@@ -132,7 +132,7 @@ def groupmission_get(cla, sche):
                     print("soolock", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                    end = False
+
                     for e in range(10):
 
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\anymore_mission.PNG"
@@ -171,7 +171,16 @@ def groupmission_get(cla, sche):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 break
                             else:
-                                click_pos_2(235, 1000, cla)
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\anymore_refresh.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(380, 100, 570, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    # 수락 끝
+                                    end = True
+                                    break
+                                else:
+                                    click_pos_2(235, 1000, cla)
                             time.sleep(1)
             else:
                 for r in range(5):
