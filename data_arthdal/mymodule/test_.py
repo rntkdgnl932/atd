@@ -26,7 +26,7 @@ def go_test():
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
-    from function_game import imgs_set_for
+    from function_game import imgs_set_for, get_region
     from union_mission import unionmission_get
     from chango import chango_start
 
@@ -34,7 +34,7 @@ def go_test():
     from functools import partial
     ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
-    cla = "three"
+    cla = "one"
 
     if cla == "one":
         plus = 0
@@ -50,29 +50,16 @@ def go_test():
         plus = 960 * 5
     try:
         print("test", cla)
+        # 418, 995, 430, 1020
+        pyautogui.screenshot('asd.png', region=(get_region(418, 995, 432, 1020, cla)))
 
-        for r in range(5):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\refresh.PNG"
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 590, 640, 640, cla, img, 0.9)
+            imgs_ = imgs_set_(418, 995, 432, 1020, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                print("refresh.....")
-                break
-            else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\group_mission\\anymore_refresh.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(380, 100, 570, 150, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    # 수락 끝
-                    end = True
-                    print("anymore_refresh.....")
-                    break
-                else:
-                    click_pos_2(235, 1000, cla)
-            time.sleep(1)
+                print("i", i, imgs_)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
