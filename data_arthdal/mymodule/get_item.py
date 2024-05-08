@@ -339,6 +339,17 @@ def get_event_point_click(cla, data):
                         if exit_count > 2:
                             break
                 time.sleep(0.3)
+            click_pos_2(570, 480, cla)
+            for i in range(5):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\mini_close_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(540, 360, 600, 410, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("mini_close_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    get_event_clicked(cla)
+                time.sleep(0.1)
 
         elif data == "level":
             for i in range(3):
@@ -382,6 +393,53 @@ def get_event_point_click(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         print("point_six", imgs_)
                         click_pos_reg(imgs_.x - 100, imgs_.y + 3, cla)
+                        get_event_clicked(cla)
+
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\mini_close_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(540, 360, 600, 410, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("mini_close_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            get_event_clicked(cla)
+                        else:
+                            exit_count += 1
+                            if exit_count > 2:
+                                break
+                    time.sleep(0.3)
+            click_pos_2(570, 480, cla)
+            for i in range(5):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\mini_close_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(540, 360, 600, 410, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("mini_close_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    get_event_clicked(cla)
+                time.sleep(0.1)
+
+        elif data == "seven":
+            exit_count = 0
+            for i in range(20):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\seven\\point_seven.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 600, 640, 635, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("point_seven", imgs_)
+                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    get_event_clicked(cla)
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\seven\\point_seven.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(200, 600, 640, 635, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("point_seven", imgs_)
+                        click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                         get_event_clicked(cla)
 
                     else:
