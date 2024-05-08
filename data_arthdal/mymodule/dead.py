@@ -115,7 +115,30 @@ def out_dead_recovery(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(400, 435, 550, 490, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    click_pos_2(560, 590, cla)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\view_silver.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(470, 510, 510, 570, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(560, 590, cla)
+                    else:
+                        why = "부활 복구시 은화 안보이는 에러..."
+                        print(why)
+                        line_to_me(cla, why)
+                        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                        file_path = dir_path + "\\start.txt"
+                        # cla.txt
+                        cla_data = str(v_.now_cla) + "cla"
+                        file_path2 = dir_path + "\\" + cla_data + ".txt"
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            data = 'no'
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        with open(file_path2, "w", encoding='utf-8-sig') as file:
+                            data = v_.now_cla
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        os.execl(sys.executable, sys.executable, *sys.argv)
                     break
 
                 else:
