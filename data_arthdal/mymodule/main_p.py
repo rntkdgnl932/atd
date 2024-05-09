@@ -61,6 +61,7 @@ from group_mission import groupmission_start
 from dungeon import dungeon_start
 from potion import buy_potion_buf
 from union_mission import unionmission_get
+from fishing import fishing_start
 
 from server import game_start
 import variable as v_
@@ -955,9 +956,9 @@ class FirstTab(QWidget):
         # self.one_cla_id_now = QLabel("       현재 내 아이디 : " + thismyid_one + "\n\n")
 
         # 마을 의뢰
-        self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
+        self.com_group6 = QGroupBox('육성, 각종템받기, 거래소, 낚시, 자동사냥')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '캐릭터바꾸기', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '서브퀘스트', '자동사냥']
+        list6 = ['스케쥴 선택', '캐릭터바꾸기', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '서브퀘스트', '낚시하기', '자동사냥']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -3384,6 +3385,8 @@ class game_Playing(QThread):
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "서브퀘스트":
                                     subquest_start(v_.now_cla, result_schedule_)
+                                elif result_schedule_ == "낚시하기":
+                                    fishing_start(v_.now_cla, result_schedule_)
                                 elif '세력임무' in result_schedule_:
                                     groupmission_start(v_.now_cla, result_schedule_)
                                 elif '연맹임무받기' in result_schedule_:

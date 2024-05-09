@@ -269,7 +269,7 @@ def tuto_skip(cla):
         imgs_ = imgs_set_(900, 55, 950, 100, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("esc_1", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
+            click_pos_reg(imgs_.x, imgs_.y - 15, cla)
 
             is_esc = True
             is_esc_count = 0
@@ -289,7 +289,7 @@ def tuto_skip(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("esc_1", imgs_)
                     is_esc_count = 0
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    click_pos_reg(imgs_.x, imgs_.y - 15, cla)
                     pyautogui.press('f')
                     # pyautogui.press('esc')
                 else:
@@ -300,7 +300,7 @@ def tuto_skip(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("esc_2", imgs_)
                         is_esc_count = 0
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        click_pos_reg(imgs_.x, imgs_.y - 15, cla)
                         pyautogui.press('f')
                         # pyautogui.press('esc')
                     else:

@@ -9,6 +9,9 @@ available_potion = 1
 
 dungeon_ready_count = 0
 
+# 낚시
+get_exp = "none"
+
 
 # 게임 및 폴더 관련
 this_game = "아스달"

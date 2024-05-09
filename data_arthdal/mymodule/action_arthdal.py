@@ -365,6 +365,7 @@ def out_check(cla):
 def move_check(cla):
     import numpy as np
     import cv2
+    import pyautogui
 
     from function_game import imgs_set_, click_pos_reg
 
@@ -408,10 +409,18 @@ def move_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        is_move_count += 1
-                        if is_move_count > 5:
-                            is_move = False
-                            break
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\skip\\esc_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(900, 55, 950, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("esc_1", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y - 15, cla)
+                        else:
+                            is_move_count += 1
+                            if is_move_count > 5:
+                                is_move = False
+                                break
                     time.sleep(0.3)
             time.sleep(1)
         return is_move

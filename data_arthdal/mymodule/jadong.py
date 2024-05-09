@@ -393,7 +393,7 @@ def jadong_spot_in(cla):
                     if clicked == True:
                         for i in range(10):
                             move_check(cla)
-                            time.sleep(0.5)
+                            time.sleep(1)
 
                         print("도착한듯")
 

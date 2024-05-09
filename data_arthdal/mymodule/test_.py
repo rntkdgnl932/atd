@@ -14,7 +14,7 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region, mouse_move_cpp, text_check_get
 
     from tutorial import tuto_imgs_scan
     from action_arthdal import out_check, juljun_off, juljun_check, go_maul
@@ -29,6 +29,7 @@ def go_test():
     from function_game import imgs_set_for, get_region
     from union_mission import unionmission_get
     from chango import chango_start
+    from fishing import fishing_spot_in
 
     from PIL import ImageGrab
     from functools import partial
@@ -50,16 +51,44 @@ def go_test():
         plus = 960 * 5
     try:
         print("test", cla)
-        # 418, 995, 430, 1020
-        pyautogui.screenshot('asd.png', region=(get_region(418, 995, 432, 1020, cla)))
 
-        for i in range(10):
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
+        # fishing_spot_in(cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 740, 440, 840, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("fishing_point_1", imgs_)
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(418, 995, 432, 1020, cla, img, 0.9)
+            imgs_ = imgs_set_(300, 800, 370, 870, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("i", i, imgs_)
+                print("fishing_point_2", imgs_)
+                click_pos_reg(imgs_.x + 70, imgs_.y - 35, cla)
+        # result_text = text_check_get(37, 140, 180, 160, cla)
+        # print("result_text", result_text)
+        # if "(" in result_text:
+        #     result_split = result_text.split("(")
+        #     print("result_split[0]", result_split[0])
+        # else:
+        #     print("파악 불가")
+
+
+
+
+        # # 418, 995, 430, 1020
+        # pyautogui.screenshot('asd.png', region=(get_region(418, 995, 432, 1020, cla)))
+        #
+        # for i in range(10):
+        #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(418, 995, 432, 1020, cla, img, 0.9)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("i", i, imgs_)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
