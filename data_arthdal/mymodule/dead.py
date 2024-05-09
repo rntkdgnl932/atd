@@ -115,11 +115,26 @@ def out_dead_recovery(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(400, 435, 550, 490, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\view_silver.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(470, 510, 510, 570, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
+
+                    is_btn = False
+                    for b in range(3):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\view_silver.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(470, 510, 510, 570, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_btn = True
+                            break
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dead\\free_recovery_des.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(460, 510, 550, 550, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_btn = True
+                            break
+                        time.sleep(0.5)
+
+                    if is_btn == True:
                         click_pos_2(560, 590, cla)
                     else:
                         why = "부활 복구시 은화 안보이는 에러..."
