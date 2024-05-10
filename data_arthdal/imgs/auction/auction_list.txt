@@ -10,6 +10,14 @@ choo_ggori
 clothes_commonclass
 clothes_highclass
 dlggae
+fish_carp_redsong
+fish_eel_crown
+fish_goby
+fish_loach_soosoo
+fish_pearl_bling
+fish_pearl_highclass
+fish_sandjoosa
+
 flower_songari
 flower_sunattack
 ganghwasuk_bangugoo
