@@ -53,7 +53,7 @@ def dead_check(cla, sche):
 
             buy_potion(cla)
 
-            if sche == "튜토육성" or sche == "서브퀘스트":
+            if sche == "튜토육성" or sche == "서브퀘스트" or sche == "낚시하기":
                 myQuest_play_add(cla, sche)
 
         return is_dead

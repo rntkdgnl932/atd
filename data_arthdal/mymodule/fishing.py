@@ -16,9 +16,12 @@ def fishing_start(cla, sche):
     from cleen_screen import cleen_screen_start
     from schedule import myQuest_play_add
     from cleen_screen import cleen_screen_start
+    from dead import dead_check
 
     from massenger import line_to_me
     try:
+
+        dead_check(cla, sche)
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
@@ -28,6 +31,8 @@ def fishing_start(cla, sche):
             imgs_ = imgs_set_(30, 70, 100, 105, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("juljun_hajesan", imgs_)
+
+
 
                 result_text = text_check_get(37, 140, 180, 160, cla)
                 print("result_text", result_text)
@@ -42,7 +47,7 @@ def fishing_start(cla, sche):
                         v_.get_exp = result_split[0]
 
                         write_count = 0
-                        for i in range(15):
+                        for i in range(17):
                             write_point = "."
                             write_count += 1
 
