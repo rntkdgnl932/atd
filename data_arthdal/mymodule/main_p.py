@@ -744,10 +744,10 @@ class FirstTab(QWidget):
         self.del_ = QPushButton('삭제')
         self.del_.clicked.connect(self.mySchedule_del)
         # 스케쥴 초기화
-        self.clear = QPushButton('초기화')
+        self.clear = QPushButton('낚시 초기화')
         self.clear.clicked.connect(self.mySchedule_refresh)
         # 스케쥴 완전 초기화
-        self.all_clear = QPushButton('완전 초기화')
+        self.all_clear = QPushButton('초기화')
         self.all_clear.clicked.connect(self.mySchedule_refresh_all)
 
         # self.setItems = QPushButton('Set Items')
@@ -2424,6 +2424,70 @@ class FirstTab(QWidget):
                 print('디렉토리 존재하지 않음')
                 os.makedirs(dir_path)
 
+            #######################################################
+
+
+            with open(file_path, "r", encoding='utf-8-sig') as file:
+                lines = file.read().splitlines()
+                lines = ' '.join(lines).split()
+
+                isSchedule_ = False
+                while isSchedule_ is False:
+                    if lines == [] or lines == "":
+                        print("스케쥴이 비었다 : myQuest_play_check")
+                        with open(file_path3, "r", encoding='utf-8-sig') as file:
+                            schedule_ready = file.read()
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            file.write(schedule_ready)
+                        with open(file_path, "r", encoding='utf-8-sig') as file:
+                            lines = file.read().splitlines()
+                    else:
+                        isSchedule_ = True
+                # 표 수정
+                reset_schedule_ = ""
+                for i in range(len(lines)):
+                    complete_ = lines[i].split(":")
+                    for j in range(len(complete_)):
+                        if j < 3:
+                            reset_schedule_ += complete_[j] + ":"
+                        if j == 3:
+                            if '낚시하기' in complete_[2]:
+                                reset_schedule_ += '대기중:'
+                            else:
+                                reset_schedule_ += complete_[j] + ":"
+                        if 3 < j < 7:
+                            reset_schedule_ += complete_[j] + ":"
+                        if j == 7:
+
+                            if '낚시하기' in complete_[6]:
+                                reset_schedule_ += '대기중\n'
+                            else:
+                                reset_schedule_ += complete_[j] + "\n"
+
+                print('reset_schedule_표 수정', reset_schedule_)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write(reset_schedule_)
+
+                # 백업 수정
+                reset_schedule_ = ""
+                for i in range(len(lines)):
+                    complete_ = lines[i].split(":")
+                    for j in range(len(complete_)):
+                        if j < 3:
+                            reset_schedule_ += complete_[j] + ":"
+                        if j == 3:
+                            reset_schedule_ += '대기중:'
+                        if 3 < j < 7:
+                            reset_schedule_ += complete_[j] + ":"
+                        if j == 7:
+                            reset_schedule_ += '대기중\n'
+
+                print('reset_schedule_백업 수정', reset_schedule_)
+                with open(file_path3, "w", encoding='utf-8-sig') as file:
+                    file.write(reset_schedule_)
+
+            #######################################################
+
             isRefresh = False
             while isRefresh is False:
                 if os.path.isfile(file_path13) == True:
@@ -2440,12 +2504,17 @@ class FirstTab(QWidget):
                     with open(file_path13, "w", encoding='utf-8-sig') as file:
                         file.write(str(4))
 
-            with open(file_path3, "r", encoding='utf-8-sig') as file:
+            # with open(file_path3, "r", encoding='utf-8-sig') as file:
+            #     lines = file.read()
+            #     # lines = file.read().splitlines()
+            #     print('line_refresh', lines)
+            # with open(file_path, "w", encoding='utf-8-sig') as file:
+            #     file.write(lines)
+
+            with open(file_path, "r", encoding='utf-8-sig') as file:
                 lines = file.read()
-                # lines = file.read().splitlines()
-                print('line_refresh', lines)
-            with open(file_path, "w", encoding='utf-8-sig') as file:
-                file.write(lines)
+
+            ############################################################
 
             nowDay_ = datetime.today().strftime("%Y%m%d")
             nowDay = int(nowDay_)
@@ -2544,11 +2613,17 @@ class FirstTab(QWidget):
                             if j < 3:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 3:
-                                reset_schedule_ += '대기중:'
+                                if '낚시하기' in complete_[2]:
+                                    reset_schedule_ += complete_[j] + ":"
+                                else:
+                                    reset_schedule_ += '대기중:'
                             if 3 < j < 7:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 7:
-                                reset_schedule_ += "대기중\n"
+                                if '낚시하기' in complete_[6]:
+                                    reset_schedule_ += complete_[j] + "\n"
+                                else:
+                                    reset_schedule_ += '대기중\n'
                     print('reset_schedule_', reset_schedule_)
                     with open(file_path, "w", encoding='utf-8-sig') as file:
                         file.write(reset_schedule_)
