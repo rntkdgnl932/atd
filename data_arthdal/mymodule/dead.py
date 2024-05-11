@@ -203,7 +203,8 @@ def out_dead_recovery(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
 
                 time.sleep(0.5)
-
+            # if sche == "튜토육성" or sche == "서브퀘스트" or sche == "낚시하기":
+            #     myQuest_play_add(cla, sche)
     except Exception as e:
         print(e)
 

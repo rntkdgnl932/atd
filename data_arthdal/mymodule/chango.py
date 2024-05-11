@@ -56,7 +56,7 @@ def chango_ready(cla):
 
                 # 계정창고
 
-                for i in range(5):
+                for i in range(3):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -75,8 +75,8 @@ def chango_ready(cla):
                             break
                         else:
                             click_pos_2(50, 150, cla)
-                            time.sleep(0.5)
-                            click_pos_2(905, 1005, cla)
+                            # time.sleep(0.5)
+                            # click_pos_2(905, 1005, cla)
                     time.sleep(0.5)
 
                 # 전부 창고에 넣기
@@ -123,7 +123,7 @@ def chango_ready(cla):
                     time.sleep(1)
 
                 # 캐릭터창고
-                for i in range(10):
+                for i in range(3):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -142,8 +142,8 @@ def chango_ready(cla):
                             break
                         else:
                             click_pos_2(50, 105, cla)
-                            time.sleep(0.5)
-                            click_pos_2(905, 1005, cla)
+                            # time.sleep(0.5)
+                            # click_pos_2(905, 1005, cla)
                     time.sleep(0.5)
 
                 # 전부 창고에 넣기
