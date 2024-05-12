@@ -245,7 +245,13 @@ def chango_ready(cla):
                                         break
 
                                 time.sleep(0.5)
-
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\important_point.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                drag_pos(120, 150, 120, 240, cla)
 
                     time.sleep(1)
 
