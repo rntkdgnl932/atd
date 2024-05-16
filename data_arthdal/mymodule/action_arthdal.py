@@ -211,8 +211,7 @@ def moniter_check(cla):
             imgs_ = imgs_set_(360, 500, 440, 540, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("long_time", imgs_)
-                why = "아스달 장시간 입력이 없다..."
-                server_alrim = True
+
                 # 490, 590
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\server_failed.PNG"
@@ -265,6 +264,62 @@ def moniter_check(cla):
     except Exception as e:
         print(e)
         return 0
+
+def longtime_after(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from stop_event18 import _stop_please
+    from schedule import myQuest_play_check
+    from character_select_and_game_start import game_ready
+    from massenger import line_to_me
+
+    try:
+        restarted = False
+        for i in range(30):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                # 스케쥴부터 불러오기
+                result_schedule = myQuest_play_check(cla, "check")
+                print("result_schedule", result_schedule)
+                character_id = result_schedule[0][1]
+                game_ready(cla, character_id)
+                restarted = True
+                break
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\out_screen.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(20, 900, 200, 980, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_screen")
+                    click_pos_2(480, 500, cla)
+                else:
+                    _stop_please(cla)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\alrim_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 400, 700, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(1)
+        if restarted == False:
+            why = "아스달 장시간 입력이 없다..."
+            line_to_me(cla, why)
+            os.execl(sys.executable, sys.executable, *sys.argv)
+        else:
+            why = "아스달 장시간이었지만 재로그인 성공"
+            line_to_me(cla, why)
+
+    except Exception as e:
+        print(e)
+        return 0
+
 def out_check(cla):
     import numpy as np
     import cv2
@@ -449,6 +504,8 @@ def go_maul(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                drag_pos(120, 150, 120, 240, cla)
+                time.sleep(1)
 
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -498,6 +555,8 @@ def go_maul(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+                    drag_pos(120, 150, 120, 240, cla)
+                    time.sleep(1)
 
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
