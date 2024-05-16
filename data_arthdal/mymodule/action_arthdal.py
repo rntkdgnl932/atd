@@ -211,7 +211,7 @@ def moniter_check(cla):
             imgs_ = imgs_set_(360, 500, 440, 540, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("long_time", imgs_)
-
+                longtime_after(cla)
                 # 490, 590
         else:
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\server_failed.PNG"
