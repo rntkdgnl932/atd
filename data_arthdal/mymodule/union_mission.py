@@ -148,11 +148,20 @@ def unionmission_get(cla, sche):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 110, 580, 140, cla, img, 0.8)
+                    imgs_ = imgs_set_(390, 110, 580, 140, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("anymore_mission_end............", imgs_)
                         is_union_mission = False
                         break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(390, 110, 580, 140, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_mission_end2............", imgs_)
+                            is_union_mission = False
+                            break
                     time.sleep(0.1)
 
             else:
