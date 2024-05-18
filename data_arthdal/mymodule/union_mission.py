@@ -144,6 +144,8 @@ def unionmission_get(cla, sche):
                 time.sleep(0.5)
                 click_pos_2(860, 1005, cla)
 
+                i_end = False
+
                 for e in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -152,6 +154,7 @@ def unionmission_get(cla, sche):
                     if imgs_ is not None and imgs_ != False:
                         print("anymore_mission_end............", imgs_)
                         is_union_mission = False
+                        i_end = True
                         break
                     else:
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end2.PNG"
@@ -161,9 +164,11 @@ def unionmission_get(cla, sche):
                         if imgs_ is not None and imgs_ != False:
                             print("anymore_mission_end2............", imgs_)
                             is_union_mission = False
+                            i_end = True
                             break
                     time.sleep(0.1)
-
+                if i_end == True:
+                    break
             else:
                 if lv_y > 127:
                     lv_y -= 35
