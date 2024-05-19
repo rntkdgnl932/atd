@@ -26,7 +26,7 @@ def chango_ready(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
 
     from action_arthdal import menu_open, go_maul, move_check
     from cleen_screen import cleen_screen_start
@@ -148,45 +148,46 @@ def chango_ready(cla):
 
                 # 전부 창고에 넣기
                 for g in range(3):
-                    x_reg = 850 + (g * 40)
-                    click_pos_2(x_reg, 90, cla)
-                    time.sleep(0.5)
+                    if g != 2:
+                        x_reg = 850 + (g * 40)
+                        click_pos_2(x_reg, 90, cla)
+                        time.sleep(0.5)
 
-                    x_get = 765
+                        x_get = 765
 
-                    for c in range(30):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(770, 520, 920, 570, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                        for c in range(30):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                            imgs_ = imgs_set_(770, 520, 920, 570, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("item_term_completion")
-                                # x 값 늘리기
-                                x_get += 40
-                                why = "기간 지난 아이템 있다. 없애주자"
-                                line_to_me(cla, why)
-
-                                for r in range(10):
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("x_get += 40 적용중...")
-                                    else:
-                                        break
-                                    time.sleep(1)
+                                break
                             else:
-                                click_pos_2(x_get, 155, cla)
-                        time.sleep(0.5)
-                    time.sleep(1)
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("item_term_completion")
+                                    # x 값 늘리기
+                                    x_get += 40
+                                    why = "기간 지난 아이템 있다. 없애주자"
+                                    line_to_me(cla, why)
+
+                                    for r in range(10):
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\item_term_completion.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("x_get += 40 적용중...")
+                                        else:
+                                            break
+                                        time.sleep(1)
+                                else:
+                                    click_pos_2(x_get, 155, cla)
+                            time.sleep(0.5)
+                        time.sleep(1)
                 # 나가기
                 for i in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
