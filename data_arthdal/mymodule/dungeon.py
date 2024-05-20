@@ -32,11 +32,16 @@ def dungeon_start(cla, sche):
 
         if result_juljun == True:
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(juljun_map) + "\\0.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(30, 70, 90, 110, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
+            is_dun = False
+            for i in range(2):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(juljun_map) + "\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 70, 130, 110, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    is_dun = True
+
+            if is_dun == True:
                 result_attack = dungeon_attack_check(cla)
                 if result_attack == "attack":
                     v_.dungeon_ready_count = 0
@@ -209,21 +214,17 @@ def dungeon_in(cla, sche):
                     result_out = out_check(cla)
 
                     if result_out == True:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\0.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(60, 100, 150, 140, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            in_check = True
-                            break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(dungeon_out) + "\\1.PNG"
+
+                        for d in range(2):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
+                                dungeon_out) + "\\" + str(d) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(60, 100, 150, 140, cla, img, 0.8)
+                            imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 in_check = True
                                 break
+
                     time.sleep(1)
 
 
