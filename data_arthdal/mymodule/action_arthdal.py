@@ -423,6 +423,7 @@ def move_check(cla):
     import pyautogui
 
     from function_game import imgs_set_, click_pos_reg
+    from massenger import line_to_me
 
     try:
         print("move_check", cla)
@@ -437,10 +438,11 @@ def move_check(cla):
             print("move_1", imgs_)
             is_move = True
 
-
+        infinite_loop_count = 0
         write_count = 0
         while is_move is True:
             write_count += 1
+            infinite_loop_count += 1
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\move\\move_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -453,7 +455,28 @@ def move_check(cla):
                     write_count = 1
 
                 view_print = "이동중" + (write_point * write_count)
-                print(view_print)
+                print(view_print, infinite_loop_count)
+
+                if infinite_loop_count > 300:
+                    why = str(v_.this_game) + " 5분 동안 이동중이라 껐다."
+                    print(why)
+                    line_to_me(cla, why)
+
+                    dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                    file_path = dir_path + "\\start.txt"
+                    # cla.txt
+                    cla_data = str(cla) + "cla"
+                    file_path2 = dir_path + "\\" + cla_data + ".txt"
+                    with open(file_path, "w", encoding='utf-8-sig') as file:
+                        data = 'no'
+                        file.write(str(data))
+                        time.sleep(0.2)
+                    with open(file_path2, "w", encoding='utf-8-sig') as file:
+                        data = cla
+                        file.write(str(data))
+                        time.sleep(0.2)
+                    os.execl(sys.executable, sys.executable, *sys.argv)
+
             else:
                 is_move_count = 0
                 for i in range(10):
