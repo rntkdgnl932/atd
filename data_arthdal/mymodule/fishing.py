@@ -265,15 +265,15 @@ def fishing_spot_in(cla):
                                     clicked = True
                                     time.sleep(0.5)
                                     break
-                                else:
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\cannotjoin.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(400, 110, 515, 150, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        time.sleep(0.5)
-                                        cannotjoin = True
-                                        break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\cannotjoin.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 110, 515, 150, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                time.sleep(0.5)
+                                cannotjoin = True
+                                break
                     time.sleep(0.5)
 
 
