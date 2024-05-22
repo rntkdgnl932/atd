@@ -85,6 +85,7 @@ def fishing_spot_in(cla):
 
     from action_arthdal import loading, out_check, menu_open, move_check, juljun_check, juljun_on
     from cleen_screen import cleen_screen_start
+    from schedule import myQuest_play_add
 
     from massenger import line_to_me
 
@@ -231,6 +232,7 @@ def fishing_spot_in(cla):
                     time.sleep(1)
 
                 clicked = False
+                cannotjoin = False
                 for i in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -263,6 +265,15 @@ def fishing_spot_in(cla):
                                     clicked = True
                                     time.sleep(0.5)
                                     break
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\cannotjoin.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 110, 515, 150, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        time.sleep(0.5)
+                                        cannotjoin = True
+                                        break
                     time.sleep(0.5)
 
 
@@ -300,10 +311,14 @@ def fishing_spot_in(cla):
 
                         time.sleep(0.5)
                 else:
-                    why = "낚시터 출발 못함"
-                    print(why)
-                    line_to_me(cla, why)
                     world_map = True
+                    if cannotjoin == True:
+                        cleen_screen_start(cla)
+                        myQuest_play_add(cla, "낚시하기")
+                    else:
+                        why = "낚시터 출발 못함"
+                        print(why)
+                        line_to_me(cla, why)
 
 
 
