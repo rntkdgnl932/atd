@@ -27,19 +27,20 @@ def dungeon_start(cla, sche):
             juljun_map = "dun_snake"
         elif data[1] == "태양의신전":
             juljun_map = "dun_sun"
+        elif data[1] == "미하제협곡":
+            juljun_map = "dun_mihaje"
 
         result_juljun = juljun_check(cla)
 
         if result_juljun == True:
 
             is_dun = False
-            for i in range(2):
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(juljun_map) + "\\" + str(i) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 70, 130, 110, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    is_dun = True
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(juljun_map) + "\\" + str(data[2]) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 70, 130, 110, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                is_dun = True
 
             if is_dun == True:
                 result_attack = dungeon_attack_check(cla)
@@ -116,6 +117,15 @@ def dungeon_in(cla, sche):
             dungeon_out = "dun_out_sun"
             dungeon_check = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\sun_temple.PNG"
             x_reg = 360
+            y_reg = 54 + (int(data[2]) * 48)
+            if int(data[2]) > 6:
+                y_reg = 54 + (6 * 48)
+            juljun_map = "dun_sun"
+        elif data[1] == "미하제협곡":
+            dungeon_ready = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\mihaje_canyon_btn.PNG"
+            dungeon_out = "dun_out_mihaje"
+            dungeon_check = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\mihaje_canyon.PNG"
+            x_reg = 610
             y_reg = 54 + (int(data[2]) * 48)
             if int(data[2]) > 6:
                 y_reg = 54 + (6 * 48)
@@ -215,15 +225,24 @@ def dungeon_in(cla, sche):
 
                     if result_out == True:
 
-                        for d in range(2):
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
-                                dungeon_out) + "\\" + str(d) + ".PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                in_check = True
-                                break
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
+                            dungeon_out) + "\\" + str(data[2]) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            in_check = True
+                            break
+
+                        # for d in range(2):
+                        #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
+                        #         dungeon_out) + "\\" + str(data[2]) + ".PNG"
+                        #     img_array = np.fromfile(full_path, np.uint8)
+                        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        #     imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
+                        #     if imgs_ is not None and imgs_ != False:
+                        #         in_check = True
+                        #         break
 
                     time.sleep(1)
 

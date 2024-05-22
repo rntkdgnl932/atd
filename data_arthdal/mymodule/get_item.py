@@ -215,57 +215,21 @@ def get_event_ex(cla):
             # 835, 687
             # ////////
             # 종류 : seven_six, level, six, fourteen
-            for i in range(3):
+            for i in range(len(read_data)):
+
+                read_order = read_data[i].split(":")
+
+                y_reg_1 = int(read_order[1]) - 22
+                y_reg_2 = int(read_order[1]) + 22
+
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                imgs_ = imgs_set_(800, y_reg_1, 860, y_reg_2, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    for r in pyautogui.locateAllOnScreen(img, region=(800 + plus, 410, 60, 300), confidence=0.8):
-                        last_x = r.left
-                        last_y = r.top
-
-                        click_pos_reg(last_x - 60, last_y + 10, cla)
-                        click_pos_reg(last_x - 60, last_y + 10, cla)
-
-                        # 처음 위치 y 값
-                        standard = 438
-                        # 총 이벤트 합
-                        all_lens = 6
-                        # 가운데 점프
-                        middle_plus = 81
-                        # 첫번째 이벤트가 끝나는 위치
-                        second_event = 6
-
-                        order = 0
-
-                        for c in range(all_lens):
-                            front_num = standard - 22
-                            back_num = standard + 22
-                            # 두번째 이벤트 위치
-                            if i + 1 == second_event:
-                                standard += middle_plus
-                            else:
-                                standard += 42
-
-                            print(i + 1, " result : ", front_num, back_num)
-                            if front_num < last_y < back_num:
-                                order = i + 1
-                                print("order : ", order)
-                                break
-                        if order != 0:
-                            for c in range(len(read_data)):
-                                read_order = read_data[i].split(":")
-                                if str(read_order[0]) == str(order):
-                                    break
-                            print("txt랑 비교하기", read_order)
-                            get_event_point_click(cla, read_order[1])
-                else:
-                    cleen_screen_start(cla)
-                    break
+                    click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                    time.sleep(0.5)
+                    get_event_point_click(cla, read_order[2])
                 time.sleep(0.5)
 
 
@@ -838,7 +802,7 @@ def get_upjuk(cla):
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(930, 170, 960, 200, cla, img, 0.8)
+        imgs_ = imgs_set_(880, 165, 930, 200, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("업적", imgs_)
             # click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
@@ -864,7 +828,7 @@ def get_upjuk(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(930, 170, 960, 200, cla, img, 0.8)
+                    imgs_ = imgs_set_(880, 165, 930, 200, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("업적", imgs_)
                         click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
