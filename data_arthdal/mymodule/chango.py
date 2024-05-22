@@ -47,7 +47,7 @@ def chango_ready(cla):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+            imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("chango_out_btn...")
                 chango_in = True
@@ -193,7 +193,7 @@ def chango_ready(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                    imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_2(925, 55, cla)
                     else:
@@ -205,7 +205,7 @@ def chango_ready(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                    imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
@@ -241,7 +241,7 @@ def chango_ready(cla):
                                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(150, 980, 220, 1020, cla, img, 0.8)
+                                    imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
                                         break
 

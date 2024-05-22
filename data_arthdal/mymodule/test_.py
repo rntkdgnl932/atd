@@ -76,18 +76,12 @@ def go_test():
         # # else:
         # #     print("파악 불가")
 
-        get_event(cla)
-
-
-        # # 418, 995, 430, 1020
-        # pyautogui.screenshot('asd.png', region=(get_region(418, 995, 432, 1020, cla)))
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_btn.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
+        imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("buy_btn", imgs_)
+            print("chango_out_btn", imgs_)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
