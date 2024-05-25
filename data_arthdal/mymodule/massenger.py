@@ -190,7 +190,7 @@ def line_monitor(game, cla):
     import numpy as np
     import os.path
     import cv2
-    from function_game import imgs_set, click_pos_reg
+    from function_game import imgs_set, click_pos_reg, imgs_set_
     import time
     from datetime import datetime, timedelta, date
     from server import server_get
@@ -256,10 +256,18 @@ def line_monitor(game, cla):
 
                 # 장시간
                 jangsigan = False
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\account_security.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(5, 800, 300, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("account_security")
+                    why = "아스달 바깥 화면으로 튕기뿌다"
+                    jangsigan = True
 
 
                 if jangsigan == True:
-                    ms_ = str(game) + str(" 죽어뿌따 ㅠㅅㅠ")
+                    ms_ = str(why)
                     line_to_me(cla, ms_)
 
 

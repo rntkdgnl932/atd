@@ -249,6 +249,15 @@ def moniter_check(cla):
                             print("out_screen")
                             why = "아스달 바깥 화면으로 튕겼다"
                             server_alrim = True
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\account_security.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(5, 800, 300, 1040, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("account_security")
+                                why = "아스달 바깥 화면으로 튕겼다"
+                                server_alrim = True
 
         if server_alrim == True:
             line_to_me(cla, why)
@@ -300,13 +309,21 @@ def longtime_after(cla):
                     print("out_screen")
                     click_pos_2(480, 500, cla)
                 else:
-                    _stop_please(cla)
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\alrim_confirm.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\account_security.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(300, 400, 700, 700, cla, img, 0.8)
+                    imgs_ = imgs_set_(5, 800, 300, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        print("account_security")
+                        click_pos_2(480, 500, cla)
+                    else:
+                        _stop_please(cla)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\alrim_confirm.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 400, 700, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
             time.sleep(1)
         if restarted == False:
             why = "아스달 장시간 입력이 없다..."
