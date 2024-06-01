@@ -867,9 +867,9 @@ def drag_pos(pos_1, pos_2, pos_3, pos_4, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-        pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
-        pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.3)
-        time.sleep(0.3)
+        # pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
+        # pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.3)
+        # time.sleep(0.3)
 
         if v_.now_arduino == "on":
 
@@ -881,11 +881,11 @@ def drag_pos(pos_1, pos_2, pos_3, pos_4, cla):
             # 마우스 누르기
             drag_pos_Press()
             # # 0.2초
-            # time.sleep(0.2)
+            time.sleep(0.2)
             # 마우스 이동
             mouse_move_cpp(pos_3, pos_4, cla)
             # # 0.2초
-            # time.sleep(0.2)
+            time.sleep(0.2)
             # 마우스 떼기
             drag_pos_Release()
             # 0.2초
