@@ -258,6 +258,15 @@ def moniter_check(cla):
                                 print("account_security")
                                 why = "아스달 바깥 화면으로 튕겼다"
                                 server_alrim = True
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\again_connect.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(5, 800, 300, 1040, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("again_connect")
+                                    why = "아스달 계정 연결 실패로 재접속중"
+                                    server_alrim = True
 
         if server_alrim == True:
             line_to_me(cla, why)
