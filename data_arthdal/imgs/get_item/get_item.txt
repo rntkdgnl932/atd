@@ -3,13 +3,13 @@
 3:522:six
 4:564:six
 5:606:six
-6:648:six
+6:685:seven_six
 7:7:drag
 8:8:drag
 9:9:drag
 10:425:six
 11:470:six
 12:510:six
-13:590:seven
+13:555:six
 14:630:fourteen
 15:675:seven
