@@ -17,12 +17,12 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region, mouse_move_cpp, text_check_get
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check, juljun_off, juljun_check, go_maul
+    from action_arthdal import out_check, juljun_off, juljun_check, go_maul, menu_open, bag_open
     from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
-    from get_item import get_event, get_specialpackage, get_post, get_upjuk, get_event_point_click
+    from get_item import get_event, get_specialpackage, get_post, get_upjuk, get_event_point_click, get_sangjum, item_open_start
     from auction_arthdal import auction_start, auction_sell_ready
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
@@ -51,6 +51,32 @@ def go_test():
         plus = 960 * 5
     try:
         print("test", cla)
+
+        item_open_start(cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\event_special1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(10, 170, 960, 270, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("event_special...1", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(600, 300, 800, 450, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("close_btn...", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\silver.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 600, 580, 750, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("silver...", imgs_)
+
 
         # fishing_spot_in(cla)
 

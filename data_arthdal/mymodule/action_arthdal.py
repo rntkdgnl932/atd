@@ -36,6 +36,51 @@ def loading():
         plus = 960 * 5
 
 
+def bag_open(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, drag_pos, click_pos_2, click_pos_reg
+    from cleen_screen import cleen_screen_start
+
+    try:
+        print("bag_open", cla)
+
+        is_bag = False
+        is_bag_count = 0
+        while is_bag is False:
+            is_bag_count += 1
+            if is_bag_count > 7:
+                is_bag = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                is_bag = True
+            else:
+                menu_open(cla)
+                for c in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\menu_bag.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(850, 30, 950, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 def juljun_check(cla):
     import numpy as np
@@ -537,7 +582,7 @@ def go_maul(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, drag_pos_py
     from cleen_screen import cleen_screen_start
 
     try:
@@ -573,7 +618,7 @@ def go_maul(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        drag_pos(120, 150, 120, 240, cla)
+                        drag_pos_py(120, 150, 120, 240, cla)
             else:
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -626,7 +671,7 @@ def go_maul(cla):
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
-                            drag_pos(120, 150, 120, 240, cla)
+                            drag_pos_py(120, 150, 120, 240, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

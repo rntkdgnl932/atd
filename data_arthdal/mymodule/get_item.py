@@ -22,6 +22,7 @@ def get_item_start(cla):
         get_specialpackage(cla)
         get_post(cla)
         get_upjuk(cla)
+        get_sangjum(cla)
 
     except Exception as e:
         print(e)
@@ -978,3 +979,555 @@ def get_upjuk(cla):
 
     except Exception as e:
         print(e)
+
+
+
+
+def get_sangjum(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    from action_arthdal import menu_open
+    from cleen_screen import cleen_screen_start
+
+
+    try:
+        print("get_sangjum")
+
+        sangjum_in = False
+        sangjum_in_count = 0
+
+        while sangjum_in is False:
+            sangjum_in_count += 1
+            if sangjum_in_count > 7:
+                sangjum_in = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                # 이벤트 사기
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\taego_jangbi_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 100, 700, 150, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("taego_jangbi_btn", imgs_)
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\event_special1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(10, 170, 700, 270, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("event_special", imgs_)
+                            get_sangjum_event(cla)
+                        else:
+                            break
+
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\sangpoom_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 70, 700, 105, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sangpoom_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+                # 즐겨찾기 사기
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\blanket_purchase_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 100, 950, 150, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("blanket_purchase_btn", imgs_)
+
+                        get_sangjum_blanket_purchase(cla)
+
+                        break
+
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\bookmark_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 70, 950, 105, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("bookmark_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+
+                item_open_start(cla)
+                cleen_screen_start(cla)
+                sangjum_in = True
+
+            else:
+                menu_open(cla)
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\menu_sangjum.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(670, 30, 960, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_sangjum", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+
+
+
+def get_sangjum_event(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+
+    from action_arthdal import go_maul, out_check ,menu_open
+    from cleen_screen import cleen_screen_start
+
+    from massenger import line_to_me
+
+
+    try:
+        print("get_sangjum_event")
+
+        sangjum_in = False
+        sangjum_in_count = 0
+
+        while sangjum_in is False:
+            sangjum_in_count += 1
+            if sangjum_in_count > 7:
+                sangjum_in = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\taego_jangbi_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 100, 700, 150, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("taego_jangbi_btn", imgs_)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\event_special1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(10, 170, 700, 270, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+
+                        sangjum_in = True
+
+                        print("event_special", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        for i in range(10):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\sold_out.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(300, 600, 700, 800, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("sold_out", imgs_)
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(600, 300, 800, 550, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("close_btn...", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(600, 300, 800, 550, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("close_btn...", imgs_)
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\silver.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 600, 580, 750, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("silver...", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.3)
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(600, 300, 800, 550, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("close_btn...", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
+                                    else:
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(600, 300, 800, 550, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("close_btn...", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
+                            time.sleep(0.5)
+
+
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\sangpoom_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 70, 700, 105, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("sangpoom_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+            else:
+                menu_open(cla)
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\menu_sangjum.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(670, 30, 960, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_sangjum", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+
+def get_sangjum_blanket_purchase(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+
+    from action_arthdal import go_maul, out_check, menu_open
+    from cleen_screen import cleen_screen_start
+
+    from massenger import line_to_me
+
+
+    try:
+        print("get_sangjum_blanket_purchase")
+
+        sangjum_in = False
+        sangjum_in_count = 0
+
+        while sangjum_in is False:
+            sangjum_in_count += 1
+            if sangjum_in_count > 7:
+                sangjum_in = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\blanket_purchase_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 100, 950, 150, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("blanket_purchase_btn", imgs_)
+                    sangjum_in = True
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 300, 800, 550, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\blanket_purchase_confirm_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 500, 700, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("blanket_purchase_confirm_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\anymore_bookmark.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 95, 600, 150, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("anymore_bookmark", imgs_)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\blanket_purchase_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(800, 100, 950, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("blanket_purchase_btn", imgs_)
+
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+
+
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\bookmark_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 70, 950, 105, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("bookmark_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+
+            else:
+                menu_open(cla)
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 210, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\menu_sangjum.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(670, 30, 960, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_sangjum", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+
+
+
+
+def item_open_start(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_arthdal import menu_open, bag_open
+    from cleen_screen import cleen_screen_start
+
+
+    try:
+        print("item_open_start")
+
+        item_open = False
+        item_open_count = 0
+
+        while item_open is False:
+            item_open_count += 1
+            if item_open_count > 7:
+                item_open = True
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                item_open = True
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\ilgwal_sayong_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        click_pos_2(885, 85, cla)
+                    time.sleep(0.5)
+
+                my_bag_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\my_item"
+                file_list = os.listdir(my_bag_item)
+                print("file_list", file_list)
+                for s in range(len(file_list)):
+                    result_file_list = file_list[s].split(".")
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\my_item\\" + str(result_file_list[0]) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(735, 125, 955, 955, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print(result_file_list[0], imgs_)
+
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\sayong_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(520, 350, 700, 420, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.3)
+
+                        item_open_ing(cla)
+
+            else:
+                bag_open(cla)
+
+
+
+
+    except Exception as e:
+        print(e)
+
+
+def item_open_ing(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_arthdal import menu_open, bag_open
+    from cleen_screen import cleen_screen_start
+
+    try:
+        print("item_open_ing")
+
+        item_open = False
+        item_open_count = 0
+
+        while item_open is False:
+            item_open_count += 1
+            if item_open_count > 7:
+                item_open = True
+
+            consecutively = False
+            consecutively_ing = False
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\sayong_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(520, 350, 700, 420, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.3)
+
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\confirm.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 630, 700, 700, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\return.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 980, 550, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        consecutively = True
+                        break
+                time.sleep(0.2)
+
+            if consecutively == True:
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\consecutively_sohwan_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(550, 980, 700, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\max.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(530, 570, 600, 620, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            consecutively_ing = True
+                            break
+                        time.sleep(0.1)
+
+            if consecutively_ing == True:
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\max.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(530, 570, 600, 620, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\max.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(530, 570, 600, 620, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            click_pos_2(550, 685, cla)
+                    else:
+                        break
+                    time.sleep(0.5)
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\confirm_bottom.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(280, 980, 420, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    time.sleep(0.5)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\ilgwal_sayong_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    item_open = True
+                    break
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\bag\\confirm_bottom.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(280, 980, 420, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+            time.sleep(0.5)
+
+
+
+
+
+    except Exception as e:
+        print(e)
+
+
+
+
+

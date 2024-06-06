@@ -28,7 +28,7 @@ def boonhae_ready(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_arthdal import menu_open
+    from action_arthdal import menu_open, bag_open
     from cleen_screen import cleen_screen_start
     try:
         # 분해로 ㄱ
@@ -57,16 +57,7 @@ def boonhae_ready(cla):
                         time.sleep(0.5)
 
                 else:
-                    menu_open(cla)
-                    click_pos_2(895, 55, cla)
-                    for c in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\boonhae\\boonhae_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(840, 980, 950, 1020, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        time.sleep(0.5)
+                    bag_open(cla)
             time.sleep(0.5)
 
         # 분해 시작

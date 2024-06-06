@@ -56,32 +56,21 @@ def chango_ready(cla):
 
                 # 계정창고
 
-                for i in range(3):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
+                for i in range(4):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\esay_storage_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 630, 600, 680, cla, img, 0.8)
+                    imgs_ = imgs_set_(170, 970, 270, 1030, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("chango_confirm")
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        break
+                        print("esay_storage_btn", imgs_)
+                        click_pos_2(50, 150, cla)
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item_82.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("anymore_item_82")
-                            break
-                        else:
-                            click_pos_2(50, 150, cla)
-                            # time.sleep(0.5)
-                            # click_pos_2(905, 1005, cla)
+                        break
                     time.sleep(0.5)
 
                 # 전부 창고에 넣기
                 for g in range(3):
-                    x_reg = 850 + (g * 40)
+                    x_reg = 840 + (g * 40)
                     click_pos_2(x_reg, 90, cla)
                     time.sleep(0.5)
 
@@ -123,32 +112,21 @@ def chango_ready(cla):
                     time.sleep(1)
 
                 # 캐릭터창고
-                for i in range(3):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_confirm.PNG"
+                for i in range(4):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\esay_storage_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 630, 600, 680, cla, img, 0.8)
+                    imgs_ = imgs_set_(170, 970, 270, 1030, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("chango_confirm")
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        print("esay_storage_btn", imgs_)
                         break
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\anymore_item_82.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(380, 90, 590, 150, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("anymore_item_82")
-                            break
-                        else:
-                            click_pos_2(50, 105, cla)
-                            # time.sleep(0.5)
-                            # click_pos_2(905, 1005, cla)
+                        click_pos_2(50, 105, cla)
                     time.sleep(0.5)
 
                 # 전부 창고에 넣기
                 for g in range(3):
-                    if g != 2:
+                    if g != 1:
                         x_reg = 850 + (g * 40)
                         click_pos_2(x_reg, 90, cla)
                         time.sleep(0.5)

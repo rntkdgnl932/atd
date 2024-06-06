@@ -36,7 +36,7 @@ def cleen_screen_start(cla):
 
     try:
         # 스케쥴 읽어오기
-        result_schedule = myQuest_play_check(v_.now_cla, "check")
+        result_schedule = myQuest_play_check(cla, "check")
         character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
 

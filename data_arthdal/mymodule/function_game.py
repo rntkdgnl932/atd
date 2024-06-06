@@ -949,6 +949,30 @@ def drag_pos_reg(pos_1, pos_2, pos_3, pos_4, cla):
     except Exception as e:
         print("error:", e)
 
+def drag_pos_py(pos_1, pos_2, pos_3, pos_4, cla):
+    try:
+        import pyautogui
+
+        if cla == 'one':
+            coordinate = 0
+        if cla == 'two':
+            coordinate = 960
+        if cla == 'three':
+            coordinate = 960 * 2
+        if cla == 'four':
+            coordinate = 960 * 3
+        if cla == 'five':
+            coordinate = 960 * 4
+        if cla == 'six':
+            coordinate = 960 * 5
+
+        pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.5)
+        pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.5)
+        time.sleep(0.3)
+
+
+    except Exception as e:
+        print("error:", e)
 
 # def text_check(posX1, posY1, posX2, posY2, text, method, method_pos):
 #     try:
