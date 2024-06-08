@@ -126,8 +126,8 @@ def juljun_off(cla):
             imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 click_pos_2(480, 510, cla)
-                time.sleep(0.1)
-                drag_pos(480, 510, 800, 515, cla)
+                time.sleep(0.5)
+                drag_pos(480, 510, 800, 510, cla)
             else:
                 break
             time.sleep(0.5)
