@@ -23,7 +23,7 @@ def go_test():
     from cleen_screen import cleen_screen_start
     from jadong import jadong_spot_in
     from get_item import get_event, get_specialpackage, get_post, get_upjuk, get_event_point_click, get_sangjum, item_open_start
-    from auction_arthdal import auction_start, auction_sell_ready
+    from auction_arthdal import auction_start, auction_sell_ready, auction_sell_start
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
     from function_game import imgs_set_for, get_region
@@ -52,30 +52,14 @@ def go_test():
     try:
         print("test", cla)
 
-        item_open_start(cla)
+        my_bag_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list"
+        file_list = os.listdir(my_bag_item)
+        print("file_list", file_list)
+        for i in range(len(file_list)):
+            result_file_list = file_list[i].split(".")
+            print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\event_special1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(10, 170, 960, 270, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("event_special...1", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-        else:
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\close_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(600, 300, 800, 450, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("close_btn...", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\silver.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 600, 580, 750, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("silver...", imgs_)
+        auction_sell_start(cla)
 
 
         # fishing_spot_in(cla)

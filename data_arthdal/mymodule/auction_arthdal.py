@@ -214,10 +214,19 @@ def auction_sell_start(cla):
     from cleen_screen import cleen_screen_start
 
     from massenger import line_to_me
+
     file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_list.txt"
     with open(file_path, "r", encoding='utf-8-sig') as file:
         read_data = file.read().splitlines()
         print("read_data", read_data)
+
+    my_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list"
+    file_list = os.listdir(my_item)
+    # print("file_list", file_list)
+    # for i in range(len(file_list)):
+    #     result_file_list = file_list[i].split(".")
+    #     print("result_file_list", result_file_list[0])
+
     try:
         #
         # # 일괄정산
@@ -230,7 +239,10 @@ def auction_sell_start(cla):
         #     time.sleep(0.5)
 
         # 판매시작
-        for i in range(len(read_data)):
+        for i in range(len(file_list)):
+            result_file_list = file_list[i].split(".")
+            read_data = result_file_list[0]
+
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_sell_confirm.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -240,7 +252,7 @@ def auction_sell_start(cla):
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list\\" + str(read_data[i]) + ".PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list\\" + str(read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(710, 170, 940, 1000, cla, img, 0.8)
