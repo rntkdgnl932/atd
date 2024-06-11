@@ -318,8 +318,29 @@ def jadong_spot_in(cla):
                         time.sleep(0.1)
 
                     # 상세 장소 설정
-                    if war_area == "jetbit_pehu":
-                        y_click = 110
+                    for i in range(5):
+                        if war_area == "jetbit_pehu":
+                            y_click = 110
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\rain.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                y_click = imgs_.y
+                                war_area = "rain"
+                                break
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\moon.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    y_click = imgs_.y
+                                    war_area = "moon"
+                                    break
+                        time.sleep(0.1)
 
                     for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
