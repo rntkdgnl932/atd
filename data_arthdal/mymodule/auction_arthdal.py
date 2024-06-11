@@ -215,10 +215,10 @@ def auction_sell_start(cla):
 
     from massenger import line_to_me
 
-    file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_list.txt"
-    with open(file_path, "r", encoding='utf-8-sig') as file:
-        read_data = file.read().splitlines()
-        print("read_data", read_data)
+    # file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_list.txt"
+    # with open(file_path, "r", encoding='utf-8-sig') as file:
+    #     read_data = file.read().splitlines()
+    #     print("read_data", read_data)
 
     my_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list"
     file_list = os.listdir(my_item)
