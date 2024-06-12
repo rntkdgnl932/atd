@@ -33,7 +33,7 @@ def get_event(cla):
     import cv2
     import pyautogui
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, drag_pos_py
 
     from action_arthdal import go_maul, out_check
     from cleen_screen import cleen_screen_start
@@ -118,6 +118,15 @@ def get_event(cla):
                 if read_order[2] == "drag":
                     drag_pos(770, 660, 770, 400, cla)
                     time.sleep(0.5)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, y_reg - 15, 860, y_reg + 15, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("point_event_right_1", imgs_)
+                    else:
+                        drag_pos_py(770, 660, 770, 400, cla)
+                        time.sleep(0.5)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

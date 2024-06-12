@@ -110,7 +110,7 @@ def juljun_off(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, drag_pos, click_pos_2
+    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_py
     from cleen_screen import cleen_screen_start
 
     try:
@@ -128,6 +128,14 @@ def juljun_off(cla):
                 click_pos_2(480, 510, cla)
                 time.sleep(0.5)
                 drag_pos(480, 510, 800, 510, cla)
+                time.sleep(0.5)
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    drag_pos_py(480, 510, 800, 510, cla)
+                    time.sleep(0.5)
             else:
                 break
             time.sleep(0.5)

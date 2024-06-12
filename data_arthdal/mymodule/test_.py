@@ -52,14 +52,14 @@ def go_test():
     try:
         print("test", cla)
 
-        my_bag_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list"
-        file_list = os.listdir(my_bag_item)
-        print("file_list", file_list)
-        for i in range(len(file_list)):
-            result_file_list = file_list[i].split(".")
-            print("result_file_list", result_file_list[0])
+        # my_bag_item = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list"
+        # file_list = os.listdir(my_bag_item)
+        # print("file_list", file_list)
+        # for i in range(len(file_list)):
+        #     result_file_list = file_list[i].split(".")
+        #     print("result_file_list", result_file_list[0])
 
-        auction_sell_start(cla)
+        get_event(cla)
 
 
         # fishing_spot_in(cla)

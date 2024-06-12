@@ -966,7 +966,7 @@ def drag_pos_py(pos_1, pos_2, pos_3, pos_4, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-        pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.5)
+        pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
         pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.5)
         time.sleep(0.3)
 
