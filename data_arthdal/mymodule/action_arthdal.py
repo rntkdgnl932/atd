@@ -393,7 +393,8 @@ def longtime_after(cla):
             os.execl(sys.executable, sys.executable, *sys.argv)
         else:
             why = "아스달 장시간이었지만 재로그인 성공"
-            line_to_me(cla, why)
+            # line_to_me(cla, why)
+            print(why)
 
     except Exception as e:
         print(e)
