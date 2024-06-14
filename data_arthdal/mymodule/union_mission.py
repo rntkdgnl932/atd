@@ -49,7 +49,7 @@ def unionmission_get(cla, sche):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_py
     from action_arthdal import move_check, menu_open
     from schedule import myQuest_play_add
     from cleen_screen import cleen_screen_start
@@ -108,15 +108,6 @@ def unionmission_get(cla, sche):
         all_get = False
         is_union_mission = True
         for i in range(30):
-
-            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\6.PNG"
-            # img_array = np.fromfile(full_path, np.uint8)
-            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            # imgs_ = imgs_set_(200, 110, 210, 130, cla, img, 0.9)
-            # if imgs_ is not None and imgs_ != False:
-            #     print("미션 다 받음", imgs_)
-            #     break
-            # else:
             print("미션을 받자", i)
             # 그만 보기
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
@@ -133,13 +124,16 @@ def unionmission_get(cla, sche):
                 if imgs_ is not None and imgs_ != False:
                     print("mission_confirm", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+            # 이제는 연마석이 아닌 그냥 투칸처지1회 등 보스 패스부터 하기
+            # 보스처치 일 경우 가장 밑에꺼 클릭해서 위로 올려버리기
+            # 또는 그냥 "마리 처치" 찾아서 겟하기
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\yunmasuk.PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mari_chuchi.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(120, 140, 170, 600, cla, img, 0.8)
+            imgs_ = imgs_set_(120, 140, 400, 1020, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("yunmasuk", imgs_)
+                print("mari_chuchi", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
                 click_pos_2(860, 1005, cla)
@@ -169,14 +163,75 @@ def unionmission_get(cla, sche):
                     time.sleep(0.1)
                 if i_end == True:
                     break
+
+            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\yunmasuk.PNG"
+            # img_array = np.fromfile(full_path, np.uint8)
+            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            # imgs_ = imgs_set_(120, 140, 170, 600, cla, img, 0.8)
+            # if imgs_ is not None and imgs_ != False:
+            #     print("yunmasuk", imgs_)
+            #     click_pos_reg(imgs_.x, imgs_.y, cla)
+            #     time.sleep(0.5)
+            #     click_pos_2(860, 1005, cla)
+            #
+            #     i_end = False
+            #
+            #     for e in range(5):
+            #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end.PNG"
+            #         img_array = np.fromfile(full_path, np.uint8)
+            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #         imgs_ = imgs_set_(390, 110, 580, 140, cla, img, 0.8)
+            #         if imgs_ is not None and imgs_ != False:
+            #             print("anymore_mission_end............", imgs_)
+            #             is_union_mission = False
+            #             i_end = True
+            #             break
+            #         else:
+            #             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission_end2.PNG"
+            #             img_array = np.fromfile(full_path, np.uint8)
+            #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #             imgs_ = imgs_set_(390, 110, 580, 140, cla, img, 0.8)
+            #             if imgs_ is not None and imgs_ != False:
+            #                 print("anymore_mission_end2............", imgs_)
+            #                 is_union_mission = False
+            #                 i_end = True
+            #                 break
+            #         time.sleep(0.1)
+            #     if i_end == True:
+            #         break
             else:
-                if lv_y > 127:
-                    lv_y -= 35
-                    click_pos_2(60, lv_y, cla)
-                elif lv_y == 126:
-                    print("전부 다 받아버리기")
-                    all_get = True
-                    break
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\anymore_mission.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(430, 510, 620, 560, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("anymore_mission", imgs_)
+
+                    if lv_y > 127:
+                        lv_y -= 35
+                        click_pos_2(60, lv_y, cla)
+                    elif lv_y == 126:
+                        print("전부 다 받아버리기")
+                        all_get = True
+                        break
+                else:
+                    drag_pos_py(220, 870, 220, 200, cla)
+                    time.sleep(1)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mari_chuchi.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(120, 140, 400, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("mari_chuchi", imgs_)
+                    else:
+                        if lv_y > 127:
+                            lv_y -= 35
+                            click_pos_2(60, lv_y, cla)
+                        elif lv_y == 126:
+                            print("전부 다 받아버리기")
+                            all_get = True
+                            break
+
             time.sleep(0.5)
 
 

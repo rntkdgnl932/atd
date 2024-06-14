@@ -100,6 +100,10 @@ def dungeon_in(cla, sche):
 
     from massenger import line_to_me
     try:
+        # 먼저 마을로 가자
+        go_maul(cla)
+
+
         # 시간던전_뱀비늘협곡_1
         data = sche.split("_")
 
