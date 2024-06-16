@@ -126,10 +126,12 @@ def chango_ready(cla):
 
                 # 전부 창고에 넣기
                 for g in range(3):
+
+                    x_reg = 840 + (g * 40)
+                    click_pos_2(x_reg, 90, cla)
+                    time.sleep(0.5)
+
                     if g != 1:
-                        x_reg = 850 + (g * 40)
-                        click_pos_2(x_reg, 90, cla)
-                        time.sleep(0.5)
 
                         x_get = 765
 
@@ -164,6 +166,47 @@ def chango_ready(cla):
                                         time.sleep(1)
                                 else:
                                     click_pos_2(x_get, 155, cla)
+                            time.sleep(0.5)
+                        time.sleep(1)
+                    else:
+                        for c in range(10):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\box_list\\choosando.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(720, 120, 950, 990, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("choosando", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.2)
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\box_list\\hadalsoop.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(720, 120, 950, 990, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("hadalsoop", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.2)
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\box_list\\as.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(720, 120, 950, 990, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("as", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.2)
+                                    else:
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\box_list\\inyun.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(720, 120, 950, 990, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("inyun", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.2)
+                                        else:
+                                            break
                             time.sleep(0.5)
                         time.sleep(1)
                 # 나가기

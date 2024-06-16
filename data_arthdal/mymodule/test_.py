@@ -59,9 +59,7 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        sche = "연맹임무_3"
-
-        unionmission_get(cla, sche)
+        auction_start(cla)
 
 
         # fishing_spot_in(cla)
