@@ -59,7 +59,7 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        auction_start(cla)
+        drag_pos(770, 660, 770, 300, cla)
 
 
         # fishing_spot_in(cla)
