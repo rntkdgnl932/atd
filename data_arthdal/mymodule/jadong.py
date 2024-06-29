@@ -283,21 +283,29 @@ def jadong_spot_in(cla):
                     last_y = i.top + int(i.height / 2)
                     like_spot.append({last_x, last_y})
 
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_attack.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(870, 420, 950, 720, cla, img, 0.85)
-                if imgs_ is not None and imgs_ != False:
-                    print("bookmark_star", imgs_)
+                imgs_list = imgs_set_for(750, 420, 800, 700, cla, img, 0.8)
+                if imgs_list is not None and imgs_list != False:
+                    print("bookmark_attack", imgs_list)
 
-                if len(imgs_) > 0:
-                    print("얏호", len(imgs_))
+                if len(imgs_list) == 0:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_list = imgs_set_for(870, 420, 950, 720, cla, img, 0.85)
+                    if imgs_list is not None and imgs_list != False:
+                        print("bookmark_star", imgs_list)
 
-                    random_number = random.randint(1, len(imgs_))
+                if len(imgs_list) > 0:
+                    print("얏호", len(imgs_list))
+
+                    random_number = random.randint(1, len(imgs_list))
 
                     # 첫번째 850, 445
-                    x_reg = imgs_[random_number - 1][0]
-                    y_reg = imgs_[random_number - 1][1]
+                    x_reg = imgs_list[random_number - 1][0]
+                    y_reg = imgs_list[random_number - 1][1]
                     print("우헤헤", x_reg, y_reg)
 
                     # 전쟁지역인지 여부...현재는 잿빛 폐허만...
@@ -458,6 +466,7 @@ def jadong_spot_in(cla):
 
                     is_bookmark = False
 
+
                     for i in range(5):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -467,7 +476,15 @@ def jadong_spot_in(cla):
                             is_bookmark = True
                             break
                         else:
-                            click_pos_2(930, 975, cla)
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_attack.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(750, 420, 800, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                is_bookmark = True
+                                break
+                            else:
+                                click_pos_2(930, 975, cla)
                         time.sleep(1)
 
                     if is_bookmark == False:

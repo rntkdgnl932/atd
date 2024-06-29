@@ -59,12 +59,12 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mari_chuchi.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(120, 140, 400, 1020, cla, img, 0.85)
+        imgs_ = imgs_set_for(870, 420, 950, 720, cla, img, 0.80)
         if imgs_ is not None and imgs_ != False:
-            print("mari_chuchi", imgs_)
+            print("bookmark_star", imgs_)
 
 
         # fishing_spot_in(cla)
