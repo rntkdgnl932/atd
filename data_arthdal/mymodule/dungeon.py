@@ -87,7 +87,7 @@ def dungeon_start(cla, sche):
 def dungeon_in(cla, sche):
     import numpy as np
     import cv2
-    import pyautogui
+    import random
     from PyQt5.QtTest import QTest
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
@@ -229,35 +229,39 @@ def dungeon_in(cla, sche):
 
                     if result_out == True:
 
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
-                            dungeon_out) + "\\" + str(data[2]) + ".PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\gooyuk.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
+                        imgs_ = imgs_set_(70, 130, 125, 205, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+                            print("gooyuk")
                             in_check = True
                             break
 
-                        # for d in range(2):
-                        #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
-                        #         dungeon_out) + "\\" + str(data[2]) + ".PNG"
-                        #     img_array = np.fromfile(full_path, np.uint8)
-                        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        #     imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
-                        #     if imgs_ is not None and imgs_ != False:
-                        #         in_check = True
-                        #         break
+                        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(
+                        #     dungeon_out) + "\\" + str(data[2]) + ".PNG"
+                        # img_array = np.fromfile(full_path, np.uint8)
+                        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        # imgs_ = imgs_set_(60, 100, 180, 140, cla, img, 0.8)
+                        # if imgs_ is not None and imgs_ != False:
+                        #     in_check = True
+                        #     break
 
                     time.sleep(1)
 
 
 
                 if in_check == True:
-                    for i in range(5):
-                        click_pos_2(490, 425, cla)
-                        pyautogui.keyDown('w')
-                        QTest.qWait(4000)
-                        pyautogui.keyUp('w')
+
+                    y_ran = random.randint(1, 3)
+                    # 145, 170, 195
+
+                    y_cl = 120 + (y_ran * 25)
+
+                    for i in range(2):
+                        click_pos_2(125, y_cl, cla)
+                        QTest.qWait(1000)
+                        move_check(cla)
                         time.sleep(0.3)
                     QTest.qWait(1000)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"

@@ -607,27 +607,35 @@ def go_maul(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.2)
-                drag_pos(120, 150, 120, 240, cla)
-                time.sleep(1)
-
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\gooyuk.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
+                imgs_ = imgs_set_(70, 130, 125, 205, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    is_maul = True
+                    print("gooyuk")
                     break
                 else:
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+                    drag_pos(120, 150, 120, 240, cla)
+                    time.sleep(1)
+
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                    imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
+                        is_maul = True
                         break
                     else:
-                        drag_pos_py(120, 150, 120, 240, cla)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            drag_pos_py(120, 150, 120, 240, cla)
             else:
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -660,27 +668,35 @@ def go_maul(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.2)
-                    drag_pos(120, 150, 120, 240, cla)
-                    time.sleep(1)
-
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\gooyuk.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
+                    imgs_ = imgs_set_(70, 130, 125, 205, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        is_maul = True
+                        print("gooyuk")
                         break
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        drag_pos(120, 150, 120, 240, cla)
+                        time.sleep(1)
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                        imgs_ = imgs_set_(60, 150, 160, 180, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+                            is_maul = True
                             break
                         else:
-                            drag_pos_py(120, 150, 120, 240, cla)
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\jabhwa.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(60, 120, 160, 160, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                drag_pos_py(120, 150, 120, 240, cla)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\party_create.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
