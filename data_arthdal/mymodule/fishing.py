@@ -25,12 +25,13 @@ def fishing_start(cla, sche):
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\juljun_hajesan.PNG"
+            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\juljun_hajesan.PNG"
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\juljun_daehgbyuck_seoboo.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(30, 70, 100, 105, cla, img, 0.8)
+            imgs_ = imgs_set_(30, 70, 130, 105, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("juljun_hajesan", imgs_)
+                print("juljun_daehgbyuck_seoboo", imgs_)
 
 
 
@@ -167,16 +168,38 @@ def fishing_spot_in(cla):
             if map_ready == True:
 
                 for i in range(10):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\hajesan_title.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\daehgbyuk_seoboo_list.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(830, 70, 925, 120, cla, img, 0.8)
+                    imgs_ = imgs_set_(770, 860, 900, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\world_region_list.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(750, 830, 840, 870, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            drag_pos(830, 990, 830, 880, cla)
+                        else:
+                            click_pos_2(110, 180, cla)
+                    time.sleep(1)
+
+                world_in = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\daehgbyuk_seoboo_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(770, 70, 925, 120, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         mouse_move_cpp(430, 730, cla)
                         pyautogui.scroll(700)
+                        world_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\hajesan_list.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\daehgbyuk_seoboo_list.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(770, 860, 900, 1020, cla, img, 0.8)
@@ -190,135 +213,168 @@ def fishing_spot_in(cla):
                             if imgs_ is not None and imgs_ != False:
                                 drag_pos(830, 990, 830, 880, cla)
                             else:
-                                click_pos_2(110, 180, cla)
+                                break
                     time.sleep(1)
+                if world_in == False:
+                    cleen_screen_start(cla)
+                else:
 
-                for i in range(10):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\war_area\\jetbit_pehu_bosangjungbo.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(265, 70, 345, 115, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
+                    clicked = False
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\war_area\\jetbit_pehu_bosangjungbo.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(265, 70, 345, 115, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                clicked = True
+                                break
+                        else:
+                            # 대흑벽서부
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_3.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(340, 400, 520, 600, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_4.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(340, 400, 520, 600, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("fishing_point_2", imgs_)
+                                    click_pos_reg(imgs_.x + 6, imgs_.y - 28, cla)
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\daehgbyuk_seoboo_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(830, 70, 925, 120, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        mouse_move_cpp(430, 730, cla)
+                                        pyautogui.scroll(700)
+                            # 하제산
+                            # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_1.PNG"
+                            # img_array = np.fromfile(full_path, np.uint8)
+                            # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            # imgs_ = imgs_set_(340, 740, 440, 840, cla, img, 0.8)
+                            # if imgs_ is not None and imgs_ != False:
+                            #     click_pos_reg(imgs_.x, imgs_.y, cla)
+                            # else:
+                            #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_2.PNG"
+                            #     img_array = np.fromfile(full_path, np.uint8)
+                            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            #     imgs_ = imgs_set_(300, 800, 370, 870, cla, img, 0.8)
+                            #     if imgs_ is not None and imgs_ != False:
+                            #         print("fishing_point_2", imgs_)
+                            #         click_pos_reg(imgs_.x + 70, imgs_.y - 35, cla)
+                            #     else:
+                            #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\hajesan_title.PNG"
+                            #         img_array = np.fromfile(full_path, np.uint8)
+                            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            #         imgs_ = imgs_set_(830, 70, 925, 120, cla, img, 0.8)
+                            #         if imgs_ is not None and imgs_ != False:
+                            #             mouse_move_cpp(430, 730, cla)
+                            #             pyautogui.scroll(700)
+                        time.sleep(1)
+
+
+                    cannotjoin = False
+                    for i in range(10):
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
-                            break
-                    else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_1.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(340, 740, 440, 840, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_2.PNG"
+
+                            clicked = True
+
+
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 800, 370, 870, cla, img, 0.8)
+                            imgs_ = imgs_set_(430, 430, 540, 490, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("fishing_point_2", imgs_)
-                                click_pos_reg(imgs_.x + 70, imgs_.y - 35, cla)
-                            else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\hajesan_title.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(830, 70, 925, 120, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    mouse_move_cpp(430, 730, cla)
-                                    pyautogui.scroll(700)
-                    time.sleep(1)
-
-                clicked = False
-                cannotjoin = False
-                for i in range(10):
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(125, 980, 230, 1030, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(430, 430, 540, 490, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                clicked = True
-                                time.sleep(0.5)
-                                break
-                            else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_confirm.PNG"
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_title_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    clicked = True
+
                                     time.sleep(0.5)
                                     break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\cannotjoin.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 110, 515, 150, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                time.sleep(0.5)
-                                cannotjoin = True
-                                break
-                    time.sleep(0.5)
-
-
-                if clicked == True:
-                    for i in range(10):
-                        move_check(cla)
-                        print("move_check count", i)
-                        time.sleep(1.5)
-
-                    print("도착한듯")
-                    world_map = True
-
-                    is_fish_btn_count = 0
-                    for i in range(10):
-                        result_juljun = juljun_check(cla)
-                        if result_juljun == True:
-                            world_map = True
-                            break
-                        else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_click.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(530, 495, 625, 530, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                # 낚시버튼 누르고 절전모드
-                                juljun_on(cla)
-                                time.sleep(0.3)
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\82_move_confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                        break
                             else:
-                                is_fish_btn_count += 1
-                                if is_fish_btn_count > 4:
-                                    why = "낚시터 도착 못한듯 하다"
-                                    line_to_me(cla, why)
-                                    world_map = True
-
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\cannotjoin.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 110, 515, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    time.sleep(0.5)
+                                    clicked = False
+                                    cannotjoin = True
+                                    break
                         time.sleep(0.5)
-                else:
-                    world_map = True
-                    if cannotjoin == True:
-                        cleen_screen_start(cla)
-                        myQuest_play_add(cla, "낚시하기")
+
+
+                    if clicked == True:
+                        for i in range(10):
+                            move_check(cla)
+                            print("move_check count", i)
+                            time.sleep(1.5)
+
+                        print("도착한듯")
+                        world_map = True
+
+                        is_fish_btn_count = 0
+                        for i in range(10):
+                            result_juljun = juljun_check(cla)
+                            if result_juljun == True:
+                                world_map = True
+                                break
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_click.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(530, 495, 625, 530, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    # 낚시버튼 누르고 절전모드
+                                    juljun_on(cla)
+                                    time.sleep(0.3)
+                                else:
+                                    is_fish_btn_count += 1
+                                    if is_fish_btn_count > 4:
+                                        why = "낚시터 도착 못한듯 하다"
+                                        line_to_me(cla, why)
+                                        world_map = True
+
+                            time.sleep(0.5)
                     else:
-                        why = "낚시터 출발 못함"
-                        print(why)
-                        line_to_me(cla, why)
+                        world_map = True
+                        if cannotjoin == True:
+                            cleen_screen_start(cla)
+                            myQuest_play_add(cla, "낚시하기")
+                        else:
+                            why = "낚시터 출발 못함"
+                            print(why)
+                            line_to_me(cla, why)
 
 
 

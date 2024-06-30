@@ -59,12 +59,20 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_3.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_for(870, 420, 950, 720, cla, img, 0.80)
+        imgs_ = imgs_set_(340, 400, 410, 500, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("bookmark_star", imgs_)
+            print("fishing_point_3", imgs_)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_4.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 400, 410, 500, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("fishing_point_4", imgs_)
+
 
 
         # fishing_spot_in(cla)
