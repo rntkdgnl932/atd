@@ -89,9 +89,16 @@ def get_event(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                    imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
                 time.sleep(0.5)
 
             # 이벤트 위치...
@@ -125,8 +132,15 @@ def get_event(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("point_event_right_1", imgs_)
                     else:
-                        drag_pos_py(770, 660, 770, 400, cla)
-                        time.sleep(0.5)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, y_reg - 15, 860, y_reg + 15, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("point_event_right_2", imgs_)
+                        else:
+                            drag_pos_py(770, 660, 770, 400, cla)
+                            time.sleep(0.5)
                 else:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -138,6 +152,17 @@ def get_event(cla):
                         click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
                         time.sleep(0.1)
                         get_event_point_click(cla, read_order[2])
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, y_reg - 15, 860, y_reg + 15, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                            time.sleep(0.1)
+                            click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                            time.sleep(0.1)
+                            get_event_point_click(cla, read_order[2])
                 time.sleep(0.5)
 
 
@@ -208,9 +233,16 @@ def get_event_ex(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                    imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
                 time.sleep(0.5)
 
             # 이벤트 위치...
@@ -240,6 +272,15 @@ def get_event_ex(cla):
                     click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
                     time.sleep(0.5)
                     get_event_point_click(cla, read_order[2])
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, y_reg_1, 860, y_reg_2, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x - 60, imgs_.y + 10, cla)
+                        time.sleep(0.5)
+                        get_event_point_click(cla, read_order[2])
                 time.sleep(0.5)
 
 
@@ -589,36 +630,83 @@ def get_specialpackage(cla):
 
 
             for i in range(3):
+
+                is_point = False
+
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(800, 410, 860, 710, cla, img, 0.8)
+                imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+                    is_point = True
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_point = True
 
-
+                if is_point == True:
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    for r in pyautogui.locateAllOnScreen(img, region=(800 + plus, 410, 60, 300), confidence=0.8):
-                        last_x = r.left
-                        last_y = r.top
-
-                        click_pos_reg(last_x - 60, last_y + 10, cla)
-                        click_pos_reg(last_x - 60, last_y + 10, cla)
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\seven_six\\point_title.PNG"
+                    imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        for c in pyautogui.locateAllOnScreen(img, region=(220 + plus, 460, 470, 40), confidence=0.8):
-                            last_x = c.left
-                            last_y = c.top
+                        for r in pyautogui.locateAllOnScreen(img, region=(800 + plus, 380, 60, 330), confidence=0.8):
+                            last_x = r.left
+                            last_y = r.top
 
                             click_pos_reg(last_x - 60, last_y + 10, cla)
                             click_pos_reg(last_x - 60, last_y + 10, cla)
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\seven_six\\point_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            for c in pyautogui.locateAllOnScreen(img, region=(220 + plus, 460, 470, 40), confidence=0.8):
+                                last_x = c.left
+                                last_y = c.top
 
-                            time.sleep(0.5)
+                                click_pos_reg(last_x - 60, last_y + 10, cla)
+                                click_pos_reg(last_x - 60, last_y + 10, cla)
 
-                            click_pos_2(615, 700, cla)
-                            get_specialpackage_clicked(cla)
+                                time.sleep(0.5)
+
+                                click_pos_2(615, 700, cla)
+                                get_specialpackage_clicked(cla)
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            for r in pyautogui.locateAllOnScreen(img, region=(800 + plus, 380, 60, 330),
+                                                                 confidence=0.8):
+                                last_x = r.left
+                                last_y = r.top
+
+                                click_pos_reg(last_x - 60, last_y + 10, cla)
+                                click_pos_reg(last_x - 60, last_y + 10, cla)
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\seven_six\\point_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                for c in pyautogui.locateAllOnScreen(img, region=(220 + plus, 460, 470, 40),
+                                                                     confidence=0.8):
+                                    last_x = c.left
+                                    last_y = c.top
+
+                                    click_pos_reg(last_x - 60, last_y + 10, cla)
+                                    click_pos_reg(last_x - 60, last_y + 10, cla)
+
+                                    time.sleep(0.5)
+
+                                    click_pos_2(615, 700, cla)
+                                    get_specialpackage_clicked(cla)
                 else:
                     cleen_screen_start(cla)
                     break

@@ -59,19 +59,12 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_3.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 400, 410, 500, cla, img, 0.8)
+        imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("fishing_point_3", imgs_)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_4.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 400, 410, 500, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("fishing_point_4", imgs_)
+            print("point_event_right_2", imgs_)
 
 
 
