@@ -303,3 +303,53 @@ def unionmission_get(cla, sche):
 
     except Exception as e:
         print(e)
+
+def unionmission_bosang(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_py
+    from action_arthdal import move_check, menu_open
+    from schedule import myQuest_play_add
+    from cleen_screen import cleen_screen_start
+
+    try:
+
+
+        for i in range(7):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\union_mission.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("연맹임무", cla)
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\soohang_list.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(110, 30, 220, 80, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(700, 1000, cla)
+                    cleen_screen_start(cla)
+                    break
+                else:
+                    click_pos_2(180, 90, cla)
+            else:
+                menu_open(cla)
+                click_pos_2(810, 120, cla)
+                for c in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\union_mission.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    time.sleep(0.5)
+            time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+
+

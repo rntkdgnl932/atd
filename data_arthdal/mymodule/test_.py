@@ -27,7 +27,7 @@ def go_test():
     from boonhae import boonhae_start
     from property_atdl import my_property_upload
     from function_game import imgs_set_for, get_region
-    from union_mission import unionmission_get
+    from union_mission import unionmission_get, unionmission_bosang
     from chango import chango_start
     from fishing import fishing_spot_in
 
@@ -59,7 +59,7 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        get_event(cla)
+        unionmission_bosang(cla)
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)

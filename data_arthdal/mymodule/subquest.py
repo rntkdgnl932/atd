@@ -11,7 +11,7 @@ def subquest_start(cla, sche):
     import cv2
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg, drag_pos
-
+    from union_mission import unionmission_bosang
     from action_arthdal import tuto_jangchak, juljun_check, juljun_off, move_check, moniter_check, out_check, juljun_on
     from cleen_screen import skip_check, sub_skip
     from dead import dead_check, dead_recovery
@@ -53,6 +53,7 @@ def subquest_start(cla, sche):
                     print("5", imgs_)
                     myQuest_play_add(cla, sche)
                     juljun_off(cla)
+                    unionmission_bosang(cla)
 
                 else:
                     for i in range(9):
@@ -217,6 +218,7 @@ def subquest_start(cla, sche):
                             if last_sub == True:
                                 myQuest_play_add(cla, sche)
                                 juljun_off(cla)
+                                unionmission_bosang(cla)
 
             else:
                 sub_ing(cla)
