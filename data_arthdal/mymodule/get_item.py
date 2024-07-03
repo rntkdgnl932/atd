@@ -507,7 +507,8 @@ def get_event_point_click(cla, data):
                             if exit_count > 2:
                                 break
                     time.sleep(0.3)
-
+        # 마무리
+        get_event_clicked(cla)
 
     except Exception as e:
         print(e)
