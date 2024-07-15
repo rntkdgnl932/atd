@@ -51,7 +51,7 @@ def groupmission_get(cla, sche):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_arthdal import move_check, menu_open
+    from action_arthdal import move_check, menu_open, confirm_all
     from schedule import myQuest_play_add
     from cleen_screen import cleen_screen_start
 
@@ -221,6 +221,7 @@ def groupmission_get(cla, sche):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(480, 560, 640, 640, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
+                    confirm_all(cla)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     break
                 else:

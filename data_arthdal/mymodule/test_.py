@@ -14,10 +14,10 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, click_pos_pyautogui, get_region, mouse_move_cpp, text_check_get
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, get_region, mouse_move_cpp, text_check_get
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check, juljun_off, juljun_check, go_maul, menu_open, bag_open
+    from action_arthdal import out_check, juljun_off, juljun_check, go_maul, menu_open, bag_open, confirm_all
     from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
@@ -59,14 +59,21 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        unionmission_bosang(cla)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\point_event_right_2.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\anymore_look.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(800, 380, 860, 710, cla, img, 0.8)
+        imgs_ = imgs_set_(400, 500, 600, 650, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("point_event_right_2", imgs_)
+            print("anymore_look", imgs_)
+            confirm_all(cla)
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\anymore_look1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 500, 600, 650, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("anymore_look1", imgs_)
+                confirm_all(cla)
 
 
 

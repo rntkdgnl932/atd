@@ -50,7 +50,7 @@ def unionmission_get(cla, sche):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_py
-    from action_arthdal import move_check, menu_open
+    from action_arthdal import move_check, menu_open, confirm_all
     from schedule import myQuest_play_add
     from cleen_screen import cleen_screen_start
 
@@ -115,15 +115,7 @@ def unionmission_get(cla, sche):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                click_pos_2(525, 545, cla)
-                time.sleep(0.5)
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("mission_confirm", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                confirm_all(cla)
             # 이제는 연마석이 아닌 그냥 투칸처지1회 등 보스 패스부터 하기
             # 보스처치 일 경우 가장 밑에꺼 클릭해서 위로 올려버리기
             # 또는 그냥 "마리 처치" 찾아서 겟하기
@@ -263,15 +255,8 @@ def unionmission_get(cla, sche):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_2(525, 545, cla)
-                        time.sleep(0.5)
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mission_confirm.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(480, 570, 630, 610, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("mission_confirm", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        confirm_all(cla)
+
 
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\kill.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

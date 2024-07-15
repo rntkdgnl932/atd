@@ -517,7 +517,8 @@ def get_event_clicked(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_2
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action_arthdal import confirm_all
     try:
         time.sleep(0.5)
 
@@ -527,7 +528,17 @@ def get_event_clicked(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(400, 330, 550, 380, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                break
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\anymore_look.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 500, 600, 650, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+                    confirm_all(cla)
+                    time.sleep(0.5)
+                else:
+                    break
             else:
                 click_pos_2(205, 365, cla)
             time.sleep(0.5)
@@ -747,7 +758,7 @@ def get_post(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_arthdal import go_maul, out_check, menu_open
+    from action_arthdal import go_maul, out_check, menu_open, confirm_all
     from cleen_screen import cleen_screen_start
 
     from massenger import line_to_me
@@ -841,7 +852,7 @@ def get_post(cla):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(480, 570, 640, 630, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                confirm_all(cla)
                             else:
                                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
