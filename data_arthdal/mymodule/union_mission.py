@@ -258,12 +258,12 @@ def unionmission_get(cla, sche):
                         confirm_all(cla)
 
 
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\kill.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\mari_chuchi.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(120, 135, 400, 600, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("kill", imgs_)
+                        print("mari_chuchi", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.5)
                         click_pos_2(860, 1005, cla)
@@ -295,7 +295,7 @@ def unionmission_bosang(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_py
     from action_arthdal import move_check, menu_open
-    from schedule import myQuest_play_add
+
     from cleen_screen import cleen_screen_start
 
     try:
@@ -308,19 +308,28 @@ def unionmission_bosang(cla):
             imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("연맹임무", cla)
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\soohang_list.PNG"
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\soohang_list_clicked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(110, 30, 220, 80, cla, img, 0.8)
+                imgs_ = imgs_set_(10, 100, 120, 200, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     click_pos_2(700, 1000, cla)
+                    time.sleep(0.5)
                     cleen_screen_start(cla)
                     break
                 else:
-                    click_pos_2(180, 90, cla)
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\union_mission\\soohang_list2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(110, 30, 220, 120, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
             else:
                 menu_open(cla)
                 click_pos_2(810, 120, cla)
+
                 for c in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\union_mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -329,6 +338,7 @@ def unionmission_bosang(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     time.sleep(0.5)
+
             time.sleep(0.5)
 
 

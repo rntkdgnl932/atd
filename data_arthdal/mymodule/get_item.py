@@ -758,7 +758,7 @@ def get_post(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_arthdal import go_maul, out_check, menu_open, confirm_all
+    from action_arthdal import go_maul, out_check, menu_open_one, confirm_all
     from cleen_screen import cleen_screen_start
 
     from massenger import line_to_me
@@ -778,20 +778,39 @@ def get_post(cla):
 
     try:
 
-        menu_open(cla)
+
 
         is_event = False
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\post.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(845, 30, 885, 55, cla, img, 0.8)
+        imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("우편물", imgs_)
-            click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
             is_event = True
+        else:
 
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(845, 30, 885, 55, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("우편물", imgs_)
+                click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
+                is_event = True
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\post.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                        time.sleep(0.5)
+
+        print("is_event", is_event)
         if is_event == True:
+
+            print("1", is_event)
 
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\post.PNG"
@@ -801,7 +820,7 @@ def get_post(cla):
                 if imgs_ is not None and imgs_ != False:
                     break
                 else:
-                    menu_open(cla)
+                    menu_open_one(cla)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -818,7 +837,7 @@ def get_post(cla):
                                 break
                             time.sleep(0.5)
                 time.sleep(0.5)
-
+            print("2", is_event)
             for i in range(3):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\post\\point_post.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -835,35 +854,51 @@ def get_post(cla):
                         last_y = r.top
 
                         for p in range(5):
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_post_btn.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\post_del.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(800, 120, 940, 200, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_2(890, 1000, cla)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                 break
                             else:
-                                click_pos_reg(last_x - 50, last_y + 10, cla)
-                                click_pos_reg(last_x - 50, last_y + 10, cla)
-                            time.sleep(0.5)
-                        for p in range(5):
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_post_confirm.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 570, 640, 630, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                confirm_all(cla)
-                            else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_post_btn.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                                imgs_ = imgs_set_(800, 120, 940, 200, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("bottom_esc")
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    break
-                                else:
                                     click_pos_2(890, 1000, cla)
+                                    break
+
+                                else:
+                                    click_pos_reg(last_x - 50, last_y + 10, cla)
+                                    click_pos_reg(last_x - 50, last_y + 10, cla)
+                            time.sleep(0.5)
+                        for p in range(5):
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\anymore_post.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 500, 640, 630, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\get_post_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 570, 640, 630, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    confirm_all(cla)
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(380, 980, 570, 1030, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("bottom_esc")
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        break
+                                    else:
+                                        click_pos_2(890, 1000, cla)
                             time.sleep(0.5)
 
 

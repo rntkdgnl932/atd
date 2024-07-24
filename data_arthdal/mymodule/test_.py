@@ -59,21 +59,21 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\anymore_look.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\post.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 500, 600, 650, cla, img, 0.7)
+        imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("anymore_look", imgs_)
-            confirm_all(cla)
-        else:
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\anymore_look1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 500, 600, 650, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("anymore_look1", imgs_)
-                confirm_all(cla)
+            print("post", imgs_)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\post\\point_post.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(100, 60, 500, 100, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("point_post", imgs_)
+
+        get_sangjum(cla)
 
 
 
