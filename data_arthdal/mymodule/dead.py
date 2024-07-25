@@ -13,7 +13,7 @@ def dead_check(cla, sche):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
     from action_arthdal import loading, out_check, menu_open, go_maul
-    from cleen_screen import cleen_screen_start
+    from union_mission import unionmission_bosang
     from schedule import myQuest_play_add
     from potion import buy_potion
 
@@ -55,6 +55,8 @@ def dead_check(cla, sche):
 
             if sche == "튜토육성" or sche == "서브퀘스트" or sche == "낚시하기":
                 myQuest_play_add(cla, sche)
+                if sche == "서브퀘스트":
+                    unionmission_bosang(cla)
 
         return is_dead
 
