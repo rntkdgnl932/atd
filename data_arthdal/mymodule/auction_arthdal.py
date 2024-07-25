@@ -28,12 +28,13 @@ def auction_start(cla):
         # 캐릭터 창고 => character_chango
         # 계정 창고 => account_chango
 
-        auction_sell_ready(cla, "bag")
-        auction_sell_start_bag(cla)
-        # auction_sell_ready(cla, "character_chango")
-        # auction_sell_start(cla)
+
         auction_sell_ready(cla, "account_chango")
         auction_sell_start(cla)
+
+        auction_sell_ready(cla, "bag")
+        auction_sell_start_bag(cla)
+
         print("끝!")
         cleen_screen_start(cla)
 

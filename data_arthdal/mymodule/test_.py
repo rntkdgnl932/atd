@@ -73,7 +73,7 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("point_post", imgs_)
 
-        get_sangjum(cla)
+        auction_start(cla)
 
 
 
