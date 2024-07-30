@@ -59,23 +59,35 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\post.PNG"
+        go_maul(cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\click_failed.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(30, 30, 120, 80, cla, img, 0.8)
+        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("post", imgs_)
+            print("click_failed", imgs_)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\post\\point_post.PNG"
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\840.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(100, 60, 500, 100, cla, img, 0.8)
+        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("point_post", imgs_)
+            print("840", imgs_)
 
-        auction_start(cla)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\880.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("880", imgs_)
 
-
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\920.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("920", imgs_)
 
         # fishing_spot_in(cla)
 

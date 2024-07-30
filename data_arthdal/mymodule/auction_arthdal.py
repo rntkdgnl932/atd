@@ -253,6 +253,14 @@ def auction_sell_start_bag(cla):
             if imgs_ is not None and imgs_ != False:
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_cancle.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 680, 480, 720, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    QTest.qWait(500)
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\bag_list\\" + str(read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -459,6 +467,14 @@ def auction_sell_start(cla):
             if imgs_ is not None and imgs_ != False:
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_cancle.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 680, 480, 720, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    QTest.qWait(500)
 
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\list\\" + str(read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)

@@ -770,10 +770,15 @@ def go_maul(cla):
                         print("not_spot_point")
                         break
                     else:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        time.sleep(0.2)
-                        drag_pos(120, 150, 120, 240, cla)
-                        time.sleep(1)
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\important_point.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(50, 100, 110, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.2)
+                            drag_pos(120, 150, 120, 240, cla)
+                            time.sleep(1)
 
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -806,7 +811,6 @@ def go_maul(cla):
                         cleen_screen_start(cla)
             time.sleep(1)
         # 위에는 마을인지 파악하기
-
         is_maul_count = 0
         while is_maul is False:
             is_maul_count += 1

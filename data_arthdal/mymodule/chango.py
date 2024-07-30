@@ -70,9 +70,24 @@ def chango_ready(cla):
 
                 # 전부 창고에 넣기
                 for g in range(3):
-                    x_reg = 840 + (g * 40)
-                    click_pos_2(x_reg, 90, cla)
-                    time.sleep(0.5)
+                    if g == 0:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\840.PNG"
+                    elif g == 1:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\880.PNG"
+                    elif g == 2:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\920.PNG"
+
+                    for c in range(5):
+                        full_path = full_path
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            x_reg = 840 + (g * 40)
+                            click_pos_2(x_reg, 90, cla)
+                        time.sleep(0.5)
 
                     x_get = 765
 
@@ -126,10 +141,24 @@ def chango_ready(cla):
 
                 # 전부 창고에 넣기
                 for g in range(3):
+                    if g == 0:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\840.PNG"
+                    elif g == 1:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\880.PNG"
+                    elif g == 2:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\920.PNG"
 
-                    x_reg = 840 + (g * 40)
-                    click_pos_2(x_reg, 90, cla)
-                    time.sleep(0.5)
+                    for c in range(5):
+                        full_path = full_path
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            x_reg = 840 + (g * 40)
+                            click_pos_2(x_reg, 90, cla)
+                            time.sleep(0.5)
 
                     if g != 1:
 
