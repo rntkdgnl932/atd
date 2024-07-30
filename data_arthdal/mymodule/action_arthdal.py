@@ -399,6 +399,14 @@ def moniter_check(cla):
         server_alrim = False
         why = "none"
 
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\jang_ae_mool.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(430, 440, 535, 485, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("jang_ae_mool", imgs_)
+            why = "jangaemool"
+
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\connect_out.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -467,6 +475,8 @@ def moniter_check(cla):
                                     print("again_connect")
                                     why = "아스달 계정 연결 실패로 재접속중"
                                     server_alrim = True
+        if why == "jangaemool":
+            go_maul(cla)
 
         if server_alrim == True:
             line_to_me(cla, why)
