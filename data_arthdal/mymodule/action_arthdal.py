@@ -402,7 +402,7 @@ def moniter_check(cla):
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\monitor\\jang_ae_mool.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(430, 440, 535, 485, cla, img, 0.8)
+        imgs_ = imgs_set_(400, 70, 600, 160, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("jang_ae_mool", imgs_)
             why = "jangaemool"
