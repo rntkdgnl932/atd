@@ -947,7 +947,7 @@ def get_upjuk(cla):
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\out_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(880, 165, 930, 200, cla, img, 0.8)
+        imgs_ = imgs_set_(880 - 30, 165, 930 - 40, 200, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("업적", imgs_)
             # click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
@@ -1211,8 +1211,16 @@ def get_sangjum(cla):
                 sangjum_in = True
 
             else:
+
                 menu_open(cla)
                 for i in range(5):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\event_close_btn2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(680, 30, 870, 100, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
