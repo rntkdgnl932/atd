@@ -1,5 +1,5 @@
-1:440:seven_six
-2:480:level
+1:440:six
+2:480:six
 3:522:six
 4:564:six
 5:606:six
@@ -9,6 +9,6 @@
 9:400:six
 10:442:six
 11:484:six
-12:556:seven
+12:556:six
 13:598:fourteen
 14:640:seven
