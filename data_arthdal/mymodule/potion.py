@@ -27,6 +27,7 @@ def potion_check(cla):
 
         if result_juljun == True:
             # 절전모드
+            print("potion_check 절전모드 맞음")
             for i in range(10):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -37,7 +38,7 @@ def potion_check(cla):
                     need_potion = False
                     break
         else:
-
+            print("potion_check 절전모드 아님")
             # 바깥화면
             result_out = out_check(cla)
             view_potion = False
