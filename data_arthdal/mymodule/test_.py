@@ -59,43 +59,15 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        potion_available(cla)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\potion_setting.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(370, 750, 500, 820, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("potion_settingpotion_settingpotion_settingpotion_settingpotion_setting", imgs_)
-
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\click_failed.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("click_failed", imgs_)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\840.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("840", imgs_)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\880.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("880", imgs_)
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\920.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(760, 100, 950, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("920", imgs_)
+        for i in range(10):
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(418, 995, 432, 1020, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("i", i, imgs_)
+                need_potion = False
+                break
 
         # fishing_spot_in(cla)
 
@@ -120,13 +92,6 @@ def go_test():
         # #     print("result_split[0]", result_split[0])
         # # else:
         # #     print("파악 불가")
-
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\chango_out_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(90, 980, 220, 1020, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("chango_out_btn", imgs_)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\character_chango_clicked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
