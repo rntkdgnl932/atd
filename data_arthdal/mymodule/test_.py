@@ -59,6 +59,13 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("juljun_check =>  True")
+
         for i in range(10):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\juljun_num\\" + str(i) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
