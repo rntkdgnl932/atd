@@ -59,7 +59,15 @@ def go_test():
         #     result_file_list = file_list[i].split(".")
         #     print("result_file_list", result_file_list[0])
 
-        potion_available(cla)
+        # potion_available(cla)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\potion_setting.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(370, 810, 480, 850, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("potion_settingpotion_settingpotion_settingpotion_settingpotion_setting", imgs_)
+
 
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\chango\\click_failed.PNG"
         img_array = np.fromfile(full_path, np.uint8)
