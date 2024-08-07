@@ -9,6 +9,6 @@
 9:400:six
 10:442:six
 11:484:six
-12:556:six
-13:598:fourteen
-14:640:seven
+12:526:six
+13:568:six
+14:640:fourteen
