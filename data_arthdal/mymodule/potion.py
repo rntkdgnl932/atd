@@ -465,7 +465,7 @@ def potion_available(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\potion_setting_des.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(755, 370, 830, 415, cla, img, 0.8)
+                imgs_ = imgs_set_(755, 370, 920, 415, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     img_x_reg = 734 + (int(read_data) * 40)
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\setting_checked.PNG"
