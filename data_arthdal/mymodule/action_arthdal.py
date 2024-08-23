@@ -985,6 +985,56 @@ def juljun_time_check(cla):
     try:
         print("juljun_time_check")
 
+        if cla == "one":
+            plus = 0
+        elif cla == "two":
+            plus = 960
+        elif cla == "three":
+            plus = 960 * 2
+        elif cla == "four":
+            plus = 960 * 3
+        elif cla == "five":
+            plus = 960 * 4
+        elif cla == "six":
+            plus = 960 * 5
+
+        nowTime = int(datetime.today().strftime("%M"))
+
+        print("nowTime", nowTime)
+
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun_time\\slush.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(440, 75, 530, 135, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("slush", imgs_)
+            x_start = imgs_.x - plus
+
+
+            now_time = ""
+
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_start, 75, x_start + 45, 135, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("10 자리", i, imgs_)
+                    x_start = imgs_.x - plus
+                    now_time += str(i)
+                    break
+
+            for i in range(10):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_start, 75, x_start + 45, 135, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("1 자리", i, imgs_)
+                    now_time += str(i)
+                    break
+
+
         nowTime = int(datetime.today().strftime("%M"))
 
         print("nowTime", nowTime)

@@ -54,6 +54,7 @@ def go_test():
 
         juljun_time_check(cla)
 
+
         # fishing_spot_in(cla)
 
         # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\fishing\\fishing_point_1.PNG"
