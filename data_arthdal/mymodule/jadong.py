@@ -72,7 +72,7 @@ def jadong_attack_check(cla):
     import cv2
 
     from function_game import imgs_set_
-    from action_arthdal import out_check, juljun_check, juljun_on
+    from action_arthdal import out_check, juljun_check, juljun_on, juljun_time_check
     from cleen_screen import cleen_screen_start
 
     try:
@@ -80,6 +80,9 @@ def jadong_attack_check(cla):
         for i in range(10):
             result_juljun = juljun_check(cla)
             if result_juljun == True:
+
+                juljun_time_check(cla)
+
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\attack.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

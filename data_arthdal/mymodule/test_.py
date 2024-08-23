@@ -17,7 +17,7 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get_reg, change_number, int_put_, in_number_check, get_region, mouse_move_cpp, text_check_get
 
     from tutorial import tuto_imgs_scan
-    from action_arthdal import out_check, juljun_off, juljun_check, go_maul, menu_open, bag_open, confirm_all
+    from action_arthdal import out_check, juljun_off, juljun_check, go_maul, menu_open, bag_open, confirm_all, juljun_time_check
     from potion import buy_potion, potion_check, potion_available
     from dead import dead_check, dead_recovery, out_dead_recovery
     from cleen_screen import cleen_screen_start
@@ -52,7 +52,7 @@ def go_test():
     try:
         print("test", cla)
 
-        get_event(cla)
+        juljun_time_check(cla)
 
         # fishing_spot_in(cla)
 

@@ -13,7 +13,7 @@ def dungeon_start(cla, sche):
 
     from function_game import imgs_set_
 
-    from action_arthdal import juljun_on, juljun_off, juljun_check, go_maul
+    from action_arthdal import juljun_on, juljun_off, juljun_check, go_maul, juljun_time_check
     from cleen_screen import cleen_screen_start
     from potion import potion_check, buy_potion
     from dead import dead_check, dead_recovery
@@ -33,6 +33,8 @@ def dungeon_start(cla, sche):
         result_juljun = juljun_check(cla)
 
         if result_juljun == True:
+
+            juljun_time_check(cla)
 
             is_dun = False
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\" + str(juljun_map) + "\\" + str(data[2]) + ".PNG"
