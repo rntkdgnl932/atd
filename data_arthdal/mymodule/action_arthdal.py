@@ -1025,7 +1025,7 @@ def juljun_time_check(cla):
             if result_cal > 19:
                 print("멈춰있는 상태", result_cal)
 
-                why = "다운되거나 인터넷이 끊긴것이 확실하다"
+                why = str(result_cal) + "분 차이...다운되거나 인터넷이 끊긴것이 확실하다"
                 print(why)
                 line_to_me(cla, why)
 
