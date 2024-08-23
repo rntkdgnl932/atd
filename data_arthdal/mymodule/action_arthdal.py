@@ -994,7 +994,7 @@ def juljun_time_check(cla):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(485, 75, 520, 135, cla, img, 0.85)
+            imgs_ = imgs_set_(480, 75, 520, 135, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("10 자리", i)
                 now_time += str(i)
@@ -1003,7 +1003,7 @@ def juljun_time_check(cla):
             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(505, 75, 540, 135, cla, img, 0.85)
+            imgs_ = imgs_set_(505, 75, 550, 135, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("1 자리", i)
                 now_time += str(i)
