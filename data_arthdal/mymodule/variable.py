@@ -7,6 +7,8 @@ now_arduino = "none"
 # 해당 게임 관련
 available_potion = 1
 
+time_count = 0
+
 dungeon_ready_count = 0
 
 # 낚시
