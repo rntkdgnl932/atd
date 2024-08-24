@@ -891,7 +891,7 @@ def go_maul(cla):
 
             # 마을인지 파악하기
 
-            for i in range(10):
+            for i in range(7):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\action\\maul\\important_point.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

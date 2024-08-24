@@ -52,12 +52,7 @@ def go_test():
     try:
         print("test", cla)
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\dungeon\\complete.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 90, 600, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("complete", imgs_)
+        chango_start(cla)
 
 
         # fishing_spot_in(cla)
