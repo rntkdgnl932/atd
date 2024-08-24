@@ -569,90 +569,134 @@ def out_check(cla):
     try:
         print("out_check", cla)
 
-        moniter_check(cla)
+
 
         is_out = False
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
+        # 응답없음 확인하기
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\no_response.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 0, 600, 30, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            juljun_time_check(cla)
-        else:
+            print("no_response", imgs_)
+            no_response = True
+            for i in range(60):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\no_response.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 600, 30, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("no_response", imgs_)
+                else:
+                    no_response = False
+                    break
+                time.sleep(2)
+            if no_response == True:
+                why = "응답없음 2분 넘어갔다."
+                print(why)
+                line_to_me(cla, why)
 
-            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+
+        else:
+            moniter_check(cla)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\juljun\\juljun_check.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+            imgs_ = imgs_set_(390, 590, 600, 700, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("out_check...close_btn", imgs_)
+                juljun_time_check(cla)
             else:
-                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
+
+
+
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bag_close_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("mini_close_btn2", imgs_)
+                    print("out_check...close_btn", imgs_)
                 else:
-                    is_out_ready = False
-
-                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\mini_close_btn2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
+                    imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("out_keyboard", imgs_)
-                        is_out_ready = True
+                        print("mini_close_btn2", imgs_)
                     else:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
+                        is_out_ready = False
+
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_keyboard.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("out_speed_talk", imgs_)
+                            print("out_keyboard", imgs_)
                             is_out_ready = True
-
-                    if is_out_ready == True:
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("tab", imgs_)
-                            is_out = True
                         else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\out_speed_talk.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
+                            imgs_ = imgs_set_(180, 960, 500, 1020, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("ctrl", imgs_)
+                                print("out_speed_talk", imgs_)
+                                is_out_ready = True
+
+                        if is_out_ready == True:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\tab.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(840, 840, 890, 890, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("tab", imgs_)
                                 is_out = True
                             else:
-                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\ctrl.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
+                                imgs_ = imgs_set_(820, 900, 860, 930, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("attack_btn", imgs_)
+                                    print("ctrl", imgs_)
                                     is_out = True
                                 else:
-                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\out\\attack_btn.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                    imgs_ = imgs_set_(888, 888, 930, 930, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("attack_off", imgs_)
+                                        print("attack_btn", imgs_)
                                         is_out = True
                                     else:
-                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_on.PNG"
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_off.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                         imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("attack_on", imgs_)
+                                            print("attack_off", imgs_)
                                             is_out = True
+                                        else:
+                                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\check\\attack\\attack_on.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(740, 790, 800, 840, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("attack_on", imgs_)
+                                                is_out = True
 
         if is_out == True:
             out_dead_recovery(cla)
@@ -1069,7 +1113,7 @@ def juljun_time_check(cla):
                             print(why)
                             line_to_me(cla, why)
 
-                            dir_path = "C:\\my_games\\load\\ares"
+                            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                             file_path = dir_path + "\\start.txt"
                             # cla.txt
                             cla_data = str(cla) + "cla"
