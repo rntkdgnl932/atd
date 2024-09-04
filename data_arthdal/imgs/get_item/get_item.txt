@@ -2,8 +2,8 @@
 2:480:six
 3:522:six
 4:564:six
-5:640:six
-6:7:drag
+5:606:six
+6:648:drag
 7:7:drag
 8:400:six
 9:442:six
