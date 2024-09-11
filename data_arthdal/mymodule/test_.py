@@ -52,7 +52,7 @@ def go_test():
     try:
         print("test", cla)
 
-        chango_start(cla)
+        get_sangjum(cla)
 
 
         # fishing_spot_in(cla)
