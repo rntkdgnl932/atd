@@ -52,8 +52,7 @@ def go_test():
     try:
         print("test", cla)
 
-        get_sangjum(cla)
-
+        buy_potion(cla)
 
         # fishing_spot_in(cla)
 

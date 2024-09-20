@@ -159,16 +159,18 @@ def buy_potion(cla):
                     # imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
                     # if imgs_ is not None and imgs_ != False:
 
+                    ### 간편구매 easy_buy_btn
                     anymore_buy = False
                     for i in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\buy_btn.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(480, 650, 590, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+                            print("easy_buy_btn", imgs_)
                             break
                         else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\can_not_anymore_buy.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\can_not_anymore_product.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(400, 90, 590, 150, cla, img, 0.8)
@@ -176,34 +178,92 @@ def buy_potion(cla):
                                 anymore_buy = True
                                 break
                             else:
-                                click_pos_2(200, y_reg, cla)
-                        time.sleep(0.3)
+                                click_pos_2(180, 1005, cla)
+                        time.sleep(0.5)
 
                     if anymore_buy == False:
                         for i in range(10):
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\buy_btn.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 650, 590, 690, cla, img, 0.8)
+                            imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_2(560, 610, cla)  # max
-                                time.sleep(0.5)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    break
+                            time.sleep(0.5)
 
-                                break
-                            time.sleep(0.3)
+
+                    ###########################################################################
+                    # # 기존 포션
+                    # anymore_buy = False
+                    # for i in range(10):
+                    #     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\buy_btn.PNG"
+                    #     img_array = np.fromfile(full_path, np.uint8)
+                    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    #     imgs_ = imgs_set_(480, 650, 590, 690, cla, img, 0.8)
+                    #     if imgs_ is not None and imgs_ != False:
+                    #         break
+                    #     else:
+                    #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\can_not_anymore_buy.PNG"
+                    #         img_array = np.fromfile(full_path, np.uint8)
+                    #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    #         imgs_ = imgs_set_(400, 90, 590, 150, cla, img, 0.8)
+                    #         if imgs_ is not None and imgs_ != False:
+                    #             anymore_buy = True
+                    #             break
+                    #         else:
+                    #             click_pos_2(200, y_reg, cla)
+                    #     time.sleep(0.3)
+                    #
+                    # if anymore_buy == False:
+                    #     for i in range(10):
+                    #         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\buy_btn.PNG"
+                    #         img_array = np.fromfile(full_path, np.uint8)
+                    #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    #         imgs_ = imgs_set_(480, 650, 590, 690, cla, img, 0.8)
+                    #         if imgs_ is not None and imgs_ != False:
+                    #             click_pos_2(560, 610, cla)  # max
+                    #             time.sleep(0.5)
+                    #             click_pos_reg(imgs_.x, imgs_.y, cla)
+                    #         else:
+                    #
+                    #             break
+                    #         time.sleep(0.3)
+
+                    ###############################################################################
 
                     for i in range(10):
-                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\jabhwa_sangin.PNG"
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 30, 130, 80, cla, img, 0.8)
+                        imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_2(40, 55, cla)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
-                            buying_ = True
-                            break
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\easy_buy_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(440, 650, 520, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\potion\\jabhwa_sangin.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 130, 80, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(40, 55, cla)
+                                else:
+                                    buying_ = True
+                                    break
                         time.sleep(0.5)
                     # 한번 더 확인
                     result_out = out_check(cla)
