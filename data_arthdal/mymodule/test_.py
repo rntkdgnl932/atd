@@ -52,7 +52,7 @@ def go_test():
     try:
         print("test", cla)
 
-        get_event(cla)
+        potion_check(cla)
 
         # fishing_spot_in(cla)
 
