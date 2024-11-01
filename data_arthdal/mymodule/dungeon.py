@@ -164,7 +164,7 @@ def dungeon_in(cla, sche):
                     break
             else:
                 menu_open(cla)
-                click_pos_2(850, 125, cla)
+                click_pos_2(810, 125, cla)
                 for k in range(10):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\time_dungeon.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

@@ -71,7 +71,7 @@ def groupmission_get(cla, sche):
                 print("세력임무", cla)
                 break
             else:
-                click_pos_2(765, 120, cla)
+                click_pos_2(725, 120, cla)
                 for c in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\group_mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

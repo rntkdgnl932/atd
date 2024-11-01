@@ -71,7 +71,7 @@ def unionmission_get(cla, sche):
                 break
             else:
                 menu_open(cla)
-                click_pos_2(810, 120, cla)
+                click_pos_2(765, 120, cla)
                 for c in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\union_mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -328,7 +328,7 @@ def unionmission_bosang(cla):
                         time.sleep(0.5)
             else:
                 menu_open(cla)
-                click_pos_2(810, 120, cla)
+                click_pos_2(765, 120, cla)
 
                 for c in range(5):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\title\\union_mission.PNG"
