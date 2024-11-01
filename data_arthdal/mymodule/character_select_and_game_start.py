@@ -130,7 +130,7 @@ def game_ready(cla, character_id):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_arthdal import loading, out_check
     from stop_event18 import _stop_please
     from massenger import line_to_me
@@ -199,5 +199,133 @@ def game_ready(cla, character_id):
             imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 character_change(cla, character_id)
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\path_download_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(410, 420, 545, 465, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\path_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(500, 590, 610, 630, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        # 패치다운로드
+
+                        game_ready = False
+                        game_ready_count = 0
+                        game_play_count = 0
+                        while game_ready is False:
+                            game_ready_count += 1
+                            game_play_count += 1
+
+
+                            if game_ready_count > 10:
+                                game_ready_count = 1
+
+                            if game_ready_count > 10:
+                                game_ready = True
+
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\download.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(300, 970, 500, 1015, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("다운로드중", game_play_count, "초")
+                                if game_ready_count > 1:
+                                    game_ready_count -= 1
+                            else:
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\setting.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(300, 970, 500, 1015, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("다운로드중", game_play_count, "초")
+                                    if game_ready_count > 1:
+                                        game_ready_count -= 1
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\path_complete.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 500, 570, 550, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(485, 590, cla)
+                                        game_ready = True
+                                    else:
+                                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\path_download_title.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(410, 420, 545, 465, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\path_confirm.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(500, 590, 610, 630, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                if game_ready_count > 1:
+                                                    game_ready_count -= 1
+
+
+                            time.sleep(1)
+                        # 패치 다운 완료 후
+                        game_ready = True
+                        game_ready_count = 0
+                        game_play_count = 0
+                        while game_ready is True:
+                            game_ready_count += 1
+                            game_play_count += 1
+
+                            if game_ready_count > 10:
+                                game_ready_count = 1
+
+                            if game_ready_count > 10:
+                                game_ready = False
+
+                                # 캐릭터 화면 이벤트
+
+                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    start_count += 1
+                                    if start_count > 2:
+                                        game_ready = False
+                                else:
+
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\event_close_btn2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(680, 30, 870, 100, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+
+                                        start_count = 0
+
+                                        for i in range(10):
+                                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\event_close_btn2.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(680, 30, 870, 100, cla, img, 0.7)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("event_close_btn2")
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            else:
+                                                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    start_count += 1
+                                                    if start_count > 2:
+                                                        game_ready = False
+                                                        break
+                                            time.sleep(1)
+                                    else:
+                                        click_pos_2(485, 590, cla)
+
+                            time.sleep(1)
     except Exception as e:
         print(e)
