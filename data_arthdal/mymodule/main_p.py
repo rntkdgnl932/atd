@@ -177,15 +177,15 @@ class MyApp(QDialog):
         for idx, monitor in enumerate(monitors, start=1):
             last_monitor_number = idx
 
-        if line_[1] == "super_coob":
-            self.setGeometry(20 + 960, 200, 900, 700)
-        else:
-            if last_monitor_number == 1:
-                x_reg = 0
-            elif last_monitor_number == 2:
-                x_reg = 960 * 2
-            elif last_monitor_number == 3:
-                x_reg = 960 * 4
+        # if line_[1] == "super_coob":
+        #     self.setGeometry(20 + 960, 200, 900, 700)
+        # else:
+        if last_monitor_number == 1:
+            x_reg = 0
+        elif last_monitor_number == 2:
+            x_reg = 960 * 2
+        elif last_monitor_number == 3:
+            x_reg = 960 * 4
 
             self.setGeometry(20 + x_reg, 100, 800, 900)
         self.show()

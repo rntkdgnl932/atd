@@ -1,10 +1,10 @@
 1:440:six
 2:510:six
 3:552:six
-4:626:six
+4:594:six
 5:5:drag
 6:410:six
-7:482:seven
+7:452:six
 8:524:seven
 9:566:fourteen
 10:644:fourteen
