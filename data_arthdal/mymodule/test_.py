@@ -52,7 +52,41 @@ def go_test():
     try:
         print("test", cla)
 
-        potion_check(cla)
+        jadong_spot_in(cla)
+        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\cloud.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("cloud", imgs_)
+
+        else:
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\moon.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("moon", imgs_)
+            else:
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\rain.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("rain", imgs_)
+
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 750, 50, 300), confidence=0.8):
+        #     print('i', i)
+        #
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_list = imgs_set_for(870, 750, 920, 1050, cla, img, 0.8)
+        # if imgs_list is not None and imgs_list != False:
+        #     print("bookmark_star", imgs_list)
 
         # fishing_spot_in(cla)
 

@@ -234,7 +234,7 @@ def jadong_spot_in(cla):
                             full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                            imgs_ = imgs_set_(730, 700, 840, 750, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("bookmark", imgs_)
                                 map_ready = True
@@ -246,14 +246,14 @@ def jadong_spot_in(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                    imgs_ = imgs_set_(730, 700, 840, 750, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
                         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\world_region_list.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(750, 830, 840, 870, cla, img, 0.8)
+                        imgs_ = imgs_set_(730, 700, 915, 755, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_2(930, 975, cla)
                             break
@@ -265,7 +265,7 @@ def jadong_spot_in(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(750, 380, 840, 430, cla, img, 0.8)
+                    imgs_ = imgs_set_(730, 700, 840, 750, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
@@ -280,7 +280,7 @@ def jadong_spot_in(cla):
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 420, 80, 300), confidence=0.8):
+                for i in pyautogui.locateAllOnScreen(img, region=(870 + plus, 750, 50, 300), confidence=0.8):
                     print('i', i)
                     last_x = i.left + int(i.width / 2)
                     last_y = i.top + int(i.height / 2)
@@ -297,7 +297,7 @@ def jadong_spot_in(cla):
                     full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\bookmark_star.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_list = imgs_set_for(870, 420, 950, 720, cla, img, 0.85)
+                    imgs_list = imgs_set_for(870, 750, 920, 1050, cla, img, 0.8)
                     if imgs_list is not None and imgs_list != False:
                         print("bookmark_star", imgs_list)
 
@@ -334,7 +334,7 @@ def jadong_spot_in(cla):
                             y_click = 110
                             break
                         else:
-                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\rain.PNG"
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\cloud.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
@@ -351,6 +351,15 @@ def jadong_spot_in(cla):
                                     y_click = imgs_.y
                                     war_area = "moon"
                                     break
+                                else:
+                                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\jadong\\spot_in\\rain.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(125, 80, 205, 900, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        y_click = imgs_.y
+                                        war_area = "moon"
+                                        break
                         time.sleep(0.1)
 
                     for i in range(10):
