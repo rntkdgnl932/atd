@@ -15,6 +15,8 @@ def get_item_start(cla):
     from action_arthdal import loading, out_check, menu_open, go_maul
     from cleen_screen import cleen_screen_start
 
+    from potion import buy_potion
+
     from massenger import line_to_me
     try:
 
@@ -23,6 +25,7 @@ def get_item_start(cla):
         get_post(cla)
         get_upjuk(cla)
         get_sangjum(cla)
+        buy_potion(cla)
 
     except Exception as e:
         print(e)
