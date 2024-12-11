@@ -1,11 +1,11 @@
 1:440:level
 2:484:fourteen
-3:526:level
-4:568:six
+3:524:level
+4:566:six
 5:638:six
 6:410:drag
-7:410:level
+7:410:six
 8:452:six
-9:494:six
-10:566:fourteen
+9:526:fourteen
+10:568:seven
 11:644:fourteen
