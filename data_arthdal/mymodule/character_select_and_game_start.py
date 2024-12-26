@@ -138,6 +138,7 @@ def game_ready(cla, character_id):
 
     try:
 
+
         # 접속대기일 경우 기다리기
         full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_ready.PNG"
         img_array = np.fromfile(full_path, np.uint8)
