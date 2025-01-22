@@ -20,7 +20,7 @@ def get_item_start(cla):
     from massenger import line_to_me
     try:
 
-        # get_event(cla)
+        get_event(cla)
         get_specialpackage(cla)
         get_post(cla)
         get_upjuk(cla)
