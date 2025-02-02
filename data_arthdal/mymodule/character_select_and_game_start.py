@@ -6,6 +6,77 @@ import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
+
+
+def out_character(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+
+    from action_arthdal import loading, out_check, menu_open, go_maul
+    from stop_event18 import _stop_please
+
+    try:
+
+        go_maul(cla)
+
+
+        cha_select = False
+        cha_select_count = 0
+        while cha_select is False:
+            cha_select_count += 1
+            if cha_select_count > 10:
+                cha_select = True
+
+            _stop_please(cla)
+
+            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                cha_select = True
+            else:
+                menu_open(cla)
+                time.sleep(1)
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(650, 350, 960, 700, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_opened")
+                    click_pos_2(890, 410, cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\18_event\\event_close_btn2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(680, 30, 960, 100, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        _stop_please(cla)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\character_start\\game_start.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(770, 970, 940, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\menu_opened.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(650, 350, 960, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_opened")
+                                click_pos_2(890, 410, cla)
+                    time.sleep(1)
+
+                time.sleep(1)
+    except Exception as e:
+        print(e)
+
 def character_change(cla, character_id):
     import numpy as np
     import cv2
