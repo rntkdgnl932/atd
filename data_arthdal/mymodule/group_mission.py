@@ -50,6 +50,7 @@ def groupmission_get(cla, sche):
     import numpy as np
     import cv2
 
+    from character_select_and_game_start import out_character
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_arthdal import move_check, menu_open, confirm_all
     from schedule import myQuest_play_add
@@ -99,7 +100,7 @@ def groupmission_get(cla, sche):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(400, 100, 570, 170, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-
+                out_character(cla)
             else:
                 full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\cleen_screen\\bottom_esc.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
