@@ -14,12 +14,13 @@ def get_item_start(cla):
 
     from action_arthdal import loading, out_check, menu_open, go_maul
     from cleen_screen import cleen_screen_start
-
+    from boonhae import boonhae_start
     from potion import buy_potion
 
     from massenger import line_to_me
     try:
 
+        boonhae_start(cla)
         get_event(cla)
         get_specialpackage(cla)
         get_post(cla)
