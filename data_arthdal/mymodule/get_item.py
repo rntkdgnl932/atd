@@ -511,6 +511,31 @@ def get_event_point_click(cla, data):
                             if exit_count > 2:
                                 break
                     time.sleep(0.3)
+        elif data == "chulsuk":
+            exit_count = 0
+            for i in range(20):
+                full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\point\\chulsuk\\point_chulsuk.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(160, 530, 670, 730, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("point_chulsuk", imgs_)
+                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    get_event_clicked(cla)
+                else:
+                    full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\get_item\\mini_close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(540, 360, 600, 410, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("mini_close_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        get_event_clicked(cla)
+                    else:
+                        exit_count += 1
+                        if exit_count > 2:
+                            break
+                time.sleep(0.3)
         # 마무리
         get_event_clicked(cla)
 
