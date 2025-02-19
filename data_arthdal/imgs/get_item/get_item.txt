@@ -2,10 +2,10 @@
 2:478:six
 3:520:six
 4:562:six
-5:604:six
+5:640:six
 6:645:drag
-7:410:six
-8:484:chulsuk
-9:526:fourteen
+7:410:level
+8:452:six
+9:526:chulsuk
 10:568:fourteen
 11:640:fourteen
